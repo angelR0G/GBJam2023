@@ -9,8 +9,19 @@ var SPEED 			:int 	= 400
 var STOP_SPEED		:int 	= 300
 var SPEED_DEADZONE	:float 	= 2.0
 
+# Overheat values
+var SHOT_HEAT		:int	= 1
+var MAX_HEAT		:int	= 20
+var COOL_LIMIT		:int	= 15
+var COOL_INITIAL_TIME:float	= 2.0
+var COOL_INTERVAL_TIME:float= 0.8
+
 # Class variables
-var linear_velocity :float = 0.0
+var linear_velocity :float 	= 0.0
+var overheat		:int	= 0
+var gun_overheated	:bool	= false
+var playerWidth		:int	= 8
+var playerHeight	:int	= 8
 
 func _process(delta):
 	var dir := Vector2()
@@ -42,13 +53,36 @@ func _process(delta):
 func _unhandled_input(event):
 	# Player shooting
 	if event.is_action_pressed("shot"):
-		if $ShotTimer.is_stopped():
+		if $ShotTimer.is_stopped() && not gun_overheated:
 			# Create a shot
 			var shot = shot_container.create_shot()
 			
-			# Update its values
+			# Set shot initial position
+			shot.position += velocity.normalized() * 12
+			
+			# Update its direction and prevent hitting player
 			shot.setShotDirection(velocity.angle())
+			shot.setHitPlayer(false)
+			shot.setHitEnemies(true)
 			
 			# Add it to the game
 			add_child(shot)
+			
+			# Gun fire rate
 			$ShotTimer.start()
+			
+			# Gun overheats
+			overheat += SHOT_HEAT
+			if overheat >= MAX_HEAT:
+				gun_overheated = true
+			$CoolingTimer.start(COOL_INITIAL_TIME)
+
+func gunCooling():
+	# Gun reduces heat
+	if overheat > 0:
+		overheat -= 1
+		
+		# Enable shoting again when heat goes under COOL_LIMIT
+		gun_overheated = gun_overheated && not (overheat < COOL_LIMIT)
+		
+		$CoolingTimer.start(COOL_INTERVAL_TIME)
