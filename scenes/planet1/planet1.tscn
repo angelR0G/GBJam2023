@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dley145mpyv5b" path="res://scenes/planet1/planet1_2.tscn" id="3_q6cgj"]
 [ext_resource type="PackedScene" uid="uid://c87qm0axryrql" path="res://scenes/planet2/planet2_1.tscn" id="4_duc6b"]
 [ext_resource type="PackedScene" uid="uid://dteade4rpsp53" path="res://scenes/planet2/planet2_2.tscn" id="5_agqqc"]
-[ext_resource type="Texture2D" uid="uid://cd2dl1qs50xyt" path="res://resources/palette_p1.tres" id="6_6v75d"]
+[ext_resource type="Texture2D" uid="uid://dr6071qoj4e1x" path="res://resources/palette_p2.tres" id="6_exn0k"]
 
 [node name="planet1" type="Node2D"]
 script = ExtResource("1_ynwxw")
@@ -13,4 +13,4 @@ levelArray = Array[PackedScene]([ExtResource("2_pfscn"), ExtResource("3_q6cgj"),
 planet_name = "Marte"
 planet_dangerLevel = 1
 planet_numLevels = 2
-planet_palette = ExtResource("6_6v75d")
+planet_palette = ExtResource("6_exn0k")

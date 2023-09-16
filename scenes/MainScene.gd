@@ -24,7 +24,16 @@ func _process(delta):
 		renderLevel()
 
 func renderLevel():
+	#Remove previous level
 	if levelScript.loadedLevel != null:
 		remove_child(levelScript.loadedLevel)
-	levelScript.loadedLevel = levelMap[levelScript.currentLevel].instantiate()
-	add_child(levelScript.loadedLevel)
+	
+	#Get new level
+	var lvl = levelMap[levelScript.currentLevel].instantiate()
+	#Change palette
+	var mat = lvl.get_child(0).get_material()
+	mat.set_shader_parameter("replacePalette", planets[currentPlanet].planet_palette);
+	
+	#Create new level
+	add_child(lvl)
+	levelScript.loadedLevel = lvl

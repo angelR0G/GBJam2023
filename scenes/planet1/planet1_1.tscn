@@ -1,12 +1,12 @@
 [gd_scene load_steps=6 format=3 uid="uid://cld6y5yyc0o57"]
 
 [ext_resource type="TileSet" uid="uid://cgmdqrfhjvw75" path="res://resources/tileset.tres" id="1_7mef0"]
-[ext_resource type="Shader" path="res://scenes/planet1/paletteSwap.gdshader" id="1_j7ymu"]
+[ext_resource type="Shader" path="res://resources/paletteSwap.gdshader" id="1_u783e"]
 [ext_resource type="Texture2D" uid="uid://cwpk26tgxpe01" path="res://resources/palette_original.tres" id="2_pa835"]
 [ext_resource type="Texture2D" uid="uid://cd2dl1qs50xyt" path="res://resources/palette_p1.tres" id="3_q1x08"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qgyqp"]
-shader = ExtResource("1_j7ymu")
+shader = ExtResource("1_u783e")
 shader_parameter/num_colorsPalette = 4
 shader_parameter/originalPalette = ExtResource("2_pa835")
 shader_parameter/replacePalette = ExtResource("3_q1x08")
