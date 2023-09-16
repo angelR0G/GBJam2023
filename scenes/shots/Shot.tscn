@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3eithk653i0u"]
+
+[ext_resource type="Script" path="res://scenes/shots/Shot.gd" id="1_dc5kr"]
+[ext_resource type="Texture2D" uid="uid://ckw2y821106ln" path="res://icon.svg" id="1_lo7bd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_it7sl"]
+size = Vector2(12, 4)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tagle"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_lo7bd")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Shot" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_dc5kr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_it7sl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.03125, 0.09375)
+sprite_frames = SubResource("SpriteFrames_tagle")
+animation = &"idle"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
