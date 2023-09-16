@@ -11,10 +11,22 @@ config_version=5
 [application]
 
 config/name="GBJam2023"
+run/main_scene="res://scenes/MainScene.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Planet1="*res://scenes/planet1/planet1.tscn"
+
+[display]
+
+window/size/viewport_width=160
+window/size/viewport_height=144
+window/stretch/mode="viewport"
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
