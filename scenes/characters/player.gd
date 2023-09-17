@@ -22,6 +22,7 @@ var overheat		:int	= 0
 var gun_overheated	:bool	= false
 var playerWidth		:int	= 8
 var playerHeight	:int	= 8
+var shotDirection	:Vector2= Vector2(1, 0)
 
 func _process(delta):
 	var dir := Vector2()
@@ -41,10 +42,26 @@ func _process(delta):
 		velocity -= velocity.normalized() * STOP_SPEED * delta
 		if velocity.length() < SPEED_DEADZONE:
 			velocity = Vector2()
+			
+		# Stop animation
+		$AnimatedSprite2D.stop()
 	else :
 		# Add input velocity
+		shotDirection = dir.normalized()
 		linear_velocity = min(MAX_WALK_SPEED, linear_velocity + SPEED*delta)
-		velocity = linear_velocity * dir.normalized()
+		velocity = linear_velocity * shotDirection
+		
+		# Change animation depending on direction
+		if abs(shotDirection.x) > 0.9:
+			$AnimatedSprite2D.animation = "walk_right"
+			$AnimatedSprite2D.flip_h = shotDirection.x < 0
+		elif abs(shotDirection.y) > 0.9:
+			$AnimatedSprite2D.flip_h = false
+			if shotDirection.y > 0:
+				$AnimatedSprite2D.animation = "walk_down"
+			else:
+				$AnimatedSprite2D.animation = "walk_up"
+		$AnimatedSprite2D.play()
 	
 	# Update player position
 	move_and_slide()
@@ -58,10 +75,10 @@ func _unhandled_input(event):
 			var shot = shot_container.create_shot()
 			
 			# Set shot initial position
-			shot.position += velocity.normalized() * 12
+			shot.position += velocity.normalized() * 16
 			
 			# Update its direction and prevent hitting player
-			shot.setShotDirection(velocity.angle())
+			shot.setShotDirection(shotDirection.angle())
 			shot.setHitPlayer(false)
 			shot.setHitEnemies(true)
 			

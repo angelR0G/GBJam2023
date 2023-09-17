@@ -1,20 +1,45 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3eithk653i0u"]
+[gd_scene load_steps=9 format=3 uid="uid://d3eithk653i0u"]
 
 [ext_resource type="Script" path="res://scenes/shots/Shot.gd" id="1_dc5kr"]
-[ext_resource type="Texture2D" uid="uid://ckw2y821106ln" path="res://icon.svg" id="1_lo7bd"]
+[ext_resource type="Texture2D" uid="uid://bp6e1qvnqb1k1" path="res://assets/characters/Astronauta.png" id="2_h4na4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_it7sl"]
-size = Vector2(12, 4)
+size = Vector2(14, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xr374"]
+atlas = ExtResource("2_h4na4")
+region = Rect2(0, 48, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkuq4"]
+atlas = ExtResource("2_h4na4")
+region = Rect2(16, 48, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibdcc"]
+atlas = ExtResource("2_h4na4")
+region = Rect2(32, 48, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7c8dc"]
+atlas = ExtResource("2_h4na4")
+region = Rect2(48, 48, 16, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tagle"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_lo7bd")
+"texture": SubResource("AtlasTexture_xr374")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkuq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibdcc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7c8dc")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [node name="Shot" type="RigidBody2D"]
@@ -26,15 +51,17 @@ contact_monitor = true
 script = ExtResource("1_dc5kr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_it7sl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-rotation = 1.5708
-scale = Vector2(0.03125, 0.09375)
 sprite_frames = SubResource("SpriteFrames_tagle")
 animation = &"idle"
+frame = 1
+frame_progress = 0.390712
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(1, 0.6)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="destroyShot"]
