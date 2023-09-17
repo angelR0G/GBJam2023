@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bj5a6ecw78y4u"]
 
-[ext_resource type="PackedScene" uid="uid://cmyhf7g6n00wf" path="res://scenes/characters/enemies/ChargeEnemy.tscn" id="1_j11a4"]
+[ext_resource type="PackedScene" uid="uid://bqc2se1sraa8n" path="res://scenes/characters/enemies/MoleEnemy.tscn" id="1_x21oo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cu38s"]
 size = Vector2(196, 18)
@@ -44,5 +44,6 @@ collision_mask = 16
 position = Vector2(79, -6)
 shape = SubResource("RectangleShape2D_cu38s")
 
-[node name="BasicEnemy" parent="." instance=ExtResource("1_j11a4")]
-position = Vector2(61, 46)
+[node name="MoleEnemy" parent="." instance=ExtResource("1_x21oo")]
+position = Vector2(67, 65)
+lock_rotation = false
