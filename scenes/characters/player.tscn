@@ -129,4 +129,13 @@ autostart = true
 [node name="CoolingTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 500
+limit_bottom = 500
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
 [connection signal="timeout" from="CoolingTimer" to="." method="gunCooling"]
