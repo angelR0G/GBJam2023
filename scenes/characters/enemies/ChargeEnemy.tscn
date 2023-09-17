@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://drrx0op3ipmg"]
+
+[ext_resource type="Script" path="res://scenes/characters/enemies/ChargeEnemy.gd" id="1_k5g5j"]
+[ext_resource type="Texture2D" uid="uid://ckw2y821106ln" path="res://icon.svg" id="1_xk3fi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bir2k"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m2kly"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xk3fi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ChargeEnemy" type="RigidBody2D"]
+collision_layer = 16
+collision_mask = 31
+gravity_scale = 0.0
+max_contacts_reported = 4
+contact_monitor = true
+script = ExtResource("1_k5g5j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bir2k")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.1875, 0.1875)
+sprite_frames = SubResource("SpriteFrames_m2kly")
+
+[node name="ChargeTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="ChargeTimer" to="." method="_on_charge_timer_timeout"]
