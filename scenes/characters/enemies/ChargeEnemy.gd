@@ -1,11 +1,10 @@
-extends RigidBody2D
+extends "res://scenes/characters/enemies/BasicEnemy.gd"
 
 const REST_TIME		:float	= 2.4
-const MAX_CHARGE	:float	= 1.6
-const MIN_CHARGE	:float	= 1.0
-const CHARGE_SPEED	:int	= 40
+const MAX_CHARGE	:float	= 1.2
+const MIN_CHARGE	:float	= 0.7
+const CHARGE_SPEED	:int	= 120
 
-var life		:int	= 20
 var resting		:bool	= true
 
 func _ready():
@@ -24,8 +23,7 @@ func _on_charge_timer_timeout():
 	resting = not resting
 
 
-
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	if $ChargeTimer.time_left >= MIN_CHARGE:
 		# Hit something without moving hardly anything
 		resting = true

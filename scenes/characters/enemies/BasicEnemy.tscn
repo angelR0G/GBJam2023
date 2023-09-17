@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://21c3cd4vt6wo"]
+
+[ext_resource type="Script" path="res://scenes/characters/enemies/BasicEnemy.gd" id="1_go03f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbmwx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ghnjt"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="BasicEnemy" type="RigidBody2D"]
+collision_layer = 16
+collision_mask = 31
+gravity_scale = 0.0
+max_contacts_reported = 4
+contact_monitor = true
+script = ExtResource("1_go03f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_lbmwx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ghnjt")
+animation = &"idle"
