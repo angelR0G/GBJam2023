@@ -16,6 +16,11 @@ var COOL_LIMIT		:int	= 15
 var COOL_INITIAL_TIME:float	= 2.0
 var COOL_INTERVAL_TIME:float= 0.8
 
+# Camera
+var CAMERA_SPEED	:float	= 40.0
+var MAX_CAMERA_OFFSET:float	= 20.0
+var OFFSET_DEADZONE	:float	= 1.0
+
 # Class variables
 var linear_velocity :float 	= 0.0
 var overheat		:int	= 0
@@ -45,6 +50,11 @@ func _process(delta):
 			
 		# Stop animation
 		$AnimatedSprite2D.stop()
+		
+		# Reduce camera offset
+		$Camera2D.offset -= $Camera2D.offset.normalized() * CAMERA_SPEED * delta
+		if $Camera2D.offset.length() < OFFSET_DEADZONE:
+			$Camera2D.offset = Vector2()
 	else :
 		# Add input velocity
 		shotDirection = dir.normalized()
@@ -62,6 +72,11 @@ func _process(delta):
 			else:
 				$AnimatedSprite2D.animation = "walk_up"
 		$AnimatedSprite2D.play()
+		
+		# Update camera offset
+		$Camera2D.offset += shotDirection * CAMERA_SPEED * delta
+		if $Camera2D.offset.length() > MAX_CAMERA_OFFSET:
+			$Camera2D.offset = $Camera2D.offset.normalized() * MAX_CAMERA_OFFSET
 	
 	# Update player position
 	move_and_slide()
