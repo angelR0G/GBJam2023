@@ -121,7 +121,8 @@ shape = SubResource("RectangleShape2D_4vo1a")
 use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_8v1na")
 animation = &"walk_right"
-frame_progress = 0.223302
+frame = 3
+frame_progress = 0.620594
 
 [node name="ShotTimer" type="Timer" parent="."]
 wait_time = 0.3

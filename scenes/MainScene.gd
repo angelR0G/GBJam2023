@@ -20,8 +20,8 @@ func newMap():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_pressed("ui_left"):
-		var changePlanet = levelScript.prev_level()
-		changePlanet(changePlanet)
+		var chPlanet = levelScript.prev_level()
+		changePlanet(chPlanet)
 		renderLevel()
 	if Input.is_action_just_pressed("ui_right"):
 		levelScript.next_level()
