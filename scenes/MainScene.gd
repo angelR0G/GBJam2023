@@ -40,7 +40,8 @@ func renderLevel():
 	
 	#Get new level
 	var lvl = levelMap[levelScript.currentLevel].instantiate()
-	#Change palette
+	
+	#Change world palette
 	var mat = get_material()
 	mat.set_shader_parameter("replacePalette", planets[currentPlanet].planet_palette);
 	

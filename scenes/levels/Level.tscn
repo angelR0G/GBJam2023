@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://dr7dlqnprfltg"]
+[gd_scene load_steps=4 format=3 uid="uid://dr7dlqnprfltg"]
 
 [ext_resource type="TileSet" uid="uid://cgmdqrfhjvw75" path="res://resources/tileset.tres" id="1_7ac3w"]
+
+[sub_resource type="Gradient" id="Gradient_c8ryf"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b3wsl"]
+gradient = SubResource("Gradient_c8ryf")
+width = 2
+height = 2
+fill_to = Vector2(0, 0)
 
 [node name="Level" type="Node2D"]
 use_parent_material = true
@@ -11,3 +19,10 @@ tile_set = ExtResource("1_7ac3w")
 format = 2
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+z_index = -1
+use_parent_material = true
+color = Color(0, 0, 0, 1)
+texture = SubResource("GradientTexture2D_b3wsl")
+polygon = PackedVector2Array(-67, -20, 469, -20, 470, 396, -67, 398)
