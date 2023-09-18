@@ -1,0 +1,152 @@
+[gd_scene load_steps=22 format=3 uid="uid://bqc2se1sraa8n"]
+
+[ext_resource type="PackedScene" uid="uid://21c3cd4vt6wo" path="res://scenes/characters/enemies/BasicEnemy.tscn" id="1_fjv1u"]
+[ext_resource type="Script" path="res://scenes/characters/enemies/MoleEnemy.gd" id="2_5idro"]
+[ext_resource type="Texture2D" uid="uid://ifsbxvd3epcu" path="res://assets/characters/Mole.png" id="3_de4c2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bc6v1"]
+atlas = ExtResource("3_de4c2")
+region = Rect2(0, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35w0p"]
+atlas = ExtResource("3_de4c2")
+region = Rect2(8, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e31gy"]
+atlas = ExtResource("3_de4c2")
+region = Rect2(16, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhsj1"]
+atlas = ExtResource("3_de4c2")
+region = Rect2(24, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rn8qb"]
+atlas = ExtResource("3_de4c2")
+region = Rect2(32, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dc8sj"]
+atlas = ExtResource("3_de4c2")
+region = Rect2(40, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lgok"]
+atlas = ExtResource("3_de4c2")
+region = Rect2(0, 16, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ve0mn"]
+atlas = ExtResource("3_de4c2")
+region = Rect2(8, 16, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urqdv"]
+atlas = ExtResource("3_de4c2")
+region = Rect2(16, 16, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpof8"]
+atlas = ExtResource("3_de4c2")
+region = Rect2(24, 16, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sewe7"]
+atlas = ExtResource("3_de4c2")
+region = Rect2(32, 16, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vusk"]
+atlas = ExtResource("3_de4c2")
+region = Rect2(40, 16, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ircmk"]
+atlas = ExtResource("3_de4c2")
+region = Rect2(48, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwp34"]
+atlas = ExtResource("3_de4c2")
+region = Rect2(56, 0, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhtvg"]
+atlas = ExtResource("3_de4c2")
+region = Rect2(48, 16, 8, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8g03l"]
+atlas = ExtResource("3_de4c2")
+region = Rect2(56, 16, 8, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f7003"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bc6v1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35w0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e31gy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhsj1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rn8qb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dc8sj")
+}],
+"loop": true,
+"name": &"dig",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lgok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ve0mn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urqdv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpof8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sewe7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vusk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ircmk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hwp34")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhtvg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8g03l")
+}],
+"loop": false,
+"name": &"out",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4j30y"]
+size = Vector2(6, 12)
+
+[node name="MoleEnemy" instance=ExtResource("1_fjv1u")]
+script = ExtResource("2_5idro")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_f7003")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_4j30y")
+
+[node name="DigTimer" type="Timer" parent="." index="2"]
+one_shot = true
+
+[connection signal="timeout" from="DigTimer" to="." method="_on_dig_timer_timeout"]
