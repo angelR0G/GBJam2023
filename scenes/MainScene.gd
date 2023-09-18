@@ -4,9 +4,11 @@ var planets:Array[Planet] = [Planet1, Planet2]
 var currentPlanet:int = 0
 var levelScript = preload("res://scripts/level.gd").new()
 var levelMap:Array[PackedScene]
+var player
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	player = $Player
 	newMap()
 	
 func newMap():
@@ -42,6 +44,9 @@ func renderLevel():
 	mat.set_shader_parameter("replacePalette", planets[currentPlanet].planet_palette);
 	
 	#Create new level
+	var a:Marker2D = lvl.get_node("PlayerSpawn")
+	player.position = a.position
+	print(a.position)
 	add_child(lvl)
 	levelScript.loadedLevel = lvl
 
