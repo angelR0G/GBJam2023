@@ -1,6 +1,6 @@
 extends Node2D
 
-var planets:Array[Planet] = [Planet1, Planet2]
+var planets:Array[Planet] = [Planet1]
 var currentPlanet:int = 0
 var levelScript = preload("res://scripts/level.gd").new()
 var levelMap:Array[PackedScene]
@@ -18,7 +18,7 @@ func newMap():
 		print(i.instantiate().get_name())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("ui_left"):
 		var chPlanet = levelScript.prev_level()
 		changePlanet(chPlanet)
@@ -27,8 +27,8 @@ func _process(delta):
 		levelScript.next_level()
 		renderLevel()
 
-func changePlanet(changePlanet:bool):
-	if(changePlanet && currentPlanet < planets.size()-1):
+func changePlanet(chPlanet:bool):
+	if(chPlanet && currentPlanet < planets.size()-1):
 		currentPlanet += 1
 		newMap()
 
@@ -44,9 +44,8 @@ func renderLevel():
 	mat.set_shader_parameter("replacePalette", planets[currentPlanet].planet_palette);
 	
 	#Create new level
-	var a:Marker2D = lvl.get_node("PlayerSpawn")
-	player.position = a.position
-	print(a.position)
+	var marker:Marker2D = lvl.get_child(1)
+	player.position = marker.position
 	add_child(lvl)
 	levelScript.loadedLevel = lvl
 

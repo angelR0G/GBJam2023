@@ -19,8 +19,8 @@ Planet2="*res://scenes/planet2/planet2.tscn"
 
 [autoload]
 
-Planet1="*res://scenes/planet1/planet1.tscn"
-Planet2="*res://scenes/planet2/planet2.tscn"
+Planet1="*res://scenes/levels/planet1/planet1.tscn"
+Planet2="*res://scenes/levels/planet2/planet2.tscn"
 
 [display]
 

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dr7dlqnprfltg"]
+
+[ext_resource type="TileSet" uid="uid://cgmdqrfhjvw75" path="res://resources/tileset.tres" id="1_7ac3w"]
+
+[node name="Level" type="Node2D"]
+use_parent_material = true
+
+[node name="TileMap" type="TileMap" parent="."]
+use_parent_material = true
+tile_set = ExtResource("1_7ac3w")
+format = 2
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]

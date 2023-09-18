@@ -10,12 +10,13 @@ var lastLevel:bool = false
 func generateMap(planet:Planet) -> Array[PackedScene]:
 	var rng = RandomNumberGenerator.new()
 	var levels:Array[PackedScene] = planet.levelArray
-	for level in planet.planet_numLevels:
+	
+	while map.size() < planet.planet_numLevels:
 		var num = rng.randi_range(0, levels.size()-1)
 		if(!map.has(levels[num])):
 			map.push_back(levels[num])
+			
 	return map
-		
 	
 func next_level() -> bool:
 	if currentLevel < map.size()-1:
