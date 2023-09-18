@@ -28,9 +28,10 @@ func next_level() -> bool:
 func prev_level() -> bool:
 	if currentLevel > 0:
 		currentLevel -= 1
+		
 	if lastLevel && currentLevel == 0:
 		#change planet
 		currentLevel = 0
 		return true
-	return false
 		
+	return false

@@ -1,6 +1,6 @@
 extends Node2D
 
-var planets:Array[Planet] = [Planet1]
+var planets:Array[Planet] = [Planet1, Planet2]
 var currentPlanet:int = 0
 var levelScript = preload("res://scripts/level.gd").new()
 var levelMap:Array[PackedScene]
@@ -29,6 +29,7 @@ func _process(_delta):
 
 func changePlanet(chPlanet:bool):
 	if(chPlanet && currentPlanet < planets.size()-1):
+		
 		currentPlanet += 1
 		newMap()
 
