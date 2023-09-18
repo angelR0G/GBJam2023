@@ -19,21 +19,23 @@ func _process(delta):
 		return
 	
 	# Move enemy when its underground
-	if linear_velocity.length() < 1.0:
+	if enemyVelocity.length() < 1.0:
 		# Moves in a random direction
-		linear_velocity = Vector2(DIG_SPEED, 0).rotated(randf() * TAU)
+		setEnemyVelocity(Vector2(DIG_SPEED, 0).rotated(randf() * TAU))
 	else:
 		# Change direction randomly
 		turningTime += delta
 		if turningTime >= ROTATION_TIME:
-			linear_velocity = linear_velocity.rotated((randf()-0.5) * ROTATION_SPEED * turningTime)
+			setEnemyVelocity(enemyVelocity.rotated((randf()-0.5) * ROTATION_SPEED * turningTime))
 			turningTime -= ROTATION_TIME
 	
+
+
 func digOut():
 	changingState = true
 	
 	# Stop enemy movement
-	linear_velocity = Vector2()
+	setEnemyVelocity()
 	turningTime 	= 0.0
 	
 	# Play animation and wait
@@ -43,6 +45,7 @@ func digOut():
 	# Modify state and colision
 	set_collision_mask_value(1, true)
 	set_collision_mask_value(2, true)
+	set_collision_layer_value(5, true)
 	underGround 	= false
 	changingState	= false
 	
@@ -60,6 +63,7 @@ func digIn():
 	# Modify state and colision
 	set_collision_mask_value(1, false)
 	set_collision_mask_value(2, false)
+	set_collision_layer_value(5, false)
 	underGround 	= true
 	changingState	= false
 	
@@ -77,6 +81,5 @@ func _on_dig_timer_timeout():
 		$DigTimer.start(3.6)
 	
 
-
 func _on_body_entered(_body):
-	linear_velocity = -linear_velocity
+	setEnemyVelocity(-enemyVelocity)

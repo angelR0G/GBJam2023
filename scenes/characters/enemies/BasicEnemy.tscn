@@ -2,8 +2,6 @@
 
 [ext_resource type="Script" path="res://scenes/characters/enemies/BasicEnemy.gd" id="1_go03f"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbmwx"]
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_ghnjt"]
 animations = [{
 "frames": [],
@@ -12,18 +10,22 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hg4tn"]
+
 [node name="BasicEnemy" type="RigidBody2D"]
 collision_layer = 16
 collision_mask = 31
 gravity_scale = 0.0
+custom_integrator = true
 max_contacts_reported = 4
 contact_monitor = true
 lock_rotation = true
 script = ExtResource("1_go03f")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_lbmwx")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_ghnjt")
 animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hg4tn")

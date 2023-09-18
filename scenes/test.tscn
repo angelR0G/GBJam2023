@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bj5a6ecw78y4u"]
+[gd_scene load_steps=5 format=3 uid="uid://bj5a6ecw78y4u"]
 
-[ext_resource type="PackedScene" uid="uid://bqc2se1sraa8n" path="res://scenes/characters/enemies/MoleEnemy.tscn" id="1_x21oo"]
+[ext_resource type="Texture2D" uid="uid://ckw2y821106ln" path="res://icon.svg" id="2_ru1c1"]
+[ext_resource type="PackedScene" uid="uid://maxsekrbatm2" path="res://scenes/characters/player.tscn" id="3_4mpji"]
+[ext_resource type="PackedScene" uid="uid://bqc2se1sraa8n" path="res://scenes/characters/enemies/MoleEnemy.tscn" id="3_xoctj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cu38s"]
 size = Vector2(196, 18)
@@ -8,6 +10,8 @@ size = Vector2(196, 18)
 [node name="test" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-56, -5)
+scale = Vector2(3.68, 1)
 collision_layer = 4
 collision_mask = 16
 
@@ -16,7 +20,8 @@ position = Vector2(79, -6)
 shape = SubResource("RectangleShape2D_cu38s")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(0, 157)
+position = Vector2(11, 139)
+scale = Vector2(2.84, 1)
 collision_layer = 4
 collision_mask = 16
 
@@ -25,18 +30,19 @@ position = Vector2(79, -6)
 shape = SubResource("RectangleShape2D_cu38s")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="."]
-position = Vector2(173, 151)
+position = Vector2(151, 185)
 rotation = -1.5708
 collision_layer = 4
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
-position = Vector2(79, -6)
+scale = Vector2(2.06265, 1.00064)
 shape = SubResource("RectangleShape2D_cu38s")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="."]
-position = Vector2(-2, 146)
+position = Vector2(-5, 466)
 rotation = -1.5708
+scale = Vector2(2.72, 1)
 collision_layer = 4
 collision_mask = 16
 
@@ -44,6 +50,28 @@ collision_mask = 16
 position = Vector2(79, -6)
 shape = SubResource("RectangleShape2D_cu38s")
 
-[node name="MoleEnemy" parent="." instance=ExtResource("1_x21oo")]
-position = Vector2(67, 65)
-lock_rotation = false
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(90, 33)
+scale = Vector2(0.198443, 0.182819)
+texture = ExtResource("2_ru1c1")
+
+[node name="Icon2" type="Sprite2D" parent="."]
+position = Vector2(246, 101)
+scale = Vector2(0.198443, 0.182819)
+texture = ExtResource("2_ru1c1")
+
+[node name="Icon3" type="Sprite2D" parent="."]
+position = Vector2(108, 207)
+scale = Vector2(0.198443, 0.182819)
+texture = ExtResource("2_ru1c1")
+
+[node name="Icon4" type="Sprite2D" parent="."]
+position = Vector2(241, 255)
+scale = Vector2(0.198443, 0.182819)
+texture = ExtResource("2_ru1c1")
+
+[node name="Player" parent="." instance=ExtResource("3_4mpji")]
+position = Vector2(20, 34)
+
+[node name="MoleEnemy" parent="." instance=ExtResource("3_xoctj")]
+position = Vector2(59, 54)

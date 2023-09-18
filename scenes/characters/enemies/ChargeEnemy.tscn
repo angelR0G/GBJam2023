@@ -109,7 +109,7 @@ animations = [{
 [node name="ChargeEnemy" instance=ExtResource("1_kka82")]
 script = ExtResource("1_k5g5j")
 
-[node name="AnimatedSprite2D" parent="." index="1"]
+[node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_ppdih")
 animation = &"right"
 frame = 2
