@@ -1,69 +1,69 @@
-[gd_scene load_steps=37 format=3 uid="uid://cpp8he3okgu5"]
+[gd_scene load_steps=37 format=3 uid="uid://x2x0c326gkoa"]
 
-[ext_resource type="FontFile" uid="uid://brwymiuuq4cs6" path="res://assets/DigitalDisco.ttf" id="1_cy73k"]
-[ext_resource type="Script" path="res://scenes/MainMenu.gd" id="1_opwa2"]
-[ext_resource type="Texture2D" uid="uid://clhpgd0n038gh" path="res://assets/menu_ui/MainMenuBackground.png" id="2_wuynp"]
-[ext_resource type="Texture2D" uid="uid://cfgtxvi3qcjr" path="res://assets/menu_ui/ui.png" id="3_h48g2"]
-[ext_resource type="Texture2D" uid="uid://cbfdhiwfsd8od" path="res://assets/menu_ui/estrellas.png" id="4_2wmvm"]
+[ext_resource type="Script" path="res://scenes/menus/CreditsMenu.gd" id="1_2rcu2"]
+[ext_resource type="Texture2D" uid="uid://clhpgd0n038gh" path="res://assets/menu_ui/MainMenuBackground.png" id="2_yv1tq"]
+[ext_resource type="Texture2D" uid="uid://cbfdhiwfsd8od" path="res://assets/menu_ui/estrellas.png" id="3_dyvpp"]
+[ext_resource type="FontFile" uid="uid://brwymiuuq4cs6" path="res://assets/DigitalDisco.ttf" id="5_8s1k0"]
+[ext_resource type="Texture2D" uid="uid://cfgtxvi3qcjr" path="res://assets/menu_ui/ui.png" id="6_ktpxw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2p3st"]
-atlas = ExtResource("4_2wmvm")
+atlas = ExtResource("3_dyvpp")
 region = Rect2(0, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nuhni"]
-atlas = ExtResource("4_2wmvm")
+atlas = ExtResource("3_dyvpp")
 region = Rect2(8, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7armb"]
-atlas = ExtResource("4_2wmvm")
+atlas = ExtResource("3_dyvpp")
 region = Rect2(16, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wpkn4"]
-atlas = ExtResource("4_2wmvm")
+atlas = ExtResource("3_dyvpp")
 region = Rect2(24, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ok1fc"]
-atlas = ExtResource("4_2wmvm")
+atlas = ExtResource("3_dyvpp")
 region = Rect2(0, 8, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wo80d"]
-atlas = ExtResource("4_2wmvm")
+atlas = ExtResource("3_dyvpp")
 region = Rect2(8, 8, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pej4x"]
-atlas = ExtResource("4_2wmvm")
+atlas = ExtResource("3_dyvpp")
 region = Rect2(16, 8, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xa8j5"]
-atlas = ExtResource("4_2wmvm")
+atlas = ExtResource("3_dyvpp")
 region = Rect2(24, 8, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jflxy"]
-atlas = ExtResource("4_2wmvm")
+atlas = ExtResource("3_dyvpp")
 region = Rect2(0, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2k0kl"]
-atlas = ExtResource("4_2wmvm")
+atlas = ExtResource("3_dyvpp")
 region = Rect2(8, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nj8gg"]
-atlas = ExtResource("4_2wmvm")
+atlas = ExtResource("3_dyvpp")
 region = Rect2(16, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fkfkq"]
-atlas = ExtResource("4_2wmvm")
+atlas = ExtResource("3_dyvpp")
 region = Rect2(24, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n25xx"]
-atlas = ExtResource("4_2wmvm")
+atlas = ExtResource("3_dyvpp")
 region = Rect2(0, 8, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ubdd"]
-atlas = ExtResource("4_2wmvm")
+atlas = ExtResource("3_dyvpp")
 region = Rect2(8, 8, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fvjov"]
-atlas = ExtResource("4_2wmvm")
+atlas = ExtResource("3_dyvpp")
 region = Rect2(16, 8, 8, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_riicg"]
@@ -134,59 +134,59 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c6mkc"]
-atlas = ExtResource("3_h48g2")
+atlas = ExtResource("6_ktpxw")
 region = Rect2(0, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yk1x1"]
-atlas = ExtResource("3_h48g2")
+atlas = ExtResource("6_ktpxw")
 region = Rect2(8, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_23sym"]
-atlas = ExtResource("3_h48g2")
+atlas = ExtResource("6_ktpxw")
 region = Rect2(16, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5o638"]
-atlas = ExtResource("3_h48g2")
+atlas = ExtResource("6_ktpxw")
 region = Rect2(24, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x0wc0"]
-atlas = ExtResource("3_h48g2")
+atlas = ExtResource("6_ktpxw")
 region = Rect2(0, 8, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lkf0x"]
-atlas = ExtResource("3_h48g2")
+atlas = ExtResource("6_ktpxw")
 region = Rect2(8, 8, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_giqet"]
-atlas = ExtResource("3_h48g2")
+atlas = ExtResource("6_ktpxw")
 region = Rect2(16, 8, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r7hvt"]
-atlas = ExtResource("3_h48g2")
+atlas = ExtResource("6_ktpxw")
 region = Rect2(24, 8, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jwlxm"]
-atlas = ExtResource("3_h48g2")
+atlas = ExtResource("6_ktpxw")
 region = Rect2(0, 16, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_usjad"]
-atlas = ExtResource("3_h48g2")
+atlas = ExtResource("6_ktpxw")
 region = Rect2(8, 16, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4xrgr"]
-atlas = ExtResource("3_h48g2")
+atlas = ExtResource("6_ktpxw")
 region = Rect2(16, 16, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_60vke"]
-atlas = ExtResource("3_h48g2")
+atlas = ExtResource("6_ktpxw")
 region = Rect2(24, 16, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d6jjn"]
-atlas = ExtResource("3_h48g2")
+atlas = ExtResource("6_ktpxw")
 region = Rect2(0, 24, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_46lqx"]
-atlas = ExtResource("3_h48g2")
+atlas = ExtResource("6_ktpxw")
 region = Rect2(8, 24, 8, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_snk1n"]
@@ -244,18 +244,18 @@ animations = [{
 "speed": 18.0
 }]
 
-[node name="MainMenu" type="Control"]
+[node name="CreditsMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_opwa2")
+script = ExtResource("1_2rcu2")
 
 [node name="MainMenuBackground" type="Sprite2D" parent="."]
 position = Vector2(80, 72)
-texture = ExtResource("2_wuynp")
+texture = ExtResource("2_yv1tq")
 
 [node name="BackgroundStars" type="Node" parent="."]
 
@@ -299,57 +299,69 @@ animation = &"short"
 frame = 8
 frame_progress = 0.750938
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Credits" type="Node" parent="."]
+
+[node name="Names" type="Label" parent="Credits"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -75.0
+offset_top = 20.0
+offset_right = 75.0
+offset_bottom = 77.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.901961, 0.901961, 0.752941, 1)
+theme_override_fonts/font = ExtResource("5_8s1k0")
+theme_override_font_sizes/font_size = 16
+text = "Developed by:
+Adrian Marco
+Angel Robles"
+horizontal_alignment = 1
+
+[node name="Font" type="Label" parent="Credits"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -75.0
+offset_top = 20.0
+offset_right = 75.0
+offset_bottom = 77.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.901961, 0.901961, 0.752941, 1)
+theme_override_fonts/font = ExtResource("5_8s1k0")
+theme_override_font_sizes/font_size = 16
+text = "Font: Digital Disco 
+by Jeti "
+horizontal_alignment = 1
+
+[node name="StartLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -28.5
-offset_top = -65.0
-offset_right = 29.5
-offset_bottom = -6.0
+offset_left = -29.0
+offset_top = -26.0
+offset_right = 29.0
+offset_bottom = -6.99998
 grow_horizontal = 2
 grow_vertical = 0
-pivot_offset = Vector2(29, 0)
-theme_override_constants/separation = 1
-
-[node name="StartLabel" type="Label" parent="VBoxContainer"]
-layout_mode = 2
 theme_override_colors/font_color = Color(0.901961, 0.901961, 0.752941, 1)
-theme_override_fonts/font = ExtResource("1_cy73k")
-text = "START
-"
+theme_override_fonts/font = ExtResource("5_8s1k0")
+text = "MAIN MENU"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="OptionsLabel" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.901961, 0.901961, 0.752941, 1)
-theme_override_fonts/font = ExtResource("1_cy73k")
-text = "OPTIONS"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="CreditsLabel" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.901961, 0.901961, 0.752941, 1)
-theme_override_fonts/font = ExtResource("1_cy73k")
-text = "CREDITS
-"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="LerpTimer" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
+[node name="CreditsTimer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
 
 [node name="SelectArrow" type="AnimatedSprite2D" parent="."]
-position = Vector2(47, 87)
+position = Vector2(37, 127)
 sprite_frames = SubResource("SpriteFrames_snk1n")
 animation = &"idle"
 frame = 2
 frame_progress = 0.338205
 
-[connection signal="timeout" from="LerpTimer" to="." method="_on_lerp_timer_timeout"]
+[connection signal="timeout" from="CreditsTimer" to="." method="_on_credits_timer_timeout"]

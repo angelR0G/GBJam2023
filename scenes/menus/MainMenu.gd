@@ -33,6 +33,8 @@ func _process(_delta):
 		if Input.is_action_just_pressed("up"):
 			selected = (selected - 1) % 3
 			updateStyle()
+		if Input.is_action_just_pressed("shot"):
+			optionSelected()
 	
 func updateStyle():
 	previousPosition = selectArrow.position.y
@@ -77,7 +79,7 @@ func resetMenu():
 	
 	# Play stars animation
 	var stars = backgroundStars.get_children()
-	var halfStars = (stars.size() / 2) - 1
+	var halfStars = (stars.size() / 2)
 	while not stars.is_empty():
 		var star = stars.pop_back()
 		if stars.size() >= halfStars:
@@ -86,7 +88,10 @@ func resetMenu():
 			star.play("long")
 		
 		star.set_frame_and_progress(8, randf())
-		
+	
+
+func optionSelected():
+	pass
 
 func _on_lerp_timer_timeout():
 	previousPosition = -1
