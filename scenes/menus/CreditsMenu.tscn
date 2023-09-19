@@ -1,69 +1,69 @@
 [gd_scene load_steps=37 format=3 uid="uid://x2x0c326gkoa"]
 
 [ext_resource type="Script" path="res://scenes/menus/CreditsMenu.gd" id="1_2rcu2"]
-[ext_resource type="Texture2D" uid="uid://clhpgd0n038gh" path="res://assets/menu_ui/MainMenuBackground.png" id="2_yv1tq"]
-[ext_resource type="Texture2D" uid="uid://cbfdhiwfsd8od" path="res://assets/menu_ui/estrellas.png" id="3_dyvpp"]
+[ext_resource type="Texture2D" uid="uid://2voini2y805o" path="res://assets/menu_ui/MainMenuBackground.jpg" id="2_fn08s"]
+[ext_resource type="Texture2D" uid="uid://cbfdhiwfsd8od" path="res://assets/menu_ui/stars.png" id="3_gjpqk"]
 [ext_resource type="FontFile" uid="uid://brwymiuuq4cs6" path="res://assets/DigitalDisco.ttf" id="5_8s1k0"]
 [ext_resource type="Texture2D" uid="uid://cfgtxvi3qcjr" path="res://assets/menu_ui/ui.png" id="6_ktpxw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2p3st"]
-atlas = ExtResource("3_dyvpp")
+atlas = ExtResource("3_gjpqk")
 region = Rect2(0, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nuhni"]
-atlas = ExtResource("3_dyvpp")
+atlas = ExtResource("3_gjpqk")
 region = Rect2(8, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7armb"]
-atlas = ExtResource("3_dyvpp")
+atlas = ExtResource("3_gjpqk")
 region = Rect2(16, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wpkn4"]
-atlas = ExtResource("3_dyvpp")
+atlas = ExtResource("3_gjpqk")
 region = Rect2(24, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ok1fc"]
-atlas = ExtResource("3_dyvpp")
+atlas = ExtResource("3_gjpqk")
 region = Rect2(0, 8, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wo80d"]
-atlas = ExtResource("3_dyvpp")
+atlas = ExtResource("3_gjpqk")
 region = Rect2(8, 8, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pej4x"]
-atlas = ExtResource("3_dyvpp")
+atlas = ExtResource("3_gjpqk")
 region = Rect2(16, 8, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xa8j5"]
-atlas = ExtResource("3_dyvpp")
+atlas = ExtResource("3_gjpqk")
 region = Rect2(24, 8, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jflxy"]
-atlas = ExtResource("3_dyvpp")
+atlas = ExtResource("3_gjpqk")
 region = Rect2(0, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2k0kl"]
-atlas = ExtResource("3_dyvpp")
+atlas = ExtResource("3_gjpqk")
 region = Rect2(8, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nj8gg"]
-atlas = ExtResource("3_dyvpp")
+atlas = ExtResource("3_gjpqk")
 region = Rect2(16, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fkfkq"]
-atlas = ExtResource("3_dyvpp")
+atlas = ExtResource("3_gjpqk")
 region = Rect2(24, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n25xx"]
-atlas = ExtResource("3_dyvpp")
+atlas = ExtResource("3_gjpqk")
 region = Rect2(0, 8, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ubdd"]
-atlas = ExtResource("3_dyvpp")
+atlas = ExtResource("3_gjpqk")
 region = Rect2(8, 8, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fvjov"]
-atlas = ExtResource("3_dyvpp")
+atlas = ExtResource("3_gjpqk")
 region = Rect2(16, 8, 8, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_riicg"]
@@ -255,7 +255,7 @@ script = ExtResource("1_2rcu2")
 
 [node name="MainMenuBackground" type="Sprite2D" parent="."]
 position = Vector2(80, 72)
-texture = ExtResource("2_yv1tq")
+texture = ExtResource("2_fn08s")
 
 [node name="BackgroundStars" type="Node" parent="."]
 
@@ -334,7 +334,7 @@ text = "Font: Digital Disco
 by Jeti "
 horizontal_alignment = 1
 
-[node name="StartLabel" type="Label" parent="."]
+[node name="MenuLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

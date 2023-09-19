@@ -1,41 +1,43 @@
 extends Control
 
 const STARS_INITIAL_FLICK_TIME = 2.0
-var selected:int 	= 0
+var showGB:bool 	= true
 
 # Escene elements
 var selectArrow
-var creditsTimer
 var backgroundStars
-var labels
+var controls
 
 func _ready():
 	selectArrow 	= $SelectArrow
-	creditsTimer	= $CreditsTimer
 	backgroundStars = $BackgroundStars
-	labels			= $Credits.get_children()
+	controls		= $Controls.get_children()
 	
-	resetCredits()
+	resetControls()
 
 func _process(_delta):
+	if Input.is_action_just_pressed("left") || Input.is_action_just_pressed("right"):
+		showGB = not showGB
+		updateControls()
+		
 	if Input.is_action_just_pressed("shot") || Input.is_action_just_pressed("menu"):
-		exitCredits()
+		exitControls()
 
 
-func updateCredits():
-	var index:int = 0
+func updateControls():
+	# Show controls screen
+	for node in controls[0].get_children():
+		node.visible = showGB
 	
-	# Show one label
-	while index < labels.size():
-		labels[index].visible = selected == index
-		index += 1
+	for node in controls[1].get_children():
+		node.visible = not showGB
 	
 
 
-func resetCredits():
+func resetControls():
 	# Reset variables to default values
-	selected = 0
-	updateCredits()
+	showGB = true
+	updateControls()
 	
 	# Start arrow animation
 	selectArrow.play("idle")
@@ -53,10 +55,5 @@ func resetCredits():
 		star.set_frame_and_progress(8, randf())
 	
 
-func exitCredits():
+func exitControls():
 	pass
-
-
-func _on_credits_timer_timeout():
-	selected = (selected + 1) % labels.size()
-	updateCredits()

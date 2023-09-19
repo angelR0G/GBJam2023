@@ -4,8 +4,8 @@ const ARROW_SPEED = 10
 const MAX_WINDOW_INITIAL_SCALE = 4
 const STARS_INITIAL_FLICK_TIME = 2.0
 var selected:int 	= 0
-var optionsPositions = [87, 107, 128]
-var previousPosition:int = -1
+var optionsPositions:Array[Vector2] = [Vector2(53, 87), Vector2(40, 107), Vector2(48, 128)]
+var previousPosition:Vector2 = Vector2(-1, -1)
 
 # Escene elements
 var selectArrow
@@ -21,9 +21,9 @@ func _ready():
 	updateWindowSize()
 
 func _process(_delta):
-	if previousPosition > -1 && previousPosition != optionsPositions[selected]:
+	if previousPosition.x > -1 && previousPosition != optionsPositions[selected]:
 		# Key pressed, moving arrow to the selected option
-		selectArrow.position.y = previousPosition + (optionsPositions[selected] - previousPosition) * (1 - lerpTimer.time_left / lerpTimer.wait_time) 
+		selectArrow.position = previousPosition + (optionsPositions[selected] - previousPosition) * (1 - lerpTimer.time_left / lerpTimer.wait_time) 
 
 	else:
 		# Waitting for input
@@ -37,11 +37,11 @@ func _process(_delta):
 			optionSelected()
 	
 func updateStyle():
-	previousPosition = selectArrow.position.y
+	previousPosition = selectArrow.position
 	
 	if previousPosition != optionsPositions[selected]:
 		# Check direction to flip sprite
-		selectArrow.flip_v = selectArrow.position.y > optionsPositions[selected]
+		selectArrow.flip_v = selectArrow.position.y > optionsPositions[selected].y
 			
 		# Start a timer for interpolation
 		lerpTimer.start()
@@ -70,11 +70,11 @@ func updateWindowSize():
 
 func resetMenu():
 	# Reset variables to default values
-	previousPosition = -1
+	previousPosition = Vector2(-1, -1)
 	selected = 0
 	
 	# Move arrow to first option and start its animation
-	selectArrow.position.y = optionsPositions[0]
+	selectArrow.position = optionsPositions[0]
 	selectArrow.play("idle")
 	
 	# Play stars animation
@@ -94,5 +94,5 @@ func optionSelected():
 	pass
 
 func _on_lerp_timer_timeout():
-	previousPosition = -1
+	previousPosition = Vector2(-1, -1)
 	selectArrow.play("idle")
