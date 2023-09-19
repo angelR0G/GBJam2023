@@ -1,5 +1,7 @@
 extends Control
 
+signal go_back
+
 const STARS_INITIAL_FLICK_TIME = 2.0
 var showGB:bool 	= true
 
@@ -56,4 +58,4 @@ func resetControls():
 	
 
 func exitControls():
-	pass
+	go_back.emit()

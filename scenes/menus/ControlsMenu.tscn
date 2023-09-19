@@ -342,16 +342,17 @@ visible = false
 position = Vector2(73, 75)
 texture = ExtResource("6_0j35p")
 
-[node name="MenuLabel" type="Label" parent="."]
-layout_mode = 1
+[node name="Node" type="Node" parent="."]
+
+[node name="MenuLabel" type="Label" parent="Node"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -29.0
+offset_left = -38.5
 offset_top = -26.0
-offset_right = 29.0
+offset_right = 38.5
 offset_bottom = -6.99998
 grow_horizontal = 2
 grow_vertical = 0
