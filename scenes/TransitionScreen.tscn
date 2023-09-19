@@ -1,0 +1,101 @@
+[gd_scene load_steps=10 format=3 uid="uid://goh4wv2xtju0"]
+
+[ext_resource type="Script" path="res://scenes/TransitionScreen.gd" id="1_5m88o"]
+[ext_resource type="Shader" path="res://scenes/TransitionScreen.gdshader" id="1_8st1u"]
+[ext_resource type="Texture2D" uid="uid://cd2dl1qs50xyt" path="res://resources/palette_p1.tres" id="2_2tqu6"]
+[ext_resource type="Texture2D" uid="uid://dr6071qoj4e1x" path="res://resources/palette_p2.tres" id="4_7vcbd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cf73y"]
+shader = ExtResource("1_8st1u")
+shader_parameter/colorNum = 4
+shader_parameter/alpha = 0.0
+shader_parameter/crossfade = 0.0
+shader_parameter/colorPalettePrev = ExtResource("2_2tqu6")
+shader_parameter/colorPaletteCurr = ExtResource("4_7vcbd")
+
+[sub_resource type="Animation" id="Animation_e8xln"]
+resource_name = "fade_in"
+length = 0.6
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:material:shader_parameter/alpha")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.3)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Polygon2D:material:shader_parameter/crossfade")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.3, 0.6)
+}
+
+[sub_resource type="Animation" id="Animation_xhb7d"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:material:shader_parameter/alpha")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Polygon2D:material:shader_parameter/crossfade")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_mkam6"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:material:shader_parameter/alpha")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7uucq"]
+_data = {
+"RESET": SubResource("Animation_xhb7d"),
+"fade_in": SubResource("Animation_e8xln"),
+"fade_out": SubResource("Animation_mkam6")
+}
+
+[node name="TransitionScreen" type="CanvasLayer"]
+script = ExtResource("1_5m88o")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+material = SubResource("ShaderMaterial_cf73y")
+polygon = PackedVector2Array(0, 0, 160, 0, 160, 144, 0, 144)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7uucq")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

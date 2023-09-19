@@ -28,19 +28,24 @@ var gun_overheated	:bool	= false
 var playerWidth		:int	= 8
 var playerHeight	:int	= 8
 var shotDirection	:Vector2= Vector2(1, 0)
+var lockMovement	:bool 	= false
+
+func setLockMovement(lock:bool):
+	lockMovement = lock
 
 func _process(delta):
 	var dir := Vector2()
 	
-	# Check input to get character movement direction
-	if Input.is_action_pressed("left"):
-		dir.x -= 1.0
-	if Input.is_action_pressed("right"):
-		dir.x += 1.0
-	if Input.is_action_pressed("up"):
-		dir.y -= 1.0
-	if Input.is_action_pressed("down"):
-		dir.y += 1.0
+	if !lockMovement:
+		# Check input to get character movement direction
+		if Input.is_action_pressed("left"):
+			dir.x -= 1.0
+		if Input.is_action_pressed("right"):
+			dir.x += 1.0
+		if Input.is_action_pressed("up"):
+			dir.y -= 1.0
+		if Input.is_action_pressed("down"):
+			dir.y += 1.0
 	
 	if dir.length() < 0.9:
 		# No input movement, reduce velocity

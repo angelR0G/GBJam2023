@@ -4,32 +4,44 @@ var planets:Array[Planet] = [Planet1, Planet2]
 var currentPlanet:int = 0
 var levelScript = preload("res://scripts/level.gd").new()
 var levelMap:Array[PackedScene]
+
+#Variables for nodes
 var player
+var transitionScreen
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = $Player
+	transitionScreen = $TransitionScreen
+	
 	newMap()
 	
 func newMap():
 	levelMap = levelScript.generateMap(planets[currentPlanet])
 	renderLevel()
-	for i in levelMap:
-		print(i.instantiate().get_name())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if Input.is_action_just_pressed("ui_left"):
+	if Input.is_action_just_pressed("Prev_level"):
+		_levelComplete(false)
+		
+	if Input.is_action_just_pressed("Next_level"):
+		_levelComplete(true)
+	
+#When a level is completed
+#dir indicates if player is going forward or backwards through the map
+func _levelComplete(dir:bool):
+	if dir:
+		var lastLevel = levelScript.next_level()
+	else:
 		var chPlanet = levelScript.prev_level()
 		changePlanet(chPlanet)
-		renderLevel()
-	if Input.is_action_just_pressed("ui_right"):
-		levelScript.next_level()
-		renderLevel()
+	transitionScreen.setTransitionPalette(planets[currentPlanet].planet_palette)
+	transitionScreen.transition()
+	player.setLockMovement(true)
 
 func changePlanet(chPlanet:bool):
 	if(chPlanet && currentPlanet < planets.size()-1):
-		
 		currentPlanet += 1
 		newMap()
 
@@ -51,3 +63,10 @@ func renderLevel():
 	add_child(lvl)
 	levelScript.loadedLevel = lvl
 
+
+func _on_transition_screen_fade_in_ended():
+	renderLevel()
+
+
+func _on_transition_screen_fade_out_ended():
+	player.setLockMovement(false)
