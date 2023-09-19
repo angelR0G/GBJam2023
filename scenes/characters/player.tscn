@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://maxsekrbatm2"]
 
 [ext_resource type="Script" path="res://scenes/characters/player.gd" id="1_4mgrp"]
-[ext_resource type="Texture2D" uid="uid://d4jxxil8tsgkg" path="res://assets/characters/Astronauta.png" id="2_p7cuk"]
+[ext_resource type="Texture2D" uid="uid://bp6e1qvnqb1k1" path="res://assets/characters/Astronauta.png" id="2_p7cuk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4vo1a"]
 size = Vector2(9, 11)
@@ -121,8 +121,7 @@ shape = SubResource("RectangleShape2D_4vo1a")
 use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_8v1na")
 animation = &"walk_right"
-frame = 3
-frame_progress = 0.620594
+frame_progress = 0.223302
 
 [node name="ShotTimer" type="Timer" parent="."]
 wait_time = 0.3
