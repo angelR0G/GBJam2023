@@ -1,6 +1,9 @@
 class_name Player
 extends CharacterBody2D
 
+signal life_changed(newLife)
+signal heat_changed(newHeat)
+
 # Movement values
 var MAX_WALK_SPEED 	:int 	= 60
 var SPEED 			:int 	= 400
@@ -23,7 +26,7 @@ var MAX_CAMERA_OFFSET:float	= 20.0
 var OFFSET_DEADZONE	:float	= 1.0
 
 # Other
-var INITIAL_LIFE	:int	= 10
+var INITIAL_LIFE	:int	= 16
 var INVINCIBLE_TIME	:float	= 1.0
 
 # Scene nodes
@@ -31,6 +34,7 @@ var INVINCIBLE_TIME	:float	= 1.0
 @onready var shotTimer		= $ShotTimer
 @onready var coolingTimer	= $CoolingTimer
 @onready var sprite			= $AnimatedSprite2D
+@onready var hud			= $hud
 
 # Class variables
 var linear_velocity :float 	= 0.0
@@ -45,8 +49,15 @@ func setLockMovement(lock:bool):
 	lockMovement = lock
 
 func setLockCamera(lock:bool):
-	$Camera2D.enabled = !lock
+	camera.enabled = !lock
 
+func showHud(visibility:bool):
+	hud.visible = visibility
+	
+func resetPlayer():
+	overheat = 0
+	shotTimer.start()
+	canReceiveDamage = true
 
 func _process(delta):
 	var dir := Vector2()
@@ -132,11 +143,17 @@ func _unhandled_input(event):
 			if overheat >= MAX_HEAT:
 				gun_overheated = true
 			coolingTimer.start(COOL_INITIAL_TIME)
+			
+			# Update heat bar in hud
+			heat_changed.emit(overheat)
 
 func gunCooling():
 	# Gun reduces heat
 	if overheat > 0:
 		overheat -= 1
+		
+		# Update heat bar in hud
+		heat_changed.emit(overheat)
 		
 		# Enable shoting again when heat goes under COOL_LIMIT
 		gun_overheated = gun_overheated && not (overheat < COOL_LIMIT)
@@ -168,6 +185,9 @@ func damage(dp:int = 1, pos:Vector2 = Vector2()):
 	
 	# Reduce life
 	life -= dp
+	
+	# Update hud
+	life_changed.emit(life)
 	
 	# Push player
 	position += (global_position - pos).normalized() * HIT_KNOCKBACK

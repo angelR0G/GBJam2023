@@ -12,6 +12,7 @@ var levelMap:Array[PackedScene]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player.hide()
+	player.showHud(false)
 	player.setLockMovement(true)
 	player.setLockCamera(true)
 	levelSelection.planetSelected.connect(Callable(self, "newMap"), currentPlanet)
@@ -23,6 +24,7 @@ func newMap(cPlanet):
 	levelMap = levelScript.generateMap(PlanetContainer.planets[currentPlanet].planet)
 	renderLevel()
 	player.show()
+	player.showHud(true)
 	player.setLockMovement(false)
 	player.setLockCamera(false)
 	levelSelection.setLockControls(true)
@@ -46,6 +48,7 @@ func _levelComplete(dir:bool):
 	transitionScreen.setTransitionPalette(PlanetContainer.planets[currentPlanet].planet.planet_palette)
 	transitionScreen.transition()
 	player.setLockMovement(true)
+	player.showHud(false)
 
 func changePlanet(chPlanet:bool):
 	if(chPlanet && currentPlanet < PlanetContainer.planets[currentPlanet].size()-1):
