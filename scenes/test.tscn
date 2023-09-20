@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdagbn61f4oeq"]
+[gd_scene load_steps=6 format=3 uid="uid://cdagbn61f4oeq"]
 
 [ext_resource type="Texture2D" uid="uid://ckw2y821106ln" path="res://icon.svg" id="2_ru1c1"]
 [ext_resource type="PackedScene" uid="uid://maxsekrbatm2" path="res://scenes/characters/player.tscn" id="3_4mpji"]
 [ext_resource type="PackedScene" uid="uid://bqc2se1sraa8n" path="res://scenes/characters/enemies/MoleEnemy.tscn" id="3_xoctj"]
+[ext_resource type="PackedScene" uid="uid://cmyhf7g6n00wf" path="res://scenes/characters/enemies/ChargeEnemy.tscn" id="4_d2r2c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cu38s"]
 size = Vector2(196, 18)
 
 [node name="test" type="Node2D"]
+y_sort_enabled = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-56, -5)
@@ -74,4 +76,7 @@ texture = ExtResource("2_ru1c1")
 position = Vector2(20, 34)
 
 [node name="MoleEnemy" parent="." instance=ExtResource("3_xoctj")]
-position = Vector2(59, 54)
+position = Vector2(66, 59)
+
+[node name="ChargeEnemy" parent="." instance=ExtResource("4_d2r2c")]
+position = Vector2(63, 37)

@@ -11,6 +11,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hg4tn"]
+size = Vector2(11, 9)
 
 [node name="BasicEnemy" type="RigidBody2D"]
 collision_layer = 16

@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://d3eithk653i0u"]
 
 [ext_resource type="Script" path="res://scenes/shots/Shot.gd" id="1_dc5kr"]
-[ext_resource type="Texture2D" uid="uid://bp6e1qvnqb1k1" path="res://assets/characters/Astronauta.png" id="2_h4na4"]
+[ext_resource type="Texture2D" uid="uid://d4jxxil8tsgkg" path="res://assets/characters/Astronauta.png" id="2_h4na4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_it7sl"]
-size = Vector2(14, 7)
+size = Vector2(4, 4)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xr374"]
 atlas = ExtResource("2_h4na4")
@@ -43,8 +43,10 @@ animations = [{
 }]
 
 [node name="Shot" type="RigidBody2D"]
+use_parent_material = true
 collision_layer = 32
-collision_mask = 21
+collision_mask = 5
+mass = 0.01
 gravity_scale = 0.0
 max_contacts_reported = 4
 contact_monitor = true
@@ -56,13 +58,14 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_it7sl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_tagle")
 animation = &"idle"
-frame = 1
-frame_progress = 0.390712
+frame_progress = 0.748805
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 scale = Vector2(1, 0.6)
+rect = Rect2(-20, -20, 40, 40)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="destroyShot"]

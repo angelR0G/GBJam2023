@@ -135,7 +135,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4j30y"]
-size = Vector2(6, 12)
+size = Vector2(6, 13)
 
 [node name="MoleEnemy" instance=ExtResource("1_fjv1u")]
 script = ExtResource("2_5idro")
@@ -144,9 +144,11 @@ script = ExtResource("2_5idro")
 sprite_frames = SubResource("SpriteFrames_f7003")
 
 [node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_4j30y")
 
 [node name="DigTimer" type="Timer" parent="." index="2"]
 one_shot = true
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="DigTimer" to="." method="_on_dig_timer_timeout"]

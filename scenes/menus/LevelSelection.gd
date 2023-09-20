@@ -31,7 +31,7 @@ func _ready():
 	_renderPlanets()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if !lockControls:
 		if Input.is_action_just_pressed("right"):
 			selectionTimer = 0
@@ -49,7 +49,7 @@ func _process(delta):
 
 func _selectRandomPlanets(num:int):
 	var rng = RandomNumberGenerator.new()
-	var indexAdded:Array[int]
+	var indexAdded:Array[int] = []
 	while options.size() < num:
 		var rand = rng.randi_range(0, PlanetContainer.planets.size()-1)
 		if !PlanetContainer.planets[rand].completed && !indexAdded.has(rand):
