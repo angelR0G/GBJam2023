@@ -9,25 +9,39 @@ const ROTATION_TIME	:float	= 0.6
 var changingState	:bool	= false
 var underGround		:bool	= true
 var turningTime		:float	= 0.0
+var readyToShot		:bool	= true
+
+var digTimer
+var sprite
 
 func _ready():
-	$AnimatedSprite2D.play("dig")
-	$DigTimer.start(DIG_TIME)
+	digTimer 	= $DigTimer
+	sprite		= $AnimatedSprite2D
+	
+	sprite.play("dig")
+	digTimer.start(DIG_TIME)
+	getPlayer()
 
 func _process(delta):
-	if changingState || not underGround:
+	if changingState:
 		return
 	
-	# Move enemy when its underground
-	if enemyVelocity.length() < 1.0:
-		# Moves in a random direction
-		setEnemyVelocity(Vector2(DIG_SPEED, 0).rotated(randf() * TAU))
+	if underGround:
+		# Move enemy when its underground
+		if enemyVelocity.length() < 1.0:
+			# Moves in a random direction
+			setEnemyVelocity(Vector2(DIG_SPEED, 0).rotated(randf() * TAU))
+		else:
+			# Change direction randomly
+			turningTime += delta
+			if turningTime >= ROTATION_TIME:
+				setEnemyVelocity(enemyVelocity.rotated((randf()-0.5) * ROTATION_SPEED * turningTime))
+				turningTime -= ROTATION_TIME
 	else:
-		# Change direction randomly
-		turningTime += delta
-		if turningTime >= ROTATION_TIME:
-			setEnemyVelocity(enemyVelocity.rotated((randf()-0.5) * ROTATION_SPEED * turningTime))
-			turningTime -= ROTATION_TIME
+		# When has been outside half of the time, shoots
+		if readyToShot && digTimer.time_left <= digTimer.wait_time/2.0:
+			shoot()
+			readyToShot = false
 	
 
 
@@ -39,26 +53,27 @@ func digOut():
 	turningTime 	= 0.0
 	
 	# Play animation and wait
-	$AnimatedSprite2D.play("out")
-	await $AnimatedSprite2D.animation_finished
+	sprite.play("out")
+	await sprite.animation_finished
 	
 	# Modify state and colision
 	set_collision_mask_value(1, true)
 	set_collision_mask_value(2, true)
 	set_collision_layer_value(5, true)
 	underGround 	= false
+	readyToShot		= true
 	changingState	= false
 	
 	# Play animation
-	$AnimatedSprite2D.play("idle")
+	sprite.play("idle")
 
 
 func digIn():
 	changingState = true
 	
 	# Play animation and wait
-	$AnimatedSprite2D.play_backwards("out")
-	await $AnimatedSprite2D.animation_finished
+	sprite.play_backwards("out")
+	await sprite.animation_finished
 	
 	# Modify state and colision
 	set_collision_mask_value(1, false)
@@ -68,18 +83,34 @@ func digIn():
 	changingState	= false
 	
 	# Play animation
-	$AnimatedSprite2D.play("dig")
+	sprite.play("dig")
 
 func _on_dig_timer_timeout():
 	if underGround:
 		# Enemy get out and stay for a while
 		digOut()
-		$DigTimer.start(EXIT_TIME)
+		digTimer.start(EXIT_TIME)
 	else:
 		# Enemy get inside
 		digIn()
-		$DigTimer.start(3.6)
+		digTimer.start(3.6)
 	
 
 func _on_body_entered(_body):
 	setEnemyVelocity(-enemyVelocity)
+
+
+func shoot():
+	# Create a shot
+	var shot = ShotContainer.create_shot(1)
+	
+	# Get player direction to shoot them
+	var dir = player.position - position
+	shot.setVelocity()
+	shot.setShotDirection(dir.angle())
+	
+	# Set shot initial position
+	shot.position += dir.normalized() * 16
+	
+	# Add it to the game
+	add_child(shot)

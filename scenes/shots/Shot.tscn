@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bp6e1qvnqb1k1" path="res://assets/characters/Astronauta.png" id="2_h4na4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_it7sl"]
-size = Vector2(14, 7)
+size = Vector2(4, 4)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xr374"]
 atlas = ExtResource("2_h4na4")
@@ -58,8 +58,7 @@ shape = SubResource("RectangleShape2D_it7sl")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tagle")
 animation = &"idle"
-frame = 1
-frame_progress = 0.390712
+frame_progress = 0.748805
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 scale = Vector2(1, 0.6)

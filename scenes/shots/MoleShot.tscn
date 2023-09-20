@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://brk4ln52yi2i0"]
+
+[ext_resource type="PackedScene" uid="uid://d3eithk653i0u" path="res://scenes/shots/Shot.tscn" id="1_ajmxl"]
+[ext_resource type="Texture2D" uid="uid://ifsbxvd3epcu" path="res://assets/characters/Mole.png" id="2_poijj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0c8qq"]
+atlas = ExtResource("2_poijj")
+region = Rect2(0, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_048qr"]
+atlas = ExtResource("2_poijj")
+region = Rect2(8, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsupr"]
+atlas = ExtResource("2_poijj")
+region = Rect2(16, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p60bx"]
+atlas = ExtResource("2_poijj")
+region = Rect2(24, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3eim"]
+atlas = ExtResource("2_poijj")
+region = Rect2(32, 32, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kwue0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0c8qq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_048qr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsupr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p60bx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3eim")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[node name="Shot" instance=ExtResource("1_ajmxl")]
+SHOT_SPEED = 50.0
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 0)
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+position = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_kwue0")
+frame_progress = 0.134177

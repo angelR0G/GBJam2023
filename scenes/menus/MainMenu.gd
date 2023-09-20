@@ -38,7 +38,6 @@ func _process(_delta):
 				selected += 3
 			updateStyle()
 		if Input.is_action_just_pressed("shot"):
-			print("Elegida: " + str(selected))
 			optionSelected()
 	
 func updateStyle():

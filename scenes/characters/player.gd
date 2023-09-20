@@ -1,8 +1,6 @@
 class_name Player
 extends CharacterBody2D
 
-var shot_container = preload("res://scenes/shots/ShotContainer.gd")
-
 # Movement values
 var MAX_WALK_SPEED 	:int 	= 60
 var SPEED 			:int 	= 400
@@ -15,6 +13,7 @@ var MAX_HEAT		:int	= 20
 var COOL_LIMIT		:int	= 15
 var COOL_INITIAL_TIME:float	= 2.0
 var COOL_INTERVAL_TIME:float= 0.8
+var SHOT_SPEED		:int	= 200
 
 # Camera
 var CAMERA_SPEED	:float	= 40.0
@@ -92,13 +91,14 @@ func _unhandled_input(event):
 	if event.is_action_pressed("shot"):
 		if $ShotTimer.is_stopped() && not gun_overheated:
 			# Create a shot
-			var shot = shot_container.create_shot()
+			var shot = ShotContainer.create_shot()
 			
 			# Set shot initial position
 			shot.position += velocity.normalized() * 16
 			
 			# Update its direction and prevent hitting player
 			shot.setShotDirection(shotDirection.angle())
+			shot.setVelocity()
 			shot.setHitPlayer(false)
 			shot.setHitEnemies(true)
 			
