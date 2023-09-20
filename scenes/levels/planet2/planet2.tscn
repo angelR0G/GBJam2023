@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dmxj0wfwxqida"]
+[gd_scene load_steps=12 format=3 uid="uid://dmxj0wfwxqida"]
 
 [ext_resource type="Script" path="res://scripts/planet.gd" id="1_3jujs"]
 [ext_resource type="PackedScene" uid="uid://ps404qbmx168" path="res://scenes/levels/planet1/Level1_1.tscn" id="2_nd62j"]
@@ -10,11 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://bkbqeetpvoi5p" path="res://scenes/levels/planet1/Level1_7.tscn" id="8_hskrh"]
 [ext_resource type="PackedScene" uid="uid://dhhpqv8oms0r4" path="res://scenes/levels/planet1/Level1_8.tscn" id="9_hmw0f"]
 [ext_resource type="Texture2D" uid="uid://dr6071qoj4e1x" path="res://resources/palette_p2.tres" id="10_8f8mg"]
+[ext_resource type="Texture2D" uid="uid://cpl7qvf7m24jj" path="res://assets/planets/planeta3.png" id="10_kltmo"]
 
 [node name="planet2" type="Node2D"]
 script = ExtResource("1_3jujs")
 levelArray = Array[PackedScene]([ExtResource("2_nd62j"), ExtResource("3_ou0ss"), ExtResource("4_g14wk"), ExtResource("5_k4f2d"), ExtResource("6_kwxif"), ExtResource("7_eyhfx"), ExtResource("8_hskrh"), ExtResource("9_hmw0f")])
-planet_name = "B"
+planet_name = "ZIGRION"
 planet_dangerLevel = 2
 planet_numLevels = 3
+planet_sprite = ExtResource("10_kltmo")
 planet_palette = ExtResource("10_8f8mg")

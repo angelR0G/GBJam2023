@@ -13,7 +13,7 @@ func generateMap(planet:Planet) -> Array[PackedScene]:
 	
 	while map.size() < planet.planet_numLevels:
 		var num = rng.randi_range(0, levels.size()-1)
-		if(!map.has(levels[num])):
+		if !map.has(levels[num]):
 			map.push_back(levels[num])
 			
 	return map

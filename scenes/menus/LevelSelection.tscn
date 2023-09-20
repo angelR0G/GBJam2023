@@ -1,9 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://dcni20q4two04"]
+[gd_scene load_steps=23 format=3 uid="uid://dcni20q4two04"]
 
 [ext_resource type="Script" path="res://scenes/menus/LevelSelection.gd" id="1_yyfw1"]
 [ext_resource type="Texture2D" uid="uid://d012e6neuwocw" path="res://assets/menu_ui/stars.png" id="2_ksaua"]
 [ext_resource type="Texture2D" uid="uid://dupwtsxi2vau" path="res://assets/menu_ui/LevelSelection.jpg" id="2_qu6kc"]
 [ext_resource type="Script" path="res://scenes/menus/backgroundStars.gd" id="3_1dffa"]
+[ext_resource type="FontFile" uid="uid://cginr66v42up3" path="res://assets/DigitalDisco.ttf" id="5_jmkkq"]
+[ext_resource type="Texture2D" uid="uid://bdw0qeiyu66cq" path="res://assets/menu_ui/LevelSelectionBorder.png" id="5_p12u0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2p3st"]
 atlas = ExtResource("2_ksaua")
@@ -139,7 +141,7 @@ script = ExtResource("1_yyfw1")
 position = Vector2(80, 72)
 texture = ExtResource("2_qu6kc")
 
-[node name="BackgroundStars" type="Node" parent="."]
+[node name="BackgroundStars" type="Node2D" parent="."]
 script = ExtResource("3_1dffa")
 
 [node name="BackgroundStar1" type="AnimatedSprite2D" parent="BackgroundStars"]
@@ -165,19 +167,63 @@ sprite_frames = SubResource("SpriteFrames_axat8")
 animation = &"short"
 
 [node name="BackgroundStar5" type="AnimatedSprite2D" parent="BackgroundStars"]
-position = Vector2(111, 7)
+position = Vector2(153.2, 8.4)
 sprite_frames = SubResource("SpriteFrames_axat8")
 animation = &"short"
+frame = 8
+frame_progress = 0.294788
 
 [node name="BackgroundStar6" type="AnimatedSprite2D" parent="BackgroundStars"]
 position = Vector2(78, 139)
 sprite_frames = SubResource("SpriteFrames_axat8")
 animation = &"short"
 
-[node name="PlanetSprites" type="Node" parent="."]
+[node name="PlanetSprites" type="Node2D" parent="."]
 
-[node name="PlanetLeft" type="Marker2D" parent="PlanetSprites"]
-position = Vector2(40, 64)
+[node name="PlanetLeft" type="Sprite2D" parent="PlanetSprites"]
+z_index = 1
+position = Vector2(42.5034, 63.9863)
 
-[node name="PlanetRight" type="Marker2D" parent="PlanetSprites"]
-position = Vector2(120, 64)
+[node name="PlanetRight" type="Sprite2D" parent="PlanetSprites"]
+z_index = 1
+position = Vector2(117.503, 63.9863)
+
+[node name="BorderLeft" type="Sprite2D" parent="PlanetSprites"]
+visible = false
+z_index = 1
+position = Vector2(42.5034, 63.9863)
+scale = Vector2(1, 1.02342)
+texture = ExtResource("5_p12u0")
+
+[node name="BorderRight" type="Sprite2D" parent="PlanetSprites"]
+visible = false
+z_index = 1
+position = Vector2(117.503, 63.9863)
+scale = Vector2(1, 1.02342)
+texture = ExtResource("5_p12u0")
+
+[node name="Text" type="Node2D" parent="."]
+position = Vector2(80, 0)
+
+[node name="PlanetName" type="Label" parent="Text"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.5
+offset_right = 20.5
+offset_bottom = 19.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.901961, 0.901961, 0.752941, 1)
+theme_override_fonts/font = ExtResource("5_jmkkq")
+text = "
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SelectionFlash" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="SelectionFlash" to="." method="_on_selection_flash_timeout"]

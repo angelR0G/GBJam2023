@@ -9,6 +9,7 @@ const MAX_WINDOW_INITIAL_SCALE 	= 4
 var mainMenuScene 		:= preload("res://scenes/menus/MainMenu.tscn")
 var creditsMenuScene 	:= preload("res://scenes/menus/CreditsMenu.tscn")
 var controlsMenuScene	:= preload("res://scenes/menus/ControlsMenu.tscn")
+var planetManagerScene	:= preload("res://scenes/PlanetManager.tscn")
 
 var loadedScene:Node	= null
 
@@ -23,7 +24,7 @@ func loadMainMenu():
 	loadedScene = mainMenuScene.instantiate()
 	
 	# Connect  signals to functions
-	loadedScene.start_game.connect(Callable(self, ""))
+	loadedScene.start_game.connect(Callable(self, "loadPlanetManager"))
 	loadedScene.show_credits.connect(Callable(self, "loadCredits"))
 	loadedScene.show_controls.connect(Callable(self, "loadControls"))
 	
@@ -56,6 +57,15 @@ func loadControls():
 	# Add the scene to the scene tree
 	add_child(loadedScene)
 	
+func loadPlanetManager():
+	removeLastScene()
+	
+	# Create an instance of the main menu
+	loadedScene = planetManagerScene.instantiate()
+	
+	# Add the scene to the scene tree
+	add_child(loadedScene)
+
 
 func removeLastScene():
 	# If the scenes array is empty, it cannot unload any scene

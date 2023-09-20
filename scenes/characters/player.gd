@@ -33,6 +33,10 @@ var lockMovement	:bool 	= false
 func setLockMovement(lock:bool):
 	lockMovement = lock
 
+func setLockCamera(lock:bool):
+	$Camera2D.enabled = !lock
+
+
 func _process(delta):
 	var dir := Vector2()
 	

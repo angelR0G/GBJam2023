@@ -1,24 +1,31 @@
 extends Node2D
 
-var planets:Array[Planet] = [Planet1, Planet2]
 var currentPlanet:int = 0
 var levelScript = preload("res://scripts/level.gd").new()
 var levelMap:Array[PackedScene]
 
 #Variables for nodes
-var player
-var transitionScreen
+@onready var player 			= $Player
+@onready var transitionScreen 	= $TransitionScreen
+@onready var levelSelection 	= $LevelSelection
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player = $Player
-	transitionScreen = $TransitionScreen
+	player.hide()
+	player.setLockMovement(true)
+	player.setLockCamera(true)
+	levelSelection.planetSelected.connect(Callable(self, "newMap"), currentPlanet)
 	
-	newMap()
 	
-func newMap():
-	levelMap = levelScript.generateMap(planets[currentPlanet])
+func newMap(cPlanet):
+	currentPlanet = cPlanet
+	print(currentPlanet)
+	levelMap = levelScript.generateMap(PlanetContainer.planets[currentPlanet].planet)
 	renderLevel()
+	player.show()
+	player.setLockMovement(false)
+	player.setLockCamera(false)
+	levelSelection.setLockControls(true)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -36,14 +43,14 @@ func _levelComplete(dir:bool):
 	else:
 		var chPlanet = levelScript.prev_level()
 		changePlanet(chPlanet)
-	transitionScreen.setTransitionPalette(planets[currentPlanet].planet_palette)
+	transitionScreen.setTransitionPalette(PlanetContainer.planets[currentPlanet].planet.planet_palette)
 	transitionScreen.transition()
 	player.setLockMovement(true)
 
 func changePlanet(chPlanet:bool):
-	if(chPlanet && currentPlanet < planets.size()-1):
+	if(chPlanet && currentPlanet < PlanetContainer.planets[currentPlanet].size()-1):
 		currentPlanet += 1
-		newMap()
+		newMap(currentPlanet)
 
 func renderLevel():
 	#Remove previous level
@@ -55,7 +62,7 @@ func renderLevel():
 	
 	#Change world palette
 	var mat = get_material()
-	mat.set_shader_parameter("replacePalette", planets[currentPlanet].planet_palette);
+	mat.set_shader_parameter("replacePalette", PlanetContainer.planets[currentPlanet].planet.planet_palette);
 	
 	#Create new level
 	var marker:Marker2D = lvl.get_child(1)
