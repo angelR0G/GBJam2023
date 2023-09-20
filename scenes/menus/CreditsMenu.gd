@@ -1,5 +1,7 @@
 extends Control
 
+signal go_back
+
 const STARS_INITIAL_FLICK_TIME = 2.0
 var selected:int 	= 0
 
@@ -40,7 +42,7 @@ func resetCredits():
 	
 
 func exitCredits():
-	pass
+	go_back.emit()
 
 
 func _on_credits_timer_timeout():

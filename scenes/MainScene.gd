@@ -1,72 +1,85 @@
 extends Node2D
 
-var planets:Array[Planet] = [Planet1, Planet2]
-var currentPlanet:int = 0
-var levelScript = preload("res://scripts/level.gd").new()
-var levelMap:Array[PackedScene]
+signal load_scene_request
 
-#Variables for nodes
-var player
-var transitionScreen
+# Constants
+const MAX_WINDOW_INITIAL_SCALE 	= 4
 
-# Called when the node enters the scene tree for the first time.
+# Scenes
+var mainMenuScene 		:= preload("res://scenes/menus/MainMenu.tscn")
+var creditsMenuScene 	:= preload("res://scenes/menus/CreditsMenu.tscn")
+var controlsMenuScene	:= preload("res://scenes/menus/ControlsMenu.tscn")
+
+var loadedScene:Node	= null
+
 func _ready():
-	player = $Player
-	transitionScreen = $TransitionScreen
-	
-	newMap()
-	
-func newMap():
-	levelMap = levelScript.generateMap(planets[currentPlanet])
-	renderLevel()
+	updateWindowSize()
+	loadMainMenu()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	if Input.is_action_just_pressed("Prev_level"):
-		_levelComplete(false)
+func loadMainMenu():
+	removeLastScene()
+	
+	# Create an instance of the main menu
+	loadedScene = mainMenuScene.instantiate()
+	
+	# Connect  signals to functions
+	loadedScene.start_game.connect(Callable(self, ""))
+	loadedScene.show_credits.connect(Callable(self, "loadCredits"))
+	loadedScene.show_controls.connect(Callable(self, "loadControls"))
+	
+	# Add the scene to the scene tree
+	add_child(loadedScene)
+	
+
+func loadCredits():
+	removeLastScene()
+	
+	# Create an instance of the main menu
+	loadedScene = creditsMenuScene.instantiate()
+	
+	# Connect  signals to functions
+	loadedScene.go_back.connect(Callable(self, "loadMainMenu"))
+	
+	# Add the scene to the scene tree
+	add_child(loadedScene)
+	
+
+func loadControls():
+	removeLastScene()
+	
+	# Create an instance of the main menu
+	loadedScene = controlsMenuScene.instantiate()
+	
+	# Connect  signals to functions
+	loadedScene.go_back.connect(Callable(self, "loadMainMenu"))
+	
+	# Add the scene to the scene tree
+	add_child(loadedScene)
+	
+
+func removeLastScene():
+	# If the scenes array is empty, it cannot unload any scene
+	if loadedScene == null:
+		return
 		
-	if Input.is_action_just_pressed("Next_level"):
-		_levelComplete(true)
+	# Unload the scene and remove it from the array
+	loadedScene.queue_free()
+	loadedScene = null
 	
-#When a level is completed
-#dir indicates if player is going forward or backwards through the map
-func _levelComplete(dir:bool):
-	if dir:
-		var lastLevel = levelScript.next_level()
-	else:
-		var chPlanet = levelScript.prev_level()
-		changePlanet(chPlanet)
-	transitionScreen.setTransitionPalette(planets[currentPlanet].planet_palette)
-	transitionScreen.transition()
-	player.setLockMovement(true)
 
-func changePlanet(chPlanet:bool):
-	if(chPlanet && currentPlanet < planets.size()-1):
-		currentPlanet += 1
-		newMap()
 
-func renderLevel():
-	#Remove previous level
-	if levelScript.loadedLevel != null:
-		remove_child(levelScript.loadedLevel)
+func updateWindowSize():
+	var width 	= get_window().size.x
+	var height 	= get_window().size.y
 	
-	#Get new level
-	var lvl = levelMap[levelScript.currentLevel].instantiate()
+	# Get screen size and tries to make screen as big as posible
+	var screenSize = DisplayServer.screen_get_size()
+	var screenScale = 1
 	
-	#Change world palette
-	var mat = get_material()
-	mat.set_shader_parameter("replacePalette", planets[currentPlanet].planet_palette);
-	
-	#Create new level
-	var marker:Marker2D = lvl.get_child(1)
-	player.position = marker.position
-	add_child(lvl)
-	levelScript.loadedLevel = lvl
-
-
-func _on_transition_screen_fade_in_ended():
-	renderLevel()
-
-
-func _on_transition_screen_fade_out_ended():
-	player.setLockMovement(false)
+	while screenScale <= MAX_WINDOW_INITIAL_SCALE && (width * screenScale < screenSize.x && height * screenScale < screenSize.y):
+		screenScale += 1
+		
+	# When the scale is calculated, resize window
+	screenScale -= 1
+	get_window().size = Vector2(width, height) * screenScale
+	get_window().position = (screenSize - get_window().size)/2.0
