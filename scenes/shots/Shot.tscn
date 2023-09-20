@@ -44,7 +44,7 @@ animations = [{
 
 [node name="Shot" type="RigidBody2D"]
 collision_layer = 32
-collision_mask = 21
+collision_mask = 5
 mass = 0.01
 gravity_scale = 0.0
 max_contacts_reported = 4
@@ -63,6 +63,7 @@ frame_progress = 0.748805
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 scale = Vector2(1, 0.6)
+rect = Rect2(-20, -20, 40, 40)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="destroyShot"]

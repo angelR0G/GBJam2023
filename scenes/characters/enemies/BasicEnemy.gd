@@ -1,3 +1,4 @@
+class_name BasicEnemy
 extends RigidBody2D
 
 static var player	:Node	= null
@@ -18,3 +19,10 @@ func _integrate_forces(_state):
 func setEnemyVelocity(vel:Vector2 = Vector2()):
 	enemyVelocity = vel
 	linear_velocity = vel
+
+func damage(dp:int):
+	life -= dp
+
+	# If life reaches 0, destroy enemy
+	if life <= 0:
+		queue_free()

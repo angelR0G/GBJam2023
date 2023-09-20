@@ -11,14 +11,11 @@ var underGround		:bool	= true
 var turningTime		:float	= 0.0
 var readyToShot		:bool	= true
 
-var digTimer
-var sprite
+@onready var digTimer		= $DigTimer
+@onready var sprite			= $AnimatedSprite2D
 
-func _ready():
-	digTimer 	= $DigTimer
-	sprite		= $AnimatedSprite2D
-	
-	sprite.play("dig")
+func _ready():	
+	digIn()
 	digTimer.start(DIG_TIME)
 	getPlayer()
 
@@ -110,7 +107,7 @@ func shoot():
 	shot.setShotDirection(dir.angle())
 	
 	# Set shot initial position
-	shot.position += dir.normalized() * 16
+	shot.position += dir.normalized() * 4
 	
 	# Add it to the game
 	add_child(shot)
