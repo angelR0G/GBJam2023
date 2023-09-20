@@ -1,0 +1,183 @@
+[gd_scene load_steps=21 format=3 uid="uid://dcni20q4two04"]
+
+[ext_resource type="Script" path="res://scenes/menus/LevelSelection.gd" id="1_yyfw1"]
+[ext_resource type="Texture2D" uid="uid://d012e6neuwocw" path="res://assets/menu_ui/stars.png" id="2_ksaua"]
+[ext_resource type="Texture2D" uid="uid://dupwtsxi2vau" path="res://assets/menu_ui/LevelSelection.jpg" id="2_qu6kc"]
+[ext_resource type="Script" path="res://scenes/menus/backgroundStars.gd" id="3_1dffa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2p3st"]
+atlas = ExtResource("2_ksaua")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nuhni"]
+atlas = ExtResource("2_ksaua")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7armb"]
+atlas = ExtResource("2_ksaua")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpkn4"]
+atlas = ExtResource("2_ksaua")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ok1fc"]
+atlas = ExtResource("2_ksaua")
+region = Rect2(0, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wo80d"]
+atlas = ExtResource("2_ksaua")
+region = Rect2(8, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pej4x"]
+atlas = ExtResource("2_ksaua")
+region = Rect2(16, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xa8j5"]
+atlas = ExtResource("2_ksaua")
+region = Rect2(24, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jflxy"]
+atlas = ExtResource("2_ksaua")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2k0kl"]
+atlas = ExtResource("2_ksaua")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nj8gg"]
+atlas = ExtResource("2_ksaua")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkfkq"]
+atlas = ExtResource("2_ksaua")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n25xx"]
+atlas = ExtResource("2_ksaua")
+region = Rect2(0, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ubdd"]
+atlas = ExtResource("2_ksaua")
+region = Rect2(8, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvjov"]
+atlas = ExtResource("2_ksaua")
+region = Rect2(16, 8, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_axat8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2p3st")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nuhni")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7armb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpkn4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ok1fc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wo80d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pej4x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xa8j5")
+}, {
+"duration": 20.0,
+"texture": SubResource("AtlasTexture_2p3st")
+}],
+"loop": true,
+"name": &"long",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jflxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2k0kl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nj8gg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkfkq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n25xx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ubdd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvjov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2k0kl")
+}, {
+"duration": 12.0,
+"texture": SubResource("AtlasTexture_jflxy")
+}],
+"loop": true,
+"name": &"short",
+"speed": 8.0
+}]
+
+[node name="LevelSelection" type="Node2D"]
+script = ExtResource("1_yyfw1")
+
+[node name="MainMenuBackground" type="Sprite2D" parent="."]
+position = Vector2(80, 72)
+texture = ExtResource("2_qu6kc")
+
+[node name="BackgroundStars" type="Node" parent="."]
+script = ExtResource("3_1dffa")
+
+[node name="BackgroundStar1" type="AnimatedSprite2D" parent="BackgroundStars"]
+position = Vector2(80, 48)
+sprite_frames = SubResource("SpriteFrames_axat8")
+animation = &"short"
+frame = 8
+frame_progress = 0.707667
+
+[node name="BackgroundStar2" type="AnimatedSprite2D" parent="BackgroundStars"]
+position = Vector2(6, 49)
+sprite_frames = SubResource("SpriteFrames_axat8")
+animation = &"short"
+
+[node name="BackgroundStar3" type="AnimatedSprite2D" parent="BackgroundStars"]
+position = Vector2(136, 120)
+sprite_frames = SubResource("SpriteFrames_axat8")
+animation = &"short"
+
+[node name="BackgroundStar4" type="AnimatedSprite2D" parent="BackgroundStars"]
+position = Vector2(23, 119)
+sprite_frames = SubResource("SpriteFrames_axat8")
+animation = &"short"
+
+[node name="BackgroundStar5" type="AnimatedSprite2D" parent="BackgroundStars"]
+position = Vector2(111, 7)
+sprite_frames = SubResource("SpriteFrames_axat8")
+animation = &"short"
+
+[node name="BackgroundStar6" type="AnimatedSprite2D" parent="BackgroundStars"]
+position = Vector2(78, 139)
+sprite_frames = SubResource("SpriteFrames_axat8")
+animation = &"short"
+
+[node name="PlanetSprites" type="Node" parent="."]
+
+[node name="PlanetLeft" type="Marker2D" parent="PlanetSprites"]
+position = Vector2(40, 64)
+
+[node name="PlanetRight" type="Marker2D" parent="PlanetSprites"]
+position = Vector2(120, 64)
