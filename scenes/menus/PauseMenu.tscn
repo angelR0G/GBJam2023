@@ -1,0 +1,220 @@
+[gd_scene load_steps=20 format=3 uid="uid://bj6l5w7yn7xaq"]
+
+[ext_resource type="Script" path="res://scenes/menus/PauseMenu.gd" id="1_3a4f7"]
+[ext_resource type="Texture2D" uid="uid://c40t88vqhce77" path="res://assets/planets/planeta1.png" id="4_smk0d"]
+[ext_resource type="FontFile" uid="uid://brwymiuuq4cs6" path="res://assets/DigitalDisco.ttf" id="5_o2507"]
+[ext_resource type="Texture2D" uid="uid://cfgtxvi3qcjr" path="res://assets/menu_ui/ui.png" id="6_i1s4v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6mkc"]
+atlas = ExtResource("6_i1s4v")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yk1x1"]
+atlas = ExtResource("6_i1s4v")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23sym"]
+atlas = ExtResource("6_i1s4v")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5o638"]
+atlas = ExtResource("6_i1s4v")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0wc0"]
+atlas = ExtResource("6_i1s4v")
+region = Rect2(0, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkf0x"]
+atlas = ExtResource("6_i1s4v")
+region = Rect2(8, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_giqet"]
+atlas = ExtResource("6_i1s4v")
+region = Rect2(16, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7hvt"]
+atlas = ExtResource("6_i1s4v")
+region = Rect2(24, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwlxm"]
+atlas = ExtResource("6_i1s4v")
+region = Rect2(0, 16, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usjad"]
+atlas = ExtResource("6_i1s4v")
+region = Rect2(8, 16, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xrgr"]
+atlas = ExtResource("6_i1s4v")
+region = Rect2(16, 16, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60vke"]
+atlas = ExtResource("6_i1s4v")
+region = Rect2(24, 16, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6jjn"]
+atlas = ExtResource("6_i1s4v")
+region = Rect2(0, 24, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46lqx"]
+atlas = ExtResource("6_i1s4v")
+region = Rect2(8, 24, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_snk1n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6mkc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yk1x1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23sym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5o638")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0wc0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkf0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_giqet")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7hvt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwlxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usjad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xrgr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60vke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6jjn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46lqx")
+}],
+"loop": true,
+"name": &"turn",
+"speed": 18.0
+}]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3a4f7")
+
+[node name="BackgroundColor" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14902, 0.00392157, 0.247059, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -38.5
+offset_top = -50.0
+offset_right = 38.5
+offset_bottom = 9.00003
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(29, 0)
+theme_override_constants/separation = 1
+
+[node name="ResumeLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.901961, 0.901961, 0.752941, 1)
+theme_override_fonts/font = ExtResource("5_o2507")
+text = "RESUME
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenuLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.901961, 0.901961, 0.752941, 1)
+theme_override_fonts/font = ExtResource("5_o2507")
+text = "MAIN MENU"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LerpTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="SelectArrow" type="AnimatedSprite2D" parent="."]
+position = Vector2(36, 123)
+sprite_frames = SubResource("SpriteFrames_snk1n")
+animation = &"idle"
+frame = 2
+frame_progress = 0.338205
+
+[node name="PlanetImage" type="Sprite2D" parent="."]
+position = Vector2(36.5, 32.5)
+texture = ExtResource("4_smk0d")
+
+[node name="PlanetName" type="Label" parent="."]
+offset_left = 61.5
+offset_top = 19.5
+offset_right = 142.5
+offset_bottom = 42.5
+theme_override_colors/font_color = Color(0.901961, 0.901961, 0.752941, 1)
+theme_override_fonts/font = ExtResource("5_o2507")
+text = "NOMBREPLA"
+
+[node name="LevelLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 62.5
+offset_top = 34.5
+offset_right = 115.5
+offset_bottom = 57.5
+theme_override_colors/font_color = Color(0.901961, 0.901961, 0.752941, 1)
+theme_override_fonts/font = ExtResource("5_o2507")
+text = "LEVEL -"
+
+[node name="LevelNumber" type="Label" parent="LevelLabel"]
+layout_mode = 0
+offset_left = 50.0
+offset_right = 90.0002
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.901961, 0.901961, 0.752941, 1)
+theme_override_fonts/font = ExtResource("5_o2507")
+text = "5"
+
+[node name="CoreImage" type="Sprite2D" parent="."]
+position = Vector2(77, 71)
+scale = Vector2(3, 3)
+texture = ExtResource("6_i1s4v")
+region_enabled = true
+region_rect = Rect2(16, 24, 8, 8)
+
+[connection signal="timeout" from="LerpTimer" to="." method="_on_lerp_timer_timeout"]
