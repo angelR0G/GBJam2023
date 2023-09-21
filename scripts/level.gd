@@ -1,37 +1,57 @@
 class_name Level
 extends Node
 
+signal levelCompleted
+signal mapCompleted
+
 var map:Array[PackedScene]
-var currentLevel:int 	= 0
 var loadedLevel
-var lastLevel:bool = false
+var currentLevel:int	= 0
+var lastLevel:bool		= false
+var lastLevelC:bool		= false
+var levelForward:bool 	= true
+var enemyNum:int		= 0
 
 #Selects random levels from the planet level pool
 func generateMap(planet:Planet) -> Array[PackedScene]:
 	var rng = RandomNumberGenerator.new()
 	var levels:Array[PackedScene] = planet.levelArray
 	
-	while map.size() < planet.planet_numLevels:
+	while map.size() < min(levels.size(), planet.planet_numLevels):
 		var num = rng.randi_range(0, levels.size()-1)
 		if !map.has(levels[num]):
 			map.push_back(levels[num])
 			
 	return map
-	
+
+func getTotalEnemiesLevel():
+	var enemies = loadedLevel.get_node("Enemies").get_children()
+	enemyNum = enemies.size()
+	for e in enemies:
+		e.connect("enemyDead", Callable(self, "_enemyDead"))
+
+func _enemyDead():
+	enemyNum -= 1
+	if(enemyNum <= 0):
+		emit_signal("levelCompleted", levelForward)
+
 func next_level() -> bool:
-	if currentLevel < map.size()-1:
-		currentLevel += 1
 	if currentLevel < map.size():
+		currentLevel += 1
+	if currentLevel == map.size():
 		lastLevel = true
 	return lastLevel
 		
 func prev_level() -> bool:
-	if currentLevel > 0:
+	if currentLevel >= 0:
 		currentLevel -= 1
+		if lastLevel:
+			levelForward 	= false
+			lastLevelC		= true
+		lastLevel 		= false
 		
-	if lastLevel && currentLevel == 0:
+	if lastLevelC && currentLevel < 0:
 		#change planet
-		currentLevel = 0
+		mapCompleted.emit()
 		return true
-		
 	return false

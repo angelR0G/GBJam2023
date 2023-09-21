@@ -1,20 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://dmxj0wfwxqida"]
+[gd_scene load_steps=6 format=3 uid="uid://dmxj0wfwxqida"]
 
 [ext_resource type="Script" path="res://scripts/planet.gd" id="1_3jujs"]
-[ext_resource type="PackedScene" uid="uid://ps404qbmx168" path="res://scenes/levels/planet1/Level1_1.tscn" id="2_nd62j"]
-[ext_resource type="PackedScene" uid="uid://dcvrelp0nqwqv" path="res://scenes/levels/planet1/Level1_2.tscn" id="3_ou0ss"]
-[ext_resource type="PackedScene" uid="uid://c8u85isfausc5" path="res://scenes/levels/planet1/Level1_3.tscn" id="4_g14wk"]
-[ext_resource type="PackedScene" uid="uid://dx1yygarcru5a" path="res://scenes/levels/planet1/Level1_4.tscn" id="5_k4f2d"]
-[ext_resource type="PackedScene" uid="uid://cv5gt4an8h0q5" path="res://scenes/levels/planet1/Level1_5.tscn" id="6_kwxif"]
-[ext_resource type="PackedScene" uid="uid://oxf5vto4sdxq" path="res://scenes/levels/planet1/Level1_6.tscn" id="7_eyhfx"]
-[ext_resource type="PackedScene" uid="uid://bkbqeetpvoi5p" path="res://scenes/levels/planet1/Level1_7.tscn" id="8_hskrh"]
-[ext_resource type="PackedScene" uid="uid://dhhpqv8oms0r4" path="res://scenes/levels/planet1/Level1_8.tscn" id="9_hmw0f"]
+[ext_resource type="PackedScene" uid="uid://da3qsnepkoeje" path="res://scenes/levels/planet2/Level2_1.tscn" id="2_1aprp"]
+[ext_resource type="PackedScene" uid="uid://c5me2rt2muyvh" path="res://scenes/levels/planet2/Level2_2.tscn" id="3_sqtws"]
 [ext_resource type="Texture2D" uid="uid://dr6071qoj4e1x" path="res://resources/palette_p2.tres" id="10_8f8mg"]
 [ext_resource type="Texture2D" uid="uid://cpl7qvf7m24jj" path="res://assets/planets/planeta3.png" id="10_kltmo"]
 
 [node name="planet2" type="Node2D"]
 script = ExtResource("1_3jujs")
-levelArray = Array[PackedScene]([ExtResource("2_nd62j"), ExtResource("3_ou0ss"), ExtResource("4_g14wk"), ExtResource("5_k4f2d"), ExtResource("6_kwxif"), ExtResource("7_eyhfx"), ExtResource("8_hskrh"), ExtResource("9_hmw0f")])
+levelArray = Array[PackedScene]([ExtResource("2_1aprp"), ExtResource("3_sqtws")])
 planet_name = "ZIGRION"
 planet_dangerLevel = 2
 planet_numLevels = 3

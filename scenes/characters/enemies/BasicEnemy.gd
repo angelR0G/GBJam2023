@@ -1,6 +1,8 @@
 class_name BasicEnemy
 extends RigidBody2D
 
+signal enemyDead
+
 static var player	:Node	= null
 var life			:int	= 20
 var enemyVelocity	:Vector2= Vector2()
@@ -25,4 +27,5 @@ func damage(dp:int):
 
 	# If life reaches 0, destroy enemy
 	if life <= 0:
+		emit_signal("enemyDead")
 		queue_free()
