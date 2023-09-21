@@ -26,3 +26,6 @@ use_parent_material = true
 color = Color(0, 0, 0, 1)
 texture = SubResource("GradientTexture2D_b3wsl")
 polygon = PackedVector2Array(-67, -20, 469, -20, 470, 396, -67, 398)
+
+[node name="Enemies" type="Node2D" parent="."]
+use_parent_material = true
