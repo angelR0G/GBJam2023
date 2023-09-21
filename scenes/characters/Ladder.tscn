@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://b7m48fe1erjyf"]
+[gd_scene load_steps=20 format=3 uid="uid://b7m48fe1erjyf"]
 
 [ext_resource type="Script" path="res://scenes/characters/Ladder.gd" id="1_cfdb6"]
 [ext_resource type="Texture2D" uid="uid://dk1g0uvj2if6v" path="res://assets/core.png" id="1_ypdhg"]
+[ext_resource type="Material" uid="uid://ceoowb11r351b" path="res://resources/palette.tres" id="2_r4vkd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j83r8"]
 atlas = ExtResource("1_ypdhg")
@@ -121,6 +122,7 @@ size = Vector2(12, 10)
 script = ExtResource("1_cfdb6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = ExtResource("2_r4vkd")
 position = Vector2(0, 10)
 sprite_frames = SubResource("SpriteFrames_w0ucr")
 animation = &"open_up"

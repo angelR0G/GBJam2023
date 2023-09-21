@@ -3,8 +3,11 @@ extends CharacterBody2D
 
 signal life_changed(newLife)
 signal heat_changed(newHeat)
+signal cool_capsule_collected
 
 # Movement values
+var CORE_WALK_SPEED	:int	= 35
+var NO_CORE_WALK_SPEED:int	= 60
 var MAX_WALK_SPEED 	:int 	= 60
 var SPEED 			:int 	= 400
 var STOP_SPEED		:int 	= 300
@@ -14,11 +17,15 @@ var HIT_KNOCKBACK	:int	= 12
 # Shot values
 var SHOT_HEAT		:int	= 1
 var MAX_HEAT		:int	= 20
-var COOL_LIMIT		:int	= 15
-var COOL_INITIAL_TIME:float	= 2.0
-var COOL_INTERVAL_TIME:float= 0.8
 var SHOT_SPEED		:int	= 200
 var SHOT_BASE_DAMAGE:int	= 5
+var COOL_LIMIT		:int	= 15
+var COOL_INITIAL_TIME		:float	= 2.0
+var COOL_INTERVAL_TIME		:float	= 0.8
+var CORE_COOL_INITIAL		:float	= 1.0
+var CORE_COOL_INTERVAL		:float	= 0.3
+var NO_CORE_COOL_INITIAL	:float	= 2.0
+var NO_CORE_COOL_INTERVAL	:float	= 0.8
 
 # Camera
 var CAMERA_SPEED	:float	= 40.0
@@ -55,6 +62,7 @@ func setLockCamera(lock:bool):
 func showHud(visibility:bool):
 	hud.visible = visibility
 	
+
 func resetPlayer():
 	overheat = 0
 	shotTimer.start()
@@ -149,10 +157,10 @@ func _unhandled_input(event):
 			# Update heat bar in hud
 			heat_changed.emit(overheat)
 
-func gunCooling():
+func gunCooling(coolPoints: int = 1):
 	# Gun reduces heat
 	if overheat > 0:
-		overheat -= 1
+		overheat = max(overheat - max(coolPoints, 0), 0)
 		
 		# Update heat bar in hud
 		heat_changed.emit(overheat)
@@ -183,6 +191,16 @@ func activateInvincibility(time:float = 1.0):
 	if enemiesBeingTouched > 0:
 		damage(1)
 
+func toggleCoreStats(hasCore:bool):
+	if hasCore:
+		MAX_WALK_SPEED 		= CORE_WALK_SPEED
+		COOL_INITIAL_TIME	= CORE_COOL_INITIAL
+		COOL_INTERVAL_TIME	= CORE_COOL_INTERVAL
+	else:
+		MAX_WALK_SPEED 		= NO_CORE_WALK_SPEED
+		COOL_INITIAL_TIME	= NO_CORE_COOL_INITIAL
+		COOL_INTERVAL_TIME 	= NO_CORE_COOL_INTERVAL
+	
 
 func damage(dp:int = 1, pos:Vector2 = Vector2()):
 	#Check if can receive damage
@@ -202,13 +220,20 @@ func damage(dp:int = 1, pos:Vector2 = Vector2()):
 	activateInvincibility(INVINCIBLE_TIME)
 
 
-func _on_enemy_detector_body_entered(body):
+func _on_objects_detector_body_entered(body):
 	if body is BasicEnemy:
 		enemiesBeingTouched += 1
 		damage(1, body.global_position)
 
 
-
-func _on_enemy_detector_body_exited(body):
+func _on_objects_detector_body_exited(body):
 	if body is BasicEnemy:
 		enemiesBeingTouched -= 1
+
+
+func _on_objects_detector_area_entered(area):
+	if area.get_collision_layer_value(7):
+		# Cooling capsule picked up
+		gunCooling(MAX_HEAT)
+		area.get_parent().queue_free()
+		cool_capsule_collected.emit()

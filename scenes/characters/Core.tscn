@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://c6le8rld5u0gh"]
+[gd_scene load_steps=18 format=3 uid="uid://c6le8rld5u0gh"]
 
 [ext_resource type="Texture2D" uid="uid://dk1g0uvj2if6v" path="res://assets/core.png" id="1_28xdt"]
 [ext_resource type="Script" path="res://scenes/characters/Core.gd" id="1_cw5ii"]
+[ext_resource type="Material" uid="uid://ceoowb11r351b" path="res://resources/palette.tres" id="2_0rm6t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u8sfc"]
 atlas = ExtResource("1_28xdt")
@@ -103,6 +104,7 @@ size = Vector2(8, 8)
 script = ExtResource("1_cw5ii")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = ExtResource("2_0rm6t")
 sprite_frames = SubResource("SpriteFrames_f150w")
 animation = &"breaking"
 

@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://dki5vy1jhnawq"]
+
+[ext_resource type="Texture2D" uid="uid://dq4lfxhucnhin" path="res://assets/CoolCapsule.png" id="1_887ui"]
+[ext_resource type="Material" uid="uid://ceoowb11r351b" path="res://resources/palette.tres" id="2_4kjhu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfqlr"]
+atlas = ExtResource("1_887ui")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nyfo"]
+atlas = ExtResource("1_887ui")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uy1ox"]
+atlas = ExtResource("1_887ui")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tfti"]
+atlas = ExtResource("1_887ui")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xsdin"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfqlr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nyfo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uy1ox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tfti")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_psh2p"]
+size = Vector2(14, 14)
+
+[node name="CoolCapsule" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = ExtResource("2_4kjhu")
+sprite_frames = SubResource("SpriteFrames_xsdin")
+animation = &"idle"
+autoplay = "idle"
+frame = 1
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_psh2p")
