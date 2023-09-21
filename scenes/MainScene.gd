@@ -79,17 +79,18 @@ func removeLastScene():
 
 
 func updateWindowSize():
+	var screenIndex = DisplayServer.window_get_current_screen()
 	var width 	= get_window().size.x
 	var height 	= get_window().size.y
 	
 	# Get screen size and tries to make screen as big as posible
-	var screenSize = DisplayServer.screen_get_size()
+	var screenRect = DisplayServer.screen_get_usable_rect(screenIndex)
 	var screenScale = 1
 	
-	while screenScale <= MAX_WINDOW_INITIAL_SCALE && (width * screenScale < screenSize.x && height * screenScale < screenSize.y):
+	while screenScale <= MAX_WINDOW_INITIAL_SCALE && (width * screenScale < screenRect.size.x && height * screenScale < screenRect.size.y):
 		screenScale += 1
 		
 	# When the scale is calculated, resize window
 	screenScale -= 1
 	get_window().size = Vector2(width, height) * screenScale
-	get_window().position = (screenSize - get_window().size)/2.0
+	get_window().position = screenRect.position + (screenRect.size - get_window().size)/2

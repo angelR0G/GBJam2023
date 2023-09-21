@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://da5h5g70t25xc"]
+
+[ext_resource type="Script" path="res://scenes/characters/hud.gd" id="1_6l08g"]
+[ext_resource type="Texture2D" uid="uid://cpuoi78kre6tt" path="res://assets/menu_ui/hud.png" id="2_ihlry"]
+[ext_resource type="Material" uid="uid://ceoowb11r351b" path="res://resources/palette.tres" id="2_kvo1r"]
+
+[node name="hud" type="CanvasLayer"]
+script = ExtResource("1_6l08g")
+
+[node name="Node2D" type="Node2D" parent="."]
+material = ExtResource("2_kvo1r")
+
+[node name="Hearts" type="Node2D" parent="Node2D"]
+use_parent_material = true
+
+[node name="Heart1" type="Sprite2D" parent="Node2D/Hearts"]
+use_parent_material = true
+position = Vector2(10, 135)
+texture = ExtResource("2_ihlry")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Heart2" type="Sprite2D" parent="Node2D/Hearts"]
+use_parent_material = true
+position = Vector2(26, 135)
+texture = ExtResource("2_ihlry")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Heart3" type="Sprite2D" parent="Node2D/Hearts"]
+use_parent_material = true
+position = Vector2(42, 135)
+texture = ExtResource("2_ihlry")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Heart4" type="Sprite2D" parent="Node2D/Hearts"]
+use_parent_material = true
+position = Vector2(58, 135)
+texture = ExtResource("2_ihlry")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="HeatBar" type="Sprite2D" parent="Node2D"]
+use_parent_material = true
+position = Vector2(34, 120)
+texture = ExtResource("2_ihlry")
+region_enabled = true
+region_rect = Rect2(0, 48, 64, 16)
+
+[node name="HeatBarProgress" type="Sprite2D" parent="Node2D"]
+use_parent_material = true
+position = Vector2(2, 112)
+texture = ExtResource("2_ihlry")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 32, 64, 16)

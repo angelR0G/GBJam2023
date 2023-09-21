@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://ceoowb11r351b"]
+
+[ext_resource type="Shader" path="res://resources/paletteSwap.gdshader" id="1_idre1"]
+[ext_resource type="Texture2D" uid="uid://cwpk26tgxpe01" path="res://resources/palette_original.tres" id="2_s87nf"]
+[ext_resource type="Texture2D" uid="uid://cd2dl1qs50xyt" path="res://resources/palette_p1.tres" id="3_ehluu"]
+
+[resource]
+shader = ExtResource("1_idre1")
+shader_parameter/num_colorsPalette = 4
+shader_parameter/originalPalette = ExtResource("2_s87nf")
+shader_parameter/replacePalette = ExtResource("3_ehluu")

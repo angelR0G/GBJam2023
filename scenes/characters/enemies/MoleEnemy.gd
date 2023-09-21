@@ -1,10 +1,10 @@
 extends "res://scenes/characters/enemies/BasicEnemy.gd"
 
-const EXIT_TIME		:float	= 2.8
-const DIG_TIME		:float	= 3.6
-const DIG_SPEED		:float	= 20.0
-const ROTATION_SPEED:float	= PI
-const ROTATION_TIME	:float	= 0.6
+var EXIT_TIME		:float	= 2.8
+var DIG_TIME		:float	= 3.6
+var DIG_SPEED		:float	= 20.0
+var ROTATION_SPEED	:float	= PI
+var ROTATION_TIME	:float	= 0.6
 
 var changingState	:bool	= false
 var underGround		:bool	= true
@@ -107,7 +107,8 @@ func shoot():
 	shot.setShotDirection(dir.angle())
 	
 	# Set shot initial position
+	shot.global_position = global_position
 	shot.position += dir.normalized() * 4
 	
 	# Add it to the game
-	add_child(shot)
+	add_sibling(shot)

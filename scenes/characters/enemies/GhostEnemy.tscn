@@ -1,0 +1,107 @@
+[gd_scene load_steps=15 format=3 uid="uid://dff6dx8vw2oda"]
+
+[ext_resource type="PackedScene" uid="uid://bqc2se1sraa8n" path="res://scenes/characters/enemies/MoleEnemy.tscn" id="1_cypfh"]
+[ext_resource type="Script" path="res://scenes/characters/enemies/GhostEnemy.gd" id="2_82tff"]
+[ext_resource type="Texture2D" uid="uid://c5ogp7rp47m3u" path="res://assets/characters/Charger.png" id="2_xvwc2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slb6v"]
+atlas = ExtResource("2_xvwc2")
+region = Rect2(0, 36, 12, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73jix"]
+atlas = ExtResource("2_xvwc2")
+region = Rect2(12, 36, 12, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsmqm"]
+atlas = ExtResource("2_xvwc2")
+region = Rect2(24, 36, 12, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ouqlo"]
+atlas = ExtResource("2_xvwc2")
+region = Rect2(36, 36, 12, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbjc4"]
+atlas = ExtResource("2_xvwc2")
+region = Rect2(48, 36, 12, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4bst"]
+atlas = ExtResource("2_xvwc2")
+region = Rect2(48, 50, 12, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smpwq"]
+atlas = ExtResource("2_xvwc2")
+region = Rect2(36, 50, 12, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eviak"]
+atlas = ExtResource("2_xvwc2")
+region = Rect2(24, 50, 12, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvp6v"]
+atlas = ExtResource("2_xvwc2")
+region = Rect2(12, 50, 12, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcuql"]
+atlas = ExtResource("2_xvwc2")
+region = Rect2(0, 50, 12, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r5vsn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"dig",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slb6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_73jix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsmqm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ouqlo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbjc4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4bst")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smpwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eviak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gvp6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcuql")
+}],
+"loop": false,
+"name": &"out",
+"speed": 5.0
+}]
+
+[node name="MoleEnemy" instance=ExtResource("1_cypfh")]
+collision_mask = 23
+script = ExtResource("2_82tff")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_r5vsn")
+animation = &"dig"
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 0.5)
