@@ -12,4 +12,5 @@ layer_0/tile_data = PackedInt32Array(0, 0, 0, 65536, 0, 1, 131072, 0, 2, 196608,
 position = Vector2(116, 39)
 
 [node name="MoleEnemy" parent="Enemies" index="0" instance=ExtResource("2_gwktg")]
+use_parent_material = false
 position = Vector2(60, 101)
