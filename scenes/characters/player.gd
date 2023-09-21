@@ -9,7 +9,7 @@ var MAX_WALK_SPEED 	:int 	= 60
 var SPEED 			:int 	= 400
 var STOP_SPEED		:int 	= 300
 var SPEED_DEADZONE	:float 	= 2.0
-var HIT_KNOCKBACK	:int	= 8
+var HIT_KNOCKBACK	:int	= 12
 
 # Shot values
 var SHOT_HEAT		:int	= 1
@@ -44,6 +44,7 @@ var shotDirection	:Vector2= Vector2(1, 0)
 var lockMovement	:bool 	= false
 var life			:int	= INITIAL_LIFE
 var canReceiveDamage:bool	= true
+var enemiesBeingTouched:int	= 0
 
 func setLockMovement(lock:bool):
 	lockMovement = lock
@@ -58,6 +59,7 @@ func resetPlayer():
 	overheat = 0
 	shotTimer.start()
 	canReceiveDamage = true
+	enemiesBeingTouched = 0
 
 func _process(delta):
 	var dir := Vector2()
@@ -176,6 +178,10 @@ func activateInvincibility(time:float = 1.0):
 	
 	# Activate damage again
 	canReceiveDamage = true
+	
+	# Check if its colliding with enemies after invencibility
+	if enemiesBeingTouched > 0:
+		damage(1)
 
 
 func damage(dp:int = 1, pos:Vector2 = Vector2()):
@@ -198,5 +204,11 @@ func damage(dp:int = 1, pos:Vector2 = Vector2()):
 
 func _on_enemy_detector_body_entered(body):
 	if body is BasicEnemy:
+		enemiesBeingTouched += 1
 		damage(1, body.global_position)
 
+
+
+func _on_enemy_detector_body_exited(body):
+	if body is BasicEnemy:
+		enemiesBeingTouched -= 1

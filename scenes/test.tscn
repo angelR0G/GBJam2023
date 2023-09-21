@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdagbn61f4oeq"]
+[gd_scene load_steps=6 format=3 uid="uid://cdagbn61f4oeq"]
 
 [ext_resource type="Texture2D" uid="uid://ckw2y821106ln" path="res://icon.svg" id="2_ru1c1"]
 [ext_resource type="PackedScene" uid="uid://maxsekrbatm2" path="res://scenes/characters/player.tscn" id="3_4mpji"]
 [ext_resource type="PackedScene" uid="uid://dff6dx8vw2oda" path="res://scenes/characters/enemies/GhostEnemy.tscn" id="3_dxw51"]
+[ext_resource type="PackedScene" uid="uid://dsu37eqymhwg5" path="res://scenes/characters/enemies/BigEnemy.tscn" id="3_rqlor"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cu38s"]
 size = Vector2(196, 18)
@@ -75,4 +76,7 @@ texture = ExtResource("2_ru1c1")
 position = Vector2(20, 34)
 
 [node name="MoleEnemy" parent="." instance=ExtResource("3_dxw51")]
-position = Vector2(57, 67)
+position = Vector2(79, 54)
+
+[node name="BigEnemy" parent="." instance=ExtResource("3_rqlor")]
+position = Vector2(53, 84)
