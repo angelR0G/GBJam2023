@@ -37,12 +37,18 @@ func destroyShot():
 	queue_free()
 
 func _on_body_entered(body):
+	
 	# Check if collided body can receive damage
 	if body.has_method("damage"):
 		if body is Player:
 			body.damage(SHOT_DAMAGE, global_position)
 		else:
 			body.damage(SHOT_DAMAGE)
-		
+	else:
+		# Check if the parent has a damage function
+		var parent = body.get_parent()
+		if parent.has_method("damage"):
+			parent.damage(SHOT_DAMAGE)
+			
 	# Destroy the projectil
 	destroyShot()

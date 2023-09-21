@@ -5,3 +5,4 @@ func _init():
 	MAX_CHARGE	= 3.6
 	MIN_CHARGE	= 1.2
 	CHARGE_SPEED= 60
+	life		= 40
