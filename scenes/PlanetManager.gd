@@ -101,7 +101,7 @@ func _levelComplete():
 	else:
 		var chPlanet = levelScript.prev_level()
 		numLevelInPlanet-=1
-	
+	get_tree().call_group("CoolCapsule", "queue_free")
 	transitionScreen.levelNum = numLevelInPlanet
 	transitionScreen.setTransitionType(1)
 	transitionScreen.isLevelForward = lvlForw
@@ -147,11 +147,11 @@ func _createLevel(lvl):
 	var marker:Marker2D = lvl.get_node("PlayerSpawn")
 	player.position = marker.position
 	add_child(lvl)
-	await get_tree().create_timer(2).timeout
-	_spawnCoolingCapsule()
+	#await get_tree().create_timer(2).timeout
 	levelScript.loadedLevel = lvl
 	levelScript.getTotalEnemiesLevel()
 	levelScript.getCoolantSources()
+	_spawnCoolingCapsule()
 	if !lvlForw:
 		levelScript.getLadder().showLadder()
 
@@ -178,17 +178,23 @@ func _spawnCoolingCapsule():
 		if(sources.size()==0):
 			return
 		if(sources.size()==1):
-			coolingCapsule.instantiate()
+			var cC = coolingCapsule.instantiate()
 			levelScript.lastCoolantSource = 0
+			cC.position = sources[0].position
+			add_child(cC)
 			gen = true
 			return
 		var num = rng.randi_range(0, max(0, sources.size()-1))
 		if (num != levelScript.lastCoolantSource):
-			coolingCapsule.instantiate()
+			var cC = coolingCapsule.instantiate()
 			levelScript.lastCoolantSource = num
+			cC.position = sources[num].position
+			add_child(cC)
 			gen = true
+			return
 
 
 func _on_player_cool_capsule_collected():
 	await get_tree().create_timer(2).timeout
 	_spawnCoolingCapsule()
+	pass
