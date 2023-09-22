@@ -120,7 +120,7 @@ func _process(delta):
 			camera.offset = camera.offset.normalized() * MAX_CAMERA_OFFSET
 	
 	# Update player position
-	move_and_collide(velocity*delta)
+	move_and_slide()
 	
 
 func _unhandled_input(event):

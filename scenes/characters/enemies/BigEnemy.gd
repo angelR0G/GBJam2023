@@ -6,3 +6,6 @@ func _init():
 	MIN_CHARGE	= 1.2
 	CHARGE_SPEED= 60
 	life		= 40
+
+func updateCollider():
+	pass
