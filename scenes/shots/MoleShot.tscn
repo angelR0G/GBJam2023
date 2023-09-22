@@ -1,7 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://brk4ln52yi2i0"]
+[gd_scene load_steps=10 format=3 uid="uid://brk4ln52yi2i0"]
 
 [ext_resource type="PackedScene" uid="uid://d3eithk653i0u" path="res://scenes/shots/Shot.tscn" id="1_ajmxl"]
 [ext_resource type="Texture2D" uid="uid://c80smi3eqnrci" path="res://assets/characters/Mole.png" id="2_poijj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0tkos"]
+size = Vector2(4, 4)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0c8qq"]
 atlas = ExtResource("2_poijj")
@@ -51,6 +54,7 @@ SHOT_SPEED = 50.0
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_0tkos")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 position = Vector2(-1, 1)

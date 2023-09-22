@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://d3eithk653i0u"]
 
 [ext_resource type="Script" path="res://scenes/shots/Shot.gd" id="1_dc5kr"]
-[ext_resource type="Texture2D" uid="uid://d4jxxil8tsgkg" path="res://assets/characters/Astronauta.png" id="2_h4na4"]
+[ext_resource type="Texture2D" uid="uid://bp6e1qvnqb1k1" path="res://assets/characters/Astronauta.png" id="2_h4na4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_it7sl"]
-size = Vector2(4, 4)
+size = Vector2(13, 7)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xr374"]
 atlas = ExtResource("2_h4na4")
@@ -54,7 +54,7 @@ lock_rotation = true
 script = ExtResource("1_dc5kr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.5)
+position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_it7sl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -9,6 +9,7 @@ var resting		:bool	= true
 
 @onready var chargeTimer 	= $ChargeTimer
 @onready var sprite			= $AnimatedSprite2D
+@onready var collider		= $CollisionShape2D
 
 func _ready():
 	chargeTimer.start(REST_TIME)
@@ -55,6 +56,14 @@ func updateAnimation():
 			sprite.play("up")
 			
 		sprite.flip_h = false
+		
+	updateCollider()
+
+func updateCollider():
+	if sprite.animation == "right":
+		collider.shape.size = Vector2(16, 6)
+	else:
+		collider.shape.size = Vector2(6, 17)
 
 
 func _on_body_entered(body):

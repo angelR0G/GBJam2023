@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dsu37eqymhwg5"]
+[gd_scene load_steps=18 format=3 uid="uid://dsu37eqymhwg5"]
 
 [ext_resource type="PackedScene" uid="uid://cmyhf7g6n00wf" path="res://scenes/characters/enemies/ChargeEnemy.tscn" id="1_j4fvw"]
 [ext_resource type="Script" path="res://scenes/characters/enemies/BigEnemy.gd" id="2_ddctx"]
@@ -106,6 +106,9 @@ animations = [{
 "speed": 2.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rjby8"]
+size = Vector2(12, 11.5)
+
 [node name="BigEnemy" instance=ExtResource("1_j4fvw")]
 script = ExtResource("2_ddctx")
 
@@ -114,8 +117,9 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_l5n15")
 animation = &"down"
 frame = 0
-frame_progress = 0.966668
+frame_progress = 0.0
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(0, 1)
+position = Vector2(0, 2.5)
 scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_rjby8")

@@ -183,6 +183,7 @@ position = Vector2(36.5, 32.5)
 texture = ExtResource("4_smk0d")
 
 [node name="PlanetName" type="Label" parent="."]
+layout_mode = 0
 offset_left = 61.5
 offset_top = 19.5
 offset_right = 142.5

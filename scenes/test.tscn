@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://cdagbn61f4oeq"]
 
 [ext_resource type="Texture2D" uid="uid://ckw2y821106ln" path="res://icon.svg" id="2_ru1c1"]
+[ext_resource type="PackedScene" uid="uid://bqtibd7ji36gq" path="res://scenes/characters/enemies/TurretEnemy.tscn" id="3_1u4ox"]
 [ext_resource type="PackedScene" uid="uid://maxsekrbatm2" path="res://scenes/characters/player.tscn" id="3_4mpji"]
-[ext_resource type="PackedScene" uid="uid://b7m48fe1erjyf" path="res://scenes/characters/Ladder.tscn" id="3_8qs0r"]
-[ext_resource type="PackedScene" uid="uid://dki5vy1jhnawq" path="res://scenes/characters/CoolCapsule.tscn" id="4_m07q5"]
+[ext_resource type="PackedScene" uid="uid://cmyhf7g6n00wf" path="res://scenes/characters/enemies/ChargeEnemy.tscn" id="3_s6dlc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cu38s"]
 size = Vector2(196, 18)
@@ -75,8 +75,8 @@ texture = ExtResource("2_ru1c1")
 [node name="Player" parent="." instance=ExtResource("3_4mpji")]
 position = Vector2(20, 34)
 
-[node name="Ladder" parent="." instance=ExtResource("3_8qs0r")]
-position = Vector2(57, 24)
+[node name="BasicEnemy" parent="." instance=ExtResource("3_1u4ox")]
+position = Vector2(78, 64)
 
-[node name="CoolCapsule" parent="Ladder" instance=ExtResource("4_m07q5")]
-position = Vector2(22, 55)
+[node name="ChargeEnemy" parent="." instance=ExtResource("3_s6dlc")]
+position = Vector2(21, 67)
