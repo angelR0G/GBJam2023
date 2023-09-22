@@ -1,42 +1,48 @@
-[gd_scene load_steps=9 format=3 uid="uid://brk4ln52yi2i0"]
+[gd_scene load_steps=10 format=3 uid="uid://brk4ln52yi2i0"]
 
 [ext_resource type="PackedScene" uid="uid://d3eithk653i0u" path="res://scenes/shots/Shot.tscn" id="1_ajmxl"]
+[ext_resource type="Texture2D" uid="uid://ifsbxvd3epcu" path="res://assets/characters/Mole.png" id="2_fqui5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0tkos"]
 size = Vector2(4, 4)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0c8qq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukup2"]
+atlas = ExtResource("2_fqui5")
 region = Rect2(0, 32, 8, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_048qr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0elrl"]
+atlas = ExtResource("2_fqui5")
 region = Rect2(8, 32, 8, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nsupr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hplrv"]
+atlas = ExtResource("2_fqui5")
 region = Rect2(16, 32, 8, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_p60bx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocx4o"]
+atlas = ExtResource("2_fqui5")
 region = Rect2(24, 32, 8, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_r3eim"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1kig"]
+atlas = ExtResource("2_fqui5")
 region = Rect2(32, 32, 8, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kwue0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0c8qq")
+"texture": SubResource("AtlasTexture_ukup2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_048qr")
+"texture": SubResource("AtlasTexture_0elrl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nsupr")
+"texture": SubResource("AtlasTexture_hplrv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_p60bx")
+"texture": SubResource("AtlasTexture_ocx4o")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_r3eim")
+"texture": SubResource("AtlasTexture_j1kig")
 }],
 "loop": true,
 "name": &"idle",
@@ -53,4 +59,5 @@ shape = SubResource("RectangleShape2D_0tkos")
 [node name="AnimatedSprite2D" parent="." index="1"]
 position = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_kwue0")
-frame_progress = 0.134177
+frame = 4
+frame_progress = 0.53584

@@ -1,36 +1,42 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3eithk653i0u"]
+[gd_scene load_steps=10 format=3 uid="uid://d3eithk653i0u"]
 
 [ext_resource type="Script" path="res://scenes/shots/Shot.gd" id="1_dc5kr"]
+[ext_resource type="Material" uid="uid://ceoowb11r351b" path="res://resources/palette.tres" id="2_41xo6"]
+[ext_resource type="Texture2D" uid="uid://bp6e1qvnqb1k1" path="res://assets/characters/Astronauta.png" id="3_oovtp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_it7sl"]
 size = Vector2(13, 7)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xr374"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ku5o0"]
+atlas = ExtResource("3_oovtp")
 region = Rect2(0, 48, 16, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lkuq4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1rgo"]
+atlas = ExtResource("3_oovtp")
 region = Rect2(16, 48, 16, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ibdcc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1g5ts"]
+atlas = ExtResource("3_oovtp")
 region = Rect2(32, 48, 16, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7c8dc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7ixc"]
+atlas = ExtResource("3_oovtp")
 region = Rect2(48, 48, 16, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tagle"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xr374")
+"texture": SubResource("AtlasTexture_ku5o0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lkuq4")
+"texture": SubResource("AtlasTexture_q1rgo")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ibdcc")
+"texture": SubResource("AtlasTexture_1g5ts")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7c8dc")
+"texture": SubResource("AtlasTexture_u7ixc")
 }],
 "loop": true,
 "name": &"idle",
@@ -53,10 +59,11 @@ position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_it7sl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-use_parent_material = true
+material = ExtResource("2_41xo6")
 sprite_frames = SubResource("SpriteFrames_tagle")
 animation = &"idle"
-frame_progress = 0.748805
+frame = 2
+frame_progress = 0.123063
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 scale = Vector2(1, 0.6)
