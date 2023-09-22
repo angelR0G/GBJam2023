@@ -86,6 +86,7 @@ menu={
 2d_physics/layer_4="Void Colision"
 2d_physics/layer_5="Enemy"
 2d_physics/layer_6="Enemy Shot"
+2d_physics/layer_7="Cool Capsule"
 
 [rendering]
 

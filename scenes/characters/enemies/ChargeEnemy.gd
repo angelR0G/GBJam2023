@@ -1,14 +1,14 @@
 extends "res://scenes/characters/enemies/BasicEnemy.gd"
 
-const REST_TIME		:float	= 2.4
-const MAX_CHARGE	:float	= 1.2
-const MIN_CHARGE	:float	= 0.7
-const CHARGE_SPEED	:int	= 120
+var REST_TIME		:float	= 2.4
+var MAX_CHARGE		:float	= 1.2
+var MIN_CHARGE		:float	= 0.7
+var CHARGE_SPEED	:int	= 120
 
 var resting		:bool	= true
 
-@onready var chargeTimer = $ChargeTimer
-
+@onready var chargeTimer 	= $ChargeTimer
+@onready var sprite			= $AnimatedSprite2D
 
 func _ready():
 	chargeTimer.start(REST_TIME)
@@ -27,12 +27,34 @@ func _on_charge_timer_timeout():
 			
 			# Prevent infinite loops
 			tries -= 1
+			
+		updateAnimation()
 	else:
 		# Stop moving for a while
 		setEnemyVelocity()
+		sprite.stop()
 		chargeTimer.start(REST_TIME)
 		
 	resting = not resting
+
+func updateAnimation():
+	# Check movement speed to change animation
+	if abs(enemyVelocity.x) >= abs(enemyVelocity.y):
+		# Flip sprite depending on direction
+		if enemyVelocity.x >= 0:
+			sprite.flip_h = false
+		else:
+			sprite.flip_h = true
+		# Play animation
+		sprite.play("right")
+	else:
+		# Play proper animation
+		if enemyVelocity.y >= 0:
+			sprite.play("down")
+		else:
+			sprite.play("up")
+			
+		sprite.flip_h = false
 
 
 func _on_body_entered(body):
