@@ -231,6 +231,11 @@ func _on_objects_detector_body_entered(body):
 	if body is BasicEnemy:
 		enemiesBeingTouched += 1
 		damage(1, body.global_position)
+	elif body is Shot && body.get_collision_layer_value(6):
+		damage(1, body.global_position)
+		if body.has_method("destroyShot"):
+			body.destroyShot()
+		
 
 
 func _on_objects_detector_body_exited(body):

@@ -121,10 +121,10 @@ script = ExtResource("1_4mgrp")
 position = Vector2(-0.5, 2.5)
 shape = SubResource("RectangleShape2D_4vo1a")
 
-[node name="EnemyDetector" type="Area2D" parent="."]
+[node name="ObjectDetector" type="Area2D" parent="."]
 collision_mask = 60
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectDetector"]
 position = Vector2(-0.5, 2.5)
 shape = SubResource("RectangleShape2D_tk2v5")
 
@@ -155,7 +155,7 @@ position_smoothing_speed = 10.0
 
 [connection signal="heat_changed" from="." to="hud" method="updateHeat"]
 [connection signal="life_changed" from="." to="hud" method="updateLife"]
-[connection signal="area_entered" from="EnemyDetector" to="." method="_on_objects_detector_area_entered"]
-[connection signal="body_entered" from="EnemyDetector" to="." method="_on_objects_detector_body_entered"]
-[connection signal="body_exited" from="EnemyDetector" to="." method="_on_objects_detector_body_exited"]
+[connection signal="area_entered" from="ObjectDetector" to="." method="_on_objects_detector_area_entered"]
+[connection signal="body_entered" from="ObjectDetector" to="." method="_on_objects_detector_body_entered"]
+[connection signal="body_exited" from="ObjectDetector" to="." method="_on_objects_detector_body_exited"]
 [connection signal="timeout" from="CoolingTimer" to="." method="gunCooling"]
