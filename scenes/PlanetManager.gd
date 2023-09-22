@@ -1,11 +1,15 @@
 extends Node2D
 
-var currentPlanet:int = 0
 var levelScript = preload("res://scripts/level.gd").new()
+var lastLevel	= preload("res://scenes/levels/LevelEnd.tscn")
+var currentPlanet:int = 0
 var levelMap:Array[PackedScene]
-var lastLevel = preload("res://scenes/levels/LevelEnd.tscn")
 var isLastLevel:bool 	= false
 var chaningPlanet:bool 	= false
+var createNewMap:bool   = false
+var numLevelInPlanet:int = 1
+var worldMaterial:ShaderMaterial
+
 #Signal variables
 var lvlForw:bool = true
 
@@ -16,32 +20,47 @@ var lvlForw:bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#disable player
 	player.hide()
 	player.showHud(false)
 	player.setLockMovement(true)
 	player.setLockCamera(true)
-	levelSelection.planetSelected.connect(Callable(self, "newMap"), currentPlanet)
+	
+	#store world material to change palette
+	worldMaterial = get_material()
+	
+	#connect signals
+	levelSelection.planetSelected.connect(Callable(self, "_storePlanetSelection"), currentPlanet)
 	levelScript.levelCompleted.connect(Callable(self, "_levelComplete"), lvlForw)
 	levelScript.mapCompleted.connect(Callable(self, "_mapCompleted"))
 	
-	
-func newMap(cPlanet):
-	levelSelection.setLockControls(true)
+func _storePlanetSelection(cPlanet):
 	currentPlanet = cPlanet
+	createNewMap  = true
+	worldMaterial.set_shader_parameter("replacePalette", 
+				PlanetContainer.planets[currentPlanet].planet.planet_palette)
+	transitionScreen.setTextPalette(PlanetContainer.planets[currentPlanet].planet.planet_palette)
+	transitionScreen.setCurrentPalette(PlanetContainer.planets[currentPlanet].planet.planet_palette)
+	transitionScreen.setTransitionType(1)
+	transitionScreen.transition()
+	
+func newMap():
+	levelSelection.setLockControls(true)
 	levelMap = levelScript.generateMap(PlanetContainer.planets[currentPlanet].planet)
 	renderLevel()
-	transitionScreen.transition()
 	player.show()
 	player.showHud(true)
 	player.setLockMovement(false)
 	player.setLockCamera(false)
 
 func _mapCompleted():
-	print(currentPlanet)
+	transitionScreen.setTransitionType(2)
 	chaningPlanet = true
 	PlanetContainer.planets[currentPlanet].completed = true
 	if levelScript.loadedLevel != null:
 		levelScript.loadedLevel.call_deferred("queue_free")
+	levelMap = []
+	numLevelInPlanet = 1
 	player.hide()
 	player.setLockMovement(true)
 	player.setLockCamera(true)
@@ -62,9 +81,13 @@ func _process(_delta):
 func _levelComplete(dir:bool):
 	if dir:
 		isLastLevel = levelScript.next_level()
+		numLevelInPlanet+=1
 	else:
 		var chPlanet = levelScript.prev_level()
-	transitionScreen.setTransitionPalette(PlanetContainer.planets[currentPlanet].planet.planet_palette)
+		numLevelInPlanet-=1
+	
+	transitionScreen.levelNum = numLevelInPlanet
+	transitionScreen.setTransitionType(1)
 	transitionScreen.transition()
 	player.setLockMovement(true)
 	player.showHud(false)
@@ -86,8 +109,7 @@ func renderLevel():
 		levelScript.loadedLevel.call_deferred("queue_free")
 	
 	#Change world palette
-	var mat = get_material()
-	mat.set_shader_parameter("replacePalette", PlanetContainer.planets[currentPlanet].planet.planet_palette);
+	worldMaterial.set_shader_parameter("replacePalette", PlanetContainer.planets[currentPlanet].planet.planet_palette)
 	if (levelScript.lastLevel):
 		_createLastLevel()
 	else:
@@ -104,7 +126,12 @@ func _createLevel(lvl):
 	levelScript.loadedLevel = lvl
 	levelScript.getTotalEnemiesLevel()
 
-func _on_transition_screen_fade_in_ended():
+func _on_transition_screen_transition_ended():
+	if (createNewMap && levelMap.size() <= 0):
+		newMap()
+		createNewMap = false
+	player.setLockMovement(false)
+	
 	if !chaningPlanet:
 		renderLevel()
 	else:
@@ -112,5 +139,4 @@ func _on_transition_screen_fade_in_ended():
 		chaningPlanet = false
 
 
-func _on_transition_screen_fade_out_ended():
-	player.setLockMovement(false)
+

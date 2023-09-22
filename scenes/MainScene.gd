@@ -14,6 +14,7 @@ var planetManagerScene	:= preload("res://scenes/PlanetManager.tscn")
 var loadedScene:Node	= null
 
 func _ready():
+	#Engine.set_time_scale(0.3)
 	updateWindowSize()
 	loadMainMenu()
 

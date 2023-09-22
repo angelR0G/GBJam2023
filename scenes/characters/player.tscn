@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://maxsekrbatm2"]
 
 [ext_resource type="Script" path="res://scenes/characters/player.gd" id="1_4mgrp"]
-[ext_resource type="Texture2D" uid="uid://bp6e1qvnqb1k1" path="res://assets/characters/Astronauta.png" id="2_p7cuk"]
+[ext_resource type="Texture2D" uid="uid://d4jxxil8tsgkg" path="res://assets/characters/Astronauta.png" id="2_p7cuk"]
 [ext_resource type="PackedScene" uid="uid://da5h5g70t25xc" path="res://scenes/characters/hud.tscn" id="3_kmukc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4vo1a"]
