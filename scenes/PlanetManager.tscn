@@ -16,8 +16,8 @@ use_parent_material = true
 position = Vector2(0, -1)
 
 [node name="TransitionScreen" parent="." instance=ExtResource("6_u5f8i")]
+visible = false
 
 [node name="LevelSelection" parent="." instance=ExtResource("5_b4sqp")]
 
-[connection signal="fadeInEnded" from="TransitionScreen" to="." method="_on_transition_screen_fade_in_ended"]
-[connection signal="fadeOutEnded" from="TransitionScreen" to="." method="_on_transition_screen_fade_out_ended"]
+[connection signal="transitionEnded" from="TransitionScreen" to="." method="_on_transition_screen_transition_ended"]

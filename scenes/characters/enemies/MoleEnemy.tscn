@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://21c3cd4vt6wo" path="res://scenes/characters/enemies/BasicEnemy.tscn" id="1_fjv1u"]
 [ext_resource type="Script" path="res://scenes/characters/enemies/MoleEnemy.gd" id="2_5idro"]
-[ext_resource type="Texture2D" uid="uid://ifsbxvd3epcu" path="res://assets/characters/Mole.png" id="3_de4c2"]
+[ext_resource type="Texture2D" uid="uid://c80smi3eqnrci" path="res://assets/characters/Mole.png" id="3_de4c2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bc6v1"]
 atlas = ExtResource("3_de4c2")
@@ -135,7 +135,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4j30y"]
-size = Vector2(10, 12)
+size = Vector2(10, 11)
 
 [node name="MoleEnemy" instance=ExtResource("1_fjv1u")]
 script = ExtResource("2_5idro")
@@ -145,7 +145,7 @@ sprite_frames = SubResource("SpriteFrames_f7003")
 frame_progress = 0.758813
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(0, 1)
+position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_4j30y")
 
 [node name="DigTimer" type="Timer" parent="." index="2"]

@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://21c3cd4vt6wo"]
+[gd_scene load_steps=5 format=3 uid="uid://21c3cd4vt6wo"]
 
+[ext_resource type="Material" uid="uid://ceoowb11r351b" path="res://resources/palette.tres" id="1_334nl"]
 [ext_resource type="Script" path="res://scenes/characters/enemies/BasicEnemy.gd" id="1_go03f"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ghnjt"]
@@ -14,7 +15,6 @@ animations = [{
 size = Vector2(10, 9)
 
 [node name="BasicEnemy" type="RigidBody2D"]
-use_parent_material = true
 collision_layer = 16
 collision_mask = 31
 gravity_scale = 0.0
@@ -25,7 +25,7 @@ lock_rotation = true
 script = ExtResource("1_go03f")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-use_parent_material = true
+material = ExtResource("1_334nl")
 sprite_frames = SubResource("SpriteFrames_ghnjt")
 animation = &"idle"
 

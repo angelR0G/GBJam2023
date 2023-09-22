@@ -63,7 +63,7 @@ func _selectRandomPlanets(num:int):
 			options.append(PlanetPos.new(PlanetContainer.planets[rand].planet, rand))
 
 func _checkAvailablePlanets() -> int:
-	var avPlanets:int
+	var avPlanets:int=0
 	for p in PlanetContainer.planets:
 		if (!p.completed):
 			avPlanets+=1
