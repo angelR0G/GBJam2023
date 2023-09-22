@@ -28,9 +28,10 @@ var NO_CORE_COOL_INITIAL	:float	= 2.0
 var NO_CORE_COOL_INTERVAL	:float	= 0.8
 
 # Camera
-var CAMERA_SPEED	:float	= 40.0
-var MAX_CAMERA_OFFSET:float	= 20.0
-var OFFSET_DEADZONE	:float	= 1.0
+var CAMERA_SPEED		:float	= 40.0
+var MAX_CAMERA_OFFSET	:float	= 20.0
+var OFFSET_DEADZONE		:float	= 1.0
+var CAMERA_LIMIT_OFFSET	:int	= 6
 
 # Other
 var INITIAL_LIFE	:int	= 16
@@ -64,10 +65,12 @@ func showHud(visibility:bool):
 	
 
 func resetPlayer():
-	overheat = 0
-	shotTimer.start()
-	canReceiveDamage = true
+	overheat 			= 0
+	canReceiveDamage 	= true
 	enemiesBeingTouched = 0
+	camera.limit_left 	= -CAMERA_LIMIT_OFFSET
+	camera.limit_top	= -CAMERA_LIMIT_OFFSET
+	shotTimer.start()
 
 func _process(delta):
 	var dir := Vector2()
@@ -201,6 +204,10 @@ func toggleCoreStats(hasCore:bool):
 		COOL_INITIAL_TIME	= NO_CORE_COOL_INITIAL
 		COOL_INTERVAL_TIME 	= NO_CORE_COOL_INTERVAL
 	
+
+func updateCameraLimit(limits:Vector2):
+	camera.limit_right 	= max(limits.x, 10) + CAMERA_LIMIT_OFFSET
+	camera.limit_bottom = max(limits.y, 10) + CAMERA_LIMIT_OFFSET
 
 func damage(dp:int = 1, pos:Vector2 = Vector2()):
 	#Check if can receive damage

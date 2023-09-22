@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://maxsekrbatm2"]
 
 [ext_resource type="Script" path="res://scenes/characters/player.gd" id="1_4mgrp"]
-[ext_resource type="Texture2D" uid="uid://d4jxxil8tsgkg" path="res://assets/characters/Astronauta.png" id="2_p7cuk"]
+[ext_resource type="Texture2D" uid="uid://bp6e1qvnqb1k1" path="res://assets/characters/Astronauta.png" id="2_p7cuk"]
 [ext_resource type="PackedScene" uid="uid://da5h5g70t25xc" path="res://scenes/characters/hud.tscn" id="3_kmukc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4vo1a"]
@@ -143,10 +143,10 @@ autostart = true
 one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-limit_left = 0
-limit_top = 0
-limit_right = 500
-limit_bottom = 500
+limit_left = -5
+limit_top = -5
+limit_right = 505
+limit_bottom = 505
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
@@ -155,5 +155,7 @@ position_smoothing_speed = 10.0
 
 [connection signal="heat_changed" from="." to="hud" method="updateHeat"]
 [connection signal="life_changed" from="." to="hud" method="updateLife"]
-[connection signal="body_entered" from="EnemyDetector" to="." method="_on_enemy_detector_body_entered"]
+[connection signal="area_entered" from="EnemyDetector" to="." method="_on_objects_detector_area_entered"]
+[connection signal="body_entered" from="EnemyDetector" to="." method="_on_objects_detector_body_entered"]
+[connection signal="body_exited" from="EnemyDetector" to="." method="_on_objects_detector_body_exited"]
 [connection signal="timeout" from="CoolingTimer" to="." method="gunCooling"]

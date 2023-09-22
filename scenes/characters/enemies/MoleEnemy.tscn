@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://21c3cd4vt6wo" path="res://scenes/characters/enemies/BasicEnemy.tscn" id="1_fjv1u"]
 [ext_resource type="Script" path="res://scenes/characters/enemies/MoleEnemy.gd" id="2_5idro"]
-[ext_resource type="Texture2D" uid="uid://c80smi3eqnrci" path="res://assets/characters/Mole.png" id="3_de4c2"]
+[ext_resource type="Texture2D" uid="uid://ifsbxvd3epcu" path="res://assets/characters/Mole.png" id="3_de4c2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bc6v1"]
 atlas = ExtResource("3_de4c2")
