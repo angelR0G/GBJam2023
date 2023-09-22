@@ -16,6 +16,8 @@ var isLevelForward:bool = true
 
 var currentPalette:GradientTexture1D
 
+func resetTransition():
+	levelNum = 1
 
 func setCurrentPalette(palette:GradientTexture1D):
 	currentPalette = palette
@@ -53,12 +55,12 @@ func transition():
 		animationPlayer.play("bottom_level")
 		await animationPlayer.animation_finished
 	else:
-		animationPlayer.play("bottom_level")
+		animationPlayer.play("bottom_level_return")
 		await animationPlayer.animation_finished
 		
 		await get_tree().create_timer(1).timeout
 		
-		animationPlayer.play("top_level")
+		animationPlayer.play("top_level_return")
 		await animationPlayer.animation_finished
 	
 	animationPlayer.play("fade_in")

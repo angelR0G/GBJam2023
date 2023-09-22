@@ -31,7 +31,7 @@ func _ready():
 	
 	#connect signals
 	levelSelection.planetSelected.connect(Callable(self, "_storePlanetSelection"), currentPlanet)
-	levelScript.levelCompleted.connect(Callable(self, "_levelComplete"), lvlForw)
+	levelScript.levelCompleted.connect(Callable(self, "_levelLadder"), lvlForw)
 	levelScript.mapCompleted.connect(Callable(self, "_mapCompleted"))
 	
 func _storePlanetSelection(cPlanet):
@@ -45,6 +45,7 @@ func _storePlanetSelection(cPlanet):
 	transitionScreen.transition()
 	
 func newMap():
+	
 	levelSelection.setLockControls(true)
 	levelMap = levelScript.generateMap(PlanetContainer.planets[currentPlanet].planet)
 	renderLevel()
@@ -61,7 +62,10 @@ func _mapCompleted():
 		levelScript.loadedLevel.call_deferred("queue_free")
 	levelMap = []
 	numLevelInPlanet = 1
+	
+	transitionScreen.resetTransition()
 	player.hide()
+	player.showHud(false)
 	player.setLockMovement(true)
 	player.setLockCamera(true)
 	
@@ -71,15 +75,26 @@ func _mapCompleted():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if Input.is_action_just_pressed("Prev_level"):
-		_levelComplete(false)
+		lvlForw = false
+		_levelComplete()
 		
 	if Input.is_action_just_pressed("Next_level"):
-		_levelComplete(true)
+		lvlForw = true
+		_levelComplete()
 	
+	
+
 #When a level is completed
 #dir indicates if player is going forward or backwards through the map
-func _levelComplete(dir:bool):
-	if dir:
+func _levelLadder(dir:bool):
+	lvlForw = dir
+	var ladder = levelScript.getLadder()
+	ladder.openLadder(dir)
+	ladder.connect("ladder_entered", Callable(self, "_levelComplete"))
+
+
+func _levelComplete():
+	if lvlForw:
 		isLastLevel = levelScript.next_level()
 		numLevelInPlanet+=1
 	else:
@@ -88,7 +103,7 @@ func _levelComplete(dir:bool):
 	
 	transitionScreen.levelNum = numLevelInPlanet
 	transitionScreen.setTransitionType(1)
-	transitionScreen.isLevelForward = dir
+	transitionScreen.isLevelForward = lvlForw
 	transitionScreen.transition()
 	player.setLockMovement(true)
 	player.showHud(false)
@@ -102,7 +117,14 @@ func _createLastLevel():
 	var marker:Marker2D = lvlLast.get_node("PlayerSpawn")
 	player.position = marker.position
 	add_child(lvlLast)
+	var core:Node2D = lvlLast.find_child("*Core*")
+	core.connect("core_collected", Callable(self, "_coreCollected"))
 	levelScript.loadedLevel = lvlLast
+
+func _coreCollected():
+	lvlForw = false
+	player.toggleCoreStats(!lvlForw)
+	_levelComplete()
 
 func renderLevel():
 	#Remove previous level
@@ -126,6 +148,8 @@ func _createLevel(lvl):
 	add_child(lvl)
 	levelScript.loadedLevel = lvl
 	levelScript.getTotalEnemiesLevel()
+	if !lvlForw:
+		levelScript.getLadder().showLadder()
 
 func _on_transition_screen_transition_ended():
 	if (createNewMap && levelMap.size() <= 0):
@@ -135,7 +159,10 @@ func _on_transition_screen_transition_ended():
 	
 	if !chaningPlanet:
 		renderLevel()
+		player.showHud(true)
 	else:
+		lvlForw = true
+		transitionScreen.isLevelForward = lvlForw
 		levelSelection.show()
 		chaningPlanet = false
 

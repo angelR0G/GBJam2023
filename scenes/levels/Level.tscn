@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dr7dlqnprfltg"]
+[gd_scene load_steps=5 format=3 uid="uid://dr7dlqnprfltg"]
 
 [ext_resource type="TileSet" uid="uid://cgmdqrfhjvw75" path="res://resources/tileset.tres" id="1_7ac3w"]
+[ext_resource type="PackedScene" uid="uid://b7m48fe1erjyf" path="res://scenes/characters/Ladder.tscn" id="2_iwxjc"]
 
 [sub_resource type="Gradient" id="Gradient_c8ryf"]
 
@@ -17,6 +18,21 @@ use_parent_material = true
 use_parent_material = true
 tile_set = ExtResource("1_7ac3w")
 format = 2
+layer_0/name = "Back"
+layer_1/name = "Middle"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = ""
+layer_2/enabled = true
+layer_2/modulate = Color(1, 1, 1, 1)
+layer_2/y_sort_enabled = false
+layer_2/y_sort_origin = 0
+layer_2/z_index = 0
+layer_2/tile_data = PackedInt32Array()
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
 
@@ -25,7 +41,9 @@ z_index = -1
 use_parent_material = true
 color = Color(0, 0, 0, 1)
 texture = SubResource("GradientTexture2D_b3wsl")
-polygon = PackedVector2Array(-67, -20, 469, -20, 470, 396, -67, 398)
+polygon = PackedVector2Array(-630, -451, 1041, -454, 1043, 719, -632, 725)
 
 [node name="Enemies" type="Node2D" parent="."]
 use_parent_material = true
+
+[node name="Ladder" parent="." instance=ExtResource("2_iwxjc")]

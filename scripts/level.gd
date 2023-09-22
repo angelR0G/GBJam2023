@@ -29,6 +29,9 @@ func getTotalEnemiesLevel():
 	enemyNum = enemies.size()
 	for e in enemies:
 		e.connect("enemyDead", Callable(self, "_enemyDead"))
+		
+func getLadder() -> Node2D:
+	return loadedLevel.get_node("Ladder")
 
 func _enemyDead():
 	enemyNum -= 1
