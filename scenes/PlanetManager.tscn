@@ -20,4 +20,5 @@ visible = false
 
 [node name="LevelSelection" parent="." instance=ExtResource("5_b4sqp")]
 
+[connection signal="cool_capsule_collected" from="Player" to="." method="_on_player_cool_capsule_collected"]
 [connection signal="transitionEnded" from="TransitionScreen" to="." method="_on_transition_screen_transition_ended"]

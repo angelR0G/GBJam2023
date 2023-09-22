@@ -12,6 +12,10 @@ var lastLevelC:bool		= false
 var levelForward:bool 	= true
 var enemyNum:int		= 0
 
+#Cooling capsule
+var coolantSources:Array[Node]
+var lastCoolantSource:int
+
 #Selects random levels from the planet level pool
 func generateMap(planet:Planet) -> Array[PackedScene]:
 	var rng = RandomNumberGenerator.new()
@@ -29,6 +33,10 @@ func getTotalEnemiesLevel():
 	enemyNum = enemies.size()
 	for e in enemies:
 		e.connect("enemyDead", Callable(self, "_enemyDead"))
+		
+		
+func getCoolantSources():
+	coolantSources = loadedLevel.get_node("Coolant").get_children()
 		
 func getLadder() -> Node2D:
 	return loadedLevel.get_node("Ladder")

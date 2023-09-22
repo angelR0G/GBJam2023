@@ -1,29 +1,23 @@
-[gd_scene load_steps=10 format=3 uid="uid://brk4ln52yi2i0"]
+[gd_scene load_steps=9 format=3 uid="uid://brk4ln52yi2i0"]
 
 [ext_resource type="PackedScene" uid="uid://d3eithk653i0u" path="res://scenes/shots/Shot.tscn" id="1_ajmxl"]
-[ext_resource type="Texture2D" uid="uid://c80smi3eqnrci" path="res://assets/characters/Mole.png" id="2_poijj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0tkos"]
 size = Vector2(4, 4)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0c8qq"]
-atlas = ExtResource("2_poijj")
 region = Rect2(0, 32, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_048qr"]
-atlas = ExtResource("2_poijj")
 region = Rect2(8, 32, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nsupr"]
-atlas = ExtResource("2_poijj")
 region = Rect2(16, 32, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p60bx"]
-atlas = ExtResource("2_poijj")
 region = Rect2(24, 32, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r3eim"]
-atlas = ExtResource("2_poijj")
 region = Rect2(32, 32, 8, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kwue0"]

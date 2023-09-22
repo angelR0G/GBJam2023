@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dr7dlqnprfltg"]
+[gd_scene load_steps=6 format=3 uid="uid://dr7dlqnprfltg"]
 
 [ext_resource type="TileSet" uid="uid://cgmdqrfhjvw75" path="res://resources/tileset.tres" id="1_7ac3w"]
+[ext_resource type="Material" uid="uid://ceoowb11r351b" path="res://resources/palette.tres" id="1_0326h"]
 [ext_resource type="PackedScene" uid="uid://b7m48fe1erjyf" path="res://scenes/characters/Ladder.tscn" id="2_iwxjc"]
 
 [sub_resource type="Gradient" id="Gradient_c8ryf"]
@@ -12,7 +13,7 @@ height = 2
 fill_to = Vector2(0, 0)
 
 [node name="Level" type="Node2D"]
-use_parent_material = true
+material = ExtResource("1_0326h")
 
 [node name="TileMap" type="TileMap" parent="."]
 use_parent_material = true
@@ -26,7 +27,7 @@ layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
-layer_2/name = ""
+layer_2/name = "Front"
 layer_2/enabled = true
 layer_2/modulate = Color(1, 1, 1, 1)
 layer_2/y_sort_enabled = false
@@ -47,3 +48,5 @@ polygon = PackedVector2Array(-630, -451, 1041, -454, 1043, 719, -632, 725)
 use_parent_material = true
 
 [node name="Ladder" parent="." instance=ExtResource("2_iwxjc")]
+
+[node name="Coolant" type="Node2D" parent="."]

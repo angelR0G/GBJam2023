@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bqc2se1sraa8n" path="res://scenes/characters/enemies/MoleEnemy.tscn" id="1_cypfh"]
 [ext_resource type="Script" path="res://scenes/characters/enemies/GhostEnemy.gd" id="2_82tff"]
-[ext_resource type="Texture2D" uid="uid://c3ewkg11iea40" path="res://assets/characters/Charger.png" id="2_xvwc2"]
+[ext_resource type="Texture2D" uid="uid://c5ogp7rp47m3u" path="res://assets/characters/Charger.png" id="2_xvwc2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_slb6v"]
 atlas = ExtResource("2_xvwc2")
@@ -101,8 +101,6 @@ collision_mask = 23
 script = ExtResource("2_82tff")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
-material = null
-use_parent_material = true
 sprite_frames = SubResource("SpriteFrames_r5vsn")
 frame = 2
 frame_progress = 0.556485

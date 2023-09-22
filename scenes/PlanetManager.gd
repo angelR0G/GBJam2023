@@ -9,6 +9,7 @@ var chaningPlanet:bool 	= false
 var createNewMap:bool   = false
 var numLevelInPlanet:int = 1
 var worldMaterial:ShaderMaterial
+var coolingCapsule = preload("res://scenes/characters/CoolCapsule.tscn")
 
 #Signal variables
 var lvlForw:bool = true
@@ -146,8 +147,11 @@ func _createLevel(lvl):
 	var marker:Marker2D = lvl.get_node("PlayerSpawn")
 	player.position = marker.position
 	add_child(lvl)
+	await get_tree().create_timer(2).timeout
+	_spawnCoolingCapsule()
 	levelScript.loadedLevel = lvl
 	levelScript.getTotalEnemiesLevel()
+	levelScript.getCoolantSources()
 	if !lvlForw:
 		levelScript.getLadder().showLadder()
 
@@ -166,5 +170,25 @@ func _on_transition_screen_transition_ended():
 		levelSelection.show()
 		chaningPlanet = false
 
+func _spawnCoolingCapsule():
+	var sources = levelScript.coolantSources
+	var gen:bool = false
+	var rng = RandomNumberGenerator.new()
+	while gen == false:
+		if(sources.size()==0):
+			return
+		if(sources.size()==1):
+			coolingCapsule.instantiate()
+			levelScript.lastCoolantSource = 0
+			gen = true
+			return
+		var num = rng.randi_range(0, max(0, sources.size()-1))
+		if (num != levelScript.lastCoolantSource):
+			coolingCapsule.instantiate()
+			levelScript.lastCoolantSource = num
+			gen = true
 
 
+func _on_player_cool_capsule_collected():
+	await get_tree().create_timer(2).timeout
+	_spawnCoolingCapsule()
