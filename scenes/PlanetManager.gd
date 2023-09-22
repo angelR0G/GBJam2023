@@ -88,6 +88,7 @@ func _levelComplete(dir:bool):
 	
 	transitionScreen.levelNum = numLevelInPlanet
 	transitionScreen.setTransitionType(1)
+	transitionScreen.isLevelForward = dir
 	transitionScreen.transition()
 	player.setLockMovement(true)
 	player.showHud(false)

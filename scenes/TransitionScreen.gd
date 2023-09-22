@@ -12,11 +12,10 @@ signal transitionEnded
 @onready var tiles:TileMap						= $TileMap
 
 var levelNum:int 		= 1
+var isLevelForward:bool = true
 
 var currentPalette:GradientTexture1D
 
-var currentAnimation = 0
-var transitionOrderForward:Array[String]  = ["fade_in", "fade_out", "top_level", "bottom_level", "fade_in", "fade_out"]
 
 func setCurrentPalette(palette:GradientTexture1D):
 	currentPalette = palette
@@ -45,12 +44,22 @@ func transition():
 	animationPlayer.play("fade_out")
 	await animationPlayer.animation_finished
 	
-	animationPlayer.play("top_level")
-	await animationPlayer.animation_finished
-	await get_tree().create_timer(1).timeout
-	
-	animationPlayer.play("bottom_level")
-	await animationPlayer.animation_finished
+	if(isLevelForward):
+		animationPlayer.play("top_level")
+		await animationPlayer.animation_finished
+		
+		await get_tree().create_timer(1).timeout
+		
+		animationPlayer.play("bottom_level")
+		await animationPlayer.animation_finished
+	else:
+		animationPlayer.play("bottom_level")
+		await animationPlayer.animation_finished
+		
+		await get_tree().create_timer(1).timeout
+		
+		animationPlayer.play("top_level")
+		await animationPlayer.animation_finished
 	
 	animationPlayer.play("fade_in")
 	await animationPlayer.animation_finished
