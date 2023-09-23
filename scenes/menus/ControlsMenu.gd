@@ -8,6 +8,8 @@ var showGB:bool 	= true
 # Escene elements
 var selectArrow
 var controls
+@onready var selectSound	:= $SelectSound
+@onready var moveSound		:= $MoveSound
 
 func _ready():
 	selectArrow 	= $SelectArrow
@@ -17,10 +19,11 @@ func _ready():
 
 func _process(_delta):
 	if Input.is_action_just_pressed("left") || Input.is_action_just_pressed("right"):
+		moveSound.play()
 		showGB = not showGB
 		updateControls()
 		
-	if Input.is_action_just_pressed("shot") || Input.is_action_just_pressed("menu"):
+	elif Input.is_action_just_pressed("shot") || Input.is_action_just_pressed("menu"):
 		exitControls()
 
 
@@ -44,4 +47,8 @@ func resetControls():
 	
 
 func exitControls():
+	# Play sound
+	selectSound.play()
+	await selectSound.finished
+	
 	go_back.emit()

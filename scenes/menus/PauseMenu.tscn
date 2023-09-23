@@ -1,9 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://bj6l5w7yn7xaq"]
+[gd_scene load_steps=22 format=3 uid="uid://bj6l5w7yn7xaq"]
 
 [ext_resource type="Script" path="res://scenes/menus/PauseMenu.gd" id="1_3a4f7"]
-[ext_resource type="Texture2D" uid="uid://bm8l2f34rdge0" path="res://assets/planets/planeta1.png" id="4_smk0d"]
-[ext_resource type="FontFile" uid="uid://cginr66v42up3" path="res://assets/DigitalDisco.ttf" id="5_o2507"]
-[ext_resource type="Texture2D" uid="uid://bm7g5g6p5u1lw" path="res://assets/menu_ui/ui.png" id="6_i1s4v"]
+[ext_resource type="Texture2D" uid="uid://c40t88vqhce77" path="res://assets/planets/planeta1.png" id="4_smk0d"]
+[ext_resource type="AudioStream" uid="uid://cwfxiq4t1jf6y" path="res://assets/sounds/Menu_Select.mp3" id="5_1aclg"]
+[ext_resource type="FontFile" uid="uid://brwymiuuq4cs6" path="res://assets/DigitalDisco.ttf" id="5_o2507"]
+[ext_resource type="AudioStream" uid="uid://scvnw4cbyle" path="res://assets/sounds/Menu_Move.mp3" id="6_gkn84"]
+[ext_resource type="Texture2D" uid="uid://cfgtxvi3qcjr" path="res://assets/menu_ui/ui.png" id="6_i1s4v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c6mkc"]
 atlas = ExtResource("6_i1s4v")
@@ -208,5 +210,13 @@ scale = Vector2(3, 3)
 texture = ExtResource("6_i1s4v")
 region_enabled = true
 region_rect = Rect2(16, 24, 8, 8)
+
+[node name="SelectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_1aclg")
+volume_db = -6.0
+
+[node name="MoveSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_gkn84")
+volume_db = -12.0
 
 [connection signal="timeout" from="LerpTimer" to="." method="_on_lerp_timer_timeout"]

@@ -9,6 +9,7 @@ var selected:int 	= 0
 var selectArrow
 var creditsTimer
 var labels
+@onready var selectSound	:= $SelectSound
 
 func _ready():
 	selectArrow 	= $SelectArrow
@@ -42,6 +43,10 @@ func resetCredits():
 	
 
 func exitCredits():
+	# Play sound
+	selectSound.play()
+	await selectSound.finished
+	
 	go_back.emit()
 
 

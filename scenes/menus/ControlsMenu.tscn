@@ -1,13 +1,15 @@
-[gd_scene load_steps=40 format=3 uid="uid://b7iahmxmwyd5v"]
+[gd_scene load_steps=42 format=3 uid="uid://b7iahmxmwyd5v"]
 
 [ext_resource type="Script" path="res://scenes/menus/ControlsMenu.gd" id="1_a8vi7"]
-[ext_resource type="Texture2D" uid="uid://bw5olk7h2mum" path="res://assets/menu_ui/MainMenuBackground.jpg" id="2_3cjno"]
-[ext_resource type="Texture2D" uid="uid://d012e6neuwocw" path="res://assets/menu_ui/stars.png" id="3_ajmtv"]
+[ext_resource type="Texture2D" uid="uid://2voini2y805o" path="res://assets/menu_ui/MainMenuBackground.jpg" id="2_3cjno"]
+[ext_resource type="Texture2D" uid="uid://cbfdhiwfsd8od" path="res://assets/menu_ui/stars.png" id="3_ajmtv"]
 [ext_resource type="Script" path="res://scenes/menus/backgroundStars.gd" id="3_k3jjr"]
-[ext_resource type="FontFile" uid="uid://cginr66v42up3" path="res://assets/DigitalDisco.ttf" id="4_v5yvh"]
-[ext_resource type="Texture2D" uid="uid://gnb1hpkupsfb" path="res://assets/menu_ui/PCControls.png" id="5_0avy1"]
-[ext_resource type="Texture2D" uid="uid://bm7g5g6p5u1lw" path="res://assets/menu_ui/ui.png" id="5_66lc1"]
-[ext_resource type="Texture2D" uid="uid://b7p4iwt3fev23" path="res://assets/menu_ui/GBControls.png" id="6_0j35p"]
+[ext_resource type="FontFile" uid="uid://brwymiuuq4cs6" path="res://assets/DigitalDisco.ttf" id="4_v5yvh"]
+[ext_resource type="Texture2D" uid="uid://dc71x5q11cm6p" path="res://assets/menu_ui/PCControls.png" id="5_0avy1"]
+[ext_resource type="Texture2D" uid="uid://cfgtxvi3qcjr" path="res://assets/menu_ui/ui.png" id="5_66lc1"]
+[ext_resource type="Texture2D" uid="uid://df2nm0jrxmgcs" path="res://assets/menu_ui/GBControls.png" id="6_0j35p"]
+[ext_resource type="AudioStream" uid="uid://cwfxiq4t1jf6y" path="res://assets/sounds/Menu_Select.mp3" id="9_ctn53"]
+[ext_resource type="AudioStream" uid="uid://scvnw4cbyle" path="res://assets/sounds/Menu_Move.mp3" id="10_wqvub"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2p3st"]
 atlas = ExtResource("3_ajmtv")
@@ -383,3 +385,11 @@ position = Vector2(103, 14)
 texture = ExtResource("5_66lc1")
 region_enabled = true
 region_rect = Rect2(0, 0, 8, 8)
+
+[node name="SelectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_ctn53")
+volume_db = -6.0
+
+[node name="MoveSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_wqvub")
+volume_db = -12.0

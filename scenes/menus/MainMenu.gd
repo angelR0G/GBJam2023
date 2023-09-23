@@ -11,13 +11,12 @@ var optionsPositions:Array[Vector2] = [Vector2(53, 87), Vector2(40, 107), Vector
 var previousPosition:Vector2 = Vector2(-1, -1)
 
 # Escene elements
-var selectArrow
-var lerpTimer
+@onready var selectArrow	:= $SelectArrow
+@onready var lerpTimer		:= $LerpTimer
+@onready var selectSound	:= $SelectSound
+@onready var moveSound		:= $MoveSound
 
 func _ready():
-	selectArrow 	= $SelectArrow
-	lerpTimer		= $LerpTimer
-	
 	resetMenu()
 
 func _process(_delta):
@@ -28,14 +27,16 @@ func _process(_delta):
 	else:
 		# Waitting for input
 		if Input.is_action_just_pressed("down"):
+			moveSound.play()
 			selected = (selected + 1) % 3
 			updateStyle()
-		if Input.is_action_just_pressed("up"):
+		elif Input.is_action_just_pressed("up"):
+			moveSound.play()
 			selected = (selected - 1) % 3
 			if selected < 0:
 				selected += 3
 			updateStyle()
-		if Input.is_action_just_pressed("shot"):
+		elif Input.is_action_just_pressed("shot"):
 			optionSelected()
 	
 func updateStyle():
@@ -64,6 +65,10 @@ func resetMenu():
 	
 
 func optionSelected():
+	# Play sound
+	selectSound.play()
+	await selectSound.finished
+	
 	if selected == 0:
 		start_game.emit()
 	elif selected == 1:

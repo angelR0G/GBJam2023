@@ -132,7 +132,7 @@ func _process(delta):
 
 func _unhandled_input(event):
 	# Player shooting
-	if event.is_action_pressed("shot"):
+	if not lockMovement && event.is_action_pressed("shot"):
 		if shotTimer.is_stopped() && not gun_overheated:
 			# Create a shot
 			var shot = ShotContainer.create_shot()
