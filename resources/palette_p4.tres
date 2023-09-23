@@ -1,0 +1,10 @@
+[gd_resource type="GradientTexture1D" load_steps=2 format=3 uid="uid://enmhrdlhpd2j"]
+
+[sub_resource type="Gradient" id="Gradient_yraos"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.268571, 0.52, 0.76)
+colors = PackedColorArray(0.0431373, 0.0235294, 0.188235, 1, 0.419608, 0.121569, 0.694118, 1, 0.8, 0.203922, 0.584314, 1, 0.972549, 0.890196, 0.768627, 1)
+
+[resource]
+gradient = SubResource("Gradient_yraos")
+width = 4
