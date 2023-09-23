@@ -44,6 +44,9 @@ var INVINCIBLE_TIME	:float	= 1.0
 @onready var coolingTimer	= $CoolingTimer
 @onready var sprite			= $AnimatedSprite2D
 @onready var hud			= $hud
+@onready var shotSound		= $ShotSound
+@onready var capsuleSound	= $CapsuleSound
+@onready var hitSound		= $HitSound
 
 # Class variables
 var linear_velocity :float 	= 0.0
@@ -152,6 +155,9 @@ func _unhandled_input(event):
 			# Gun fire rate
 			shotTimer.start()
 			
+			# Play sound
+			shotSound.play()
+			
 			# Gun overheats
 			overheat += SHOT_HEAT
 			if overheat >= MAX_HEAT:
@@ -215,6 +221,9 @@ func damage(dp:int = 1, pos:Vector2 = Vector2()):
 	if not canReceiveDamage:
 		return
 	
+	# Play sound
+	hitSound.play()
+	
 	# Reduce life
 	life -= dp
 	if life <= 0:
@@ -254,3 +263,6 @@ func _on_objects_detector_area_entered(area):
 		gunCooling(MAX_HEAT)
 		area.get_parent().queue_free()
 		cool_capsule_collected.emit()
+		
+		# Play sound
+		capsuleSound.play()

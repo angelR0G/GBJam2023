@@ -7,6 +7,9 @@ static var player	:Node	= null
 var life			:int	= 20
 var enemyVelocity	:Vector2= Vector2()
 
+@onready var deathSound = $DeathSound
+@onready var hitSound 	= $HitSound
+
 func getPlayer():
 	var playerRef = get_tree().get_root().find_child("*Player*", true, false)
 	if player == null:
@@ -28,4 +31,13 @@ func damage(dp:int):
 	# If life reaches 0, destroy enemy
 	if life <= 0:
 		emit_signal("enemyDead")
+		
+		# Hide enemy and play death sound
+		hide()
+		deathSound.play()
+		await deathSound.finished
+		
 		queue_free()
+	else:
+		# Play hit sound
+		hitSound.play()

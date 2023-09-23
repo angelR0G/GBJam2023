@@ -7,6 +7,7 @@ var coreExposed = false
 
 @onready var sprite 	:= $AnimatedSprite2D
 @onready var barrier 	:= $BarrierCollider
+@onready var coreSound	:= $CoreSound
 
 func _ready():
 	life 				= 80
@@ -40,4 +41,7 @@ func damage(dp:int):
 
 func _on_core_collider_body_entered(body):
 	if body is Player:
+		coreSound.play()
+		await coreSound.finished
+		
 		core_collected.emit()

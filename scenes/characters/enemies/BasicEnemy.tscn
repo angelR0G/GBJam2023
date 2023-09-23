@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://21c3cd4vt6wo"]
+[gd_scene load_steps=7 format=3 uid="uid://21c3cd4vt6wo"]
 
 [ext_resource type="Material" uid="uid://ceoowb11r351b" path="res://resources/palette.tres" id="1_334nl"]
 [ext_resource type="Script" path="res://scenes/characters/enemies/BasicEnemy.gd" id="1_go03f"]
+[ext_resource type="AudioStream" uid="uid://dv6hui1y0ooko" path="res://assets/sounds/Enemy_Hit.mp3" id="3_enek0"]
+[ext_resource type="AudioStream" uid="uid://dsibkg8lc3u4l" path="res://assets/sounds/Enemy_Dead.mp3" id="3_jgrou"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ghnjt"]
 animations = [{
@@ -31,3 +33,13 @@ animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_hg4tn")
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_enek0")
+max_distance = 120.0
+panning_strength = 2.0
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_jgrou")
+max_distance = 120.0
+panning_strength = 2.0
