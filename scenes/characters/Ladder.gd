@@ -4,6 +4,8 @@ signal ladder_entered
 
 @onready var sprite 	:= $AnimatedSprite2D
 @onready var collider	:= $Area2D/CollisionShape2D
+@onready var openSound	:= $OpenSound
+@onready var enterSound	:= $EnterSound
 
 func _ready():
 	# Hide ladder and deactivate collider
@@ -18,6 +20,9 @@ func openLadder(down:bool):
 	# Show ladder again
 	sprite.visible = true
 	
+	# Play sound
+	openSound.play()
+	
 	# Play animation and wait
 	if down:
 		sprite.play("open_down")
@@ -31,4 +36,8 @@ func openLadder(down:bool):
 
 func _on_area_2d_body_entered(body):
 	if body is Player:
+		# Play sound
+		enterSound.play()
+		await enterSound.finished
+		
 		ladder_entered.emit()

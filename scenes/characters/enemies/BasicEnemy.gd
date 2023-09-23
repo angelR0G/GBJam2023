@@ -41,3 +41,8 @@ func damage(dp:int):
 	else:
 		# Play hit sound
 		hitSound.play()
+		
+		# Enemy blinks
+		visible = false
+		await get_tree().create_timer(0.1).timeout
+		visible = true

@@ -1,8 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://b7m48fe1erjyf"]
+[gd_scene load_steps=22 format=3 uid="uid://b7m48fe1erjyf"]
 
 [ext_resource type="Script" path="res://scenes/characters/Ladder.gd" id="1_cfdb6"]
 [ext_resource type="Texture2D" uid="uid://dk1g0uvj2if6v" path="res://assets/core.png" id="1_ypdhg"]
 [ext_resource type="Material" uid="uid://ceoowb11r351b" path="res://resources/palette.tres" id="2_r4vkd"]
+[ext_resource type="AudioStream" uid="uid://3yvm2entdyeh" path="res://assets/sounds/Ladder_Appear.mp3" id="4_u6flo"]
+[ext_resource type="AudioStream" uid="uid://cvx7qx6kdc7u8" path="res://assets/sounds/Ladder_Enter.mp3" id="5_yeiuy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j83r8"]
 atlas = ExtResource("1_ypdhg")
@@ -134,5 +136,12 @@ collision_layer = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_7cimr")
+
+[node name="OpenSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_u6flo")
+panning_strength = 1.5
+
+[node name="EnterSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_yeiuy")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
