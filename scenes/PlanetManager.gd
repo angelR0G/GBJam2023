@@ -1,5 +1,9 @@
 extends Node2D
 
+#signals
+signal exitMainMenu
+
+
 var levelScript = preload("res://scripts/level.gd").new()
 var lastLevel	= preload("res://scenes/levels/LevelEnd.tscn")
 var currentPlanet:int = 0
@@ -9,7 +13,11 @@ var chaningPlanet:bool 	= false
 var createNewMap:bool   = false
 var numLevelInPlanet:int = 1
 var worldMaterial:ShaderMaterial
-var coolingCapsule = preload("res://scenes/characters/CoolCapsule.tscn")
+var coolingCapsule 	= preload("res://scenes/characters/CoolCapsule.tscn")
+var pauseMenu 		= preload("res://scenes/menus/PauseMenu.tscn")
+var pauseMenuInstance
+var gamePaused:bool 	= false
+var transitioning:bool 	= false
 
 #Signal variables
 var lvlForw:bool = true
@@ -26,6 +34,7 @@ func _ready():
 	player.showHud(false)
 	player.setLockMovement(true)
 	player.setLockCamera(true)
+	transitioning = true
 	
 	#store world material to change palette
 	worldMaterial = get_material()
@@ -44,9 +53,9 @@ func _storePlanetSelection(cPlanet):
 	transitionScreen.setCurrentPalette(PlanetContainer.planets[currentPlanet].planet.planet_palette)
 	transitionScreen.setTransitionType(1)
 	transitionScreen.transition()
+	transitioning = true
 	
 func newMap():
-	
 	levelSelection.setLockControls(true)
 	levelMap = levelScript.generateMap(PlanetContainer.planets[currentPlanet].planet)
 	renderLevel()
@@ -54,6 +63,7 @@ func newMap():
 	player.showHud(true)
 	player.setLockMovement(false)
 	player.setLockCamera(false)
+	transitioning = false
 
 func _mapCompleted():
 	transitionScreen.setTransitionType(2)
@@ -65,6 +75,7 @@ func _mapCompleted():
 	numLevelInPlanet = 1
 	
 	transitionScreen.resetTransition()
+	transitioning = true
 	player.hide()
 	player.showHud(false)
 	player.setLockMovement(true)
@@ -72,6 +83,39 @@ func _mapCompleted():
 	
 	levelSelection.renderPlanets()
 	levelSelection.setLockControls(false)
+
+func _unhandled_input(event):
+	if !transitioning && event.is_action_pressed("menu"):
+		gamePaused = !gamePaused
+		
+	get_tree().paused = gamePaused
+	if gamePaused:
+		pauseMenuInstance = pauseMenu.instantiate()
+		add_sibling(pauseMenuInstance)
+		pauseMenuInstance.connect("resume_game", Callable(self, "resumeGame"))
+		pauseMenuInstance.connect("return_to_main_menu", Callable(self, "toGameMenu"))
+		player.hide()
+		player.showHud(false)
+		player.setLockMovement(true)
+		player.setLockCamera(true)
+		pauseMenuInstance.setPlanetTexture(PlanetContainer.planets[currentPlanet].planet.planet_sprite)
+		pauseMenuInstance.setPlanetName(PlanetContainer.planets[currentPlanet].planet.planet_name)
+		pauseMenuInstance.setLevel(numLevelInPlanet)
+		pauseMenuInstance.setCoreCollected(!lvlForw)
+
+func toGameMenu():
+	gamePaused = false
+	pauseMenuInstance.queue_free()
+	exitMainMenu.emit()
+
+func resumeGame():
+	if pauseMenuInstance != null:
+		gamePaused = false
+		player.show()
+		player.showHud(true)
+		player.setLockMovement(false)
+		player.setLockCamera(false)
+		pauseMenuInstance.queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -106,6 +150,7 @@ func _levelComplete():
 	transitionScreen.setTransitionType(1)
 	transitionScreen.isLevelForward = lvlForw
 	transitionScreen.transition()
+	transitioning = true
 	player.setLockMovement(true)
 	player.showHud(false)
 
@@ -156,6 +201,7 @@ func _createLevel(lvl):
 		levelScript.getLadder().showLadder()
 
 func _on_transition_screen_transition_ended():
+	transitioning = false
 	if (createNewMap && levelMap.size() <= 0):
 		newMap()
 		createNewMap = false

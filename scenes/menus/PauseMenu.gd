@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 signal resume_game
 signal return_to_main_menu
@@ -65,7 +65,6 @@ func updateStyle():
 		
 		# Play arrow animation
 		selectArrow.play("turn")
-	
 
 
 func resetMenu():
@@ -80,8 +79,10 @@ func resetMenu():
 
 func optionSelected():
 	if selected == 0:
+		get_tree().paused = false
 		resume_game.emit()
 	elif selected == 1:
+		get_tree().paused = false
 		return_to_main_menu.emit()
 
 func _on_lerp_timer_timeout():

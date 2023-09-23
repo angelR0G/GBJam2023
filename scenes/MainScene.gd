@@ -63,6 +63,7 @@ func loadPlanetManager():
 	
 	# Create an instance of the main menu
 	loadedScene = planetManagerScene.instantiate()
+	loadedScene.connect("exitMainMenu", Callable(self, "loadMainMenu"))
 	
 	# Add the scene to the scene tree
 	add_child(loadedScene)

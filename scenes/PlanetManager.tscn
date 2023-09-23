@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://goh4wv2xtju0" path="res://scenes/TransitionScreen.tscn" id="6_u5f8i"]
 
 [node name="PlanetManager" type="Node2D"]
+process_mode = 1
 material = ExtResource("1_grhwq")
 script = ExtResource("4_gffbk")
 
