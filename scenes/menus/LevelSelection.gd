@@ -59,13 +59,13 @@ func _selectRandomPlanets(num:int):
 	var availablePlanets:int = _checkAvailablePlanets()
 	while options.size() < min(availablePlanets, num):
 		var rand = rng.randi_range(0, PlanetContainer.planets.size()-1)
-		if !PlanetContainer.planets[rand].completed && !indexAdded.has(rand):
+		if !PlanetContainer.planets[currentPhase][rand].completed && !indexAdded.has(rand):
 			indexAdded.append(rand)
 			options.append(PlanetPos.new(PlanetContainer.planets[currentPhase][rand].planet, rand))
 
 func _checkAvailablePlanets() -> int:
 	var avPlanets:int=0
-	for p in PlanetContainer.planets:
+	for p in PlanetContainer.planets[currentPhase]:
 		if (!p.completed):
 			avPlanets+=1
 	return avPlanets

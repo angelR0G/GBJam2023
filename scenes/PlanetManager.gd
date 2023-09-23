@@ -82,6 +82,16 @@ func createTravelingAnimation():
 	levelSelection.show()
 	levelSelection.setLockControls(false)
 	
+func createEndAnimation():
+	transitioning = true
+	var anim = endAnimation.instantiate()
+	var animPlayer:AnimationPlayer = anim.get_node("AnimationPlayer")
+	animPlayer.play("end_animation")
+	add_child(anim)
+	await animPlayer.animation_finished
+	anim.queue_free()
+	exitMainMenu.emit()
+	
 	
 func _storePlanetSelection(cPlanet):
 	currentPlanet = cPlanet
@@ -111,6 +121,9 @@ func _mapCompleted():
 	numLevelInPlanet = 1
 	currentPhase+=1
 	levelSelection.currentPhase = currentPhase
+	
+	if(currentPhase >= 2):
+		createEndAnimation()
 	
 	transitionScreen.resetTransition()
 	transitioning = true

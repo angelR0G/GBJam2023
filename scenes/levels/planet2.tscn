@@ -9,7 +9,7 @@
 [node name="planet2" type="Node"]
 script = ExtResource("1_kah3l")
 levelArray = Array[PackedScene]([ExtResource("2_g32av"), ExtResource("3_3jswa")])
-planet_name = "KATJETTA        "
+planet_name = "KATJETTA"
 planet_dangerLevel = 1
 planet_numLevels = 4
 planet_sprite = ExtResource("2_u8joh")

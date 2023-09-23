@@ -6,7 +6,7 @@
 
 [node name="planet7" type="Node"]
 script = ExtResource("1_bmlsn")
-planet_name = "TAKQUA    "
+planet_name = "TAKQUA"
 planet_dangerLevel = 1
 planet_numLevels = 5
 planet_sprite = ExtResource("2_kbrj8")
