@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c8v5reak4olgj"]
+[gd_scene load_steps=12 format=3 uid="uid://dif7thc2yd1lj"]
 
 [ext_resource type="Script" path="res://scripts/planet.gd" id="1_ynwxw"]
 [ext_resource type="PackedScene" uid="uid://ps404qbmx168" path="res://scenes/levels/planet1/Level1_1.tscn" id="2_2xck7"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://oxf5vto4sdxq" path="res://scenes/levels/planet1/Level1_6.tscn" id="7_m3j3x"]
 [ext_resource type="PackedScene" uid="uid://bkbqeetpvoi5p" path="res://scenes/levels/planet1/Level1_7.tscn" id="8_l7s8s"]
 [ext_resource type="PackedScene" uid="uid://dhhpqv8oms0r4" path="res://scenes/levels/planet1/Level1_8.tscn" id="9_eq3mw"]
-[ext_resource type="Texture2D" uid="uid://c40t88vqhce77" path="res://assets/planets/planeta1.png" id="10_xdxdk"]
+[ext_resource type="Texture2D" uid="uid://bm8l2f34rdge0" path="res://assets/planets/planeta1.png" id="10_xdxdk"]
 
 [node name="planet1" type="Node2D"]
 script = ExtResource("1_ynwxw")

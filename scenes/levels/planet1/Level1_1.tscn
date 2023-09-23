@@ -1,9 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://ps404qbmx168"]
+[gd_scene load_steps=2 format=3 uid="uid://ps404qbmx168"]
 
 [ext_resource type="PackedScene" uid="uid://dr7dlqnprfltg" path="res://scenes/levels/Level.tscn" id="1_kkysw"]
-[ext_resource type="PackedScene" uid="uid://bqc2se1sraa8n" path="res://scenes/characters/enemies/MoleEnemy.tscn" id="2_hjd3i"]
-[ext_resource type="PackedScene" uid="uid://cmyhf7g6n00wf" path="res://scenes/characters/enemies/ChargeEnemy.tscn" id="3_hbfgq"]
-[ext_resource type="PackedScene" uid="uid://cscevg7c6lg8s" path="res://scenes/characters/enemies/FollowerEnemy.tscn" id="4_wjb7m"]
 
 [node name="Level" instance=ExtResource("1_kkysw")]
 
@@ -14,18 +11,6 @@ layer_2/tile_data = PackedInt32Array(524304, 1703937, 3, 655388, 1703937, 3, 458
 
 [node name="PlayerSpawn" parent="." index="1"]
 position = Vector2(160, 57)
-
-[node name="MoleEnemy" parent="Enemies" index="0" instance=ExtResource("2_hjd3i")]
-position = Vector2(274, 37)
-
-[node name="MoleEnemy2" parent="Enemies" index="1" instance=ExtResource("2_hjd3i")]
-position = Vector2(40, 69)
-
-[node name="ChargeEnemy" parent="Enemies" index="2" instance=ExtResource("3_hbfgq")]
-position = Vector2(116, 114)
-
-[node name="FollowerEnemy" parent="Enemies" index="3" instance=ExtResource("4_wjb7m")]
-position = Vector2(119, 31)
 
 [node name="Ladder" parent="." index="4"]
 position = Vector2(162, 75)

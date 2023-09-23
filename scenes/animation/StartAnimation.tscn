@@ -1,8 +1,8 @@
 [gd_scene load_steps=29 format=3 uid="uid://bs3tgtasg1jea"]
 
 [ext_resource type="Texture2D" uid="uid://2nrthiou32ru" path="res://assets/cinematic/BackgroundIntro.jpg" id="1_w6ig1"]
-[ext_resource type="Texture2D" uid="uid://bbih2irbirju" path="res://assets/cinematic/Spaceman.png" id="2_ce6na"]
-[ext_resource type="Texture2D" uid="uid://cbfdhiwfsd8od" path="res://assets/menu_ui/stars.png" id="2_rxlmx"]
+[ext_resource type="Texture2D" uid="uid://br5g4djw6ojc5" path="res://assets/cinematic/Spaceman.png" id="2_ce6na"]
+[ext_resource type="Texture2D" uid="uid://d012e6neuwocw" path="res://assets/menu_ui/stars.png" id="2_rxlmx"]
 [ext_resource type="Texture2D" uid="uid://dp2yysvo0kp6j" path="res://assets/cinematic/SpaceShip.png" id="3_054an"]
 
 [sub_resource type="Animation" id="Animation_sy4o8"]

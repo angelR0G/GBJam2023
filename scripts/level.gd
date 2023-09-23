@@ -16,8 +16,20 @@ var enemyNum:int		= 0
 var coolantSources:Array[Node]
 var lastCoolantSource:int
 
+func resetVariablesLevel():
+	map.clear()
+	loadedLevel = null
+	currentLevel = 0
+	lastLevel = false
+	lastLevelC = false
+	levelForward = true
+	enemyNum = 0
+	coolantSources.clear()
+	lastCoolantSource = -1
+	
 #Selects random levels from the planet level pool
 func generateMap(planet:Planet) -> Array[PackedScene]:
+	resetVariablesLevel()
 	var rng = RandomNumberGenerator.new()
 	var levels:Array[PackedScene] = planet.levelArray
 	

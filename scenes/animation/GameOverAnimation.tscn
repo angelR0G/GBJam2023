@@ -1,7 +1,33 @@
 [gd_scene load_steps=6 format=3 uid="uid://dxgdlpf5yvdwd"]
 
-[ext_resource type="Texture2D" uid="uid://bbih2irbirju" path="res://assets/cinematic/Spaceman.png" id="1_pqpme"]
-[ext_resource type="FontFile" uid="uid://brwymiuuq4cs6" path="res://assets/DigitalDisco.ttf" id="2_u66n1"]
+[ext_resource type="Texture2D" uid="uid://br5g4djw6ojc5" path="res://assets/cinematic/Spaceman.png" id="1_pqpme"]
+[ext_resource type="FontFile" uid="uid://cginr66v42up3" path="res://assets/DigitalDisco.ttf" id="2_u66n1"]
+
+[sub_resource type="Animation" id="Animation_kpkvp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node/Player:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node/Label:visible_characters")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_fdmgi"]
 resource_name = "game_over"
@@ -30,41 +56,16 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 3.5, 5.5, 6.5)
 }
 
-[sub_resource type="Animation" id="Animation_kpkvp"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Node/Player:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Node/Label:visible_characters")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_05t5x"]
 _data = {
 "RESET": SubResource("Animation_kpkvp"),
 "game_over": SubResource("Animation_fdmgi")
 }
 
-[node name="GameOverAnimation" type="Node2D"]
+[node name="GameOverAnimation" type="CanvasLayer"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "game_over"
 libraries = {
 "": SubResource("AnimationLibrary_05t5x")
 }

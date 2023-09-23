@@ -4,6 +4,7 @@ signal planetSelected(planetSel)
 
 var selected:int 		= 0
 var lockControls:bool	= false
+var currentPhase:int = 0
 
 #Class to store planet info selection
 class PlanetPos:
@@ -60,7 +61,7 @@ func _selectRandomPlanets(num:int):
 		var rand = rng.randi_range(0, PlanetContainer.planets.size()-1)
 		if !PlanetContainer.planets[rand].completed && !indexAdded.has(rand):
 			indexAdded.append(rand)
-			options.append(PlanetPos.new(PlanetContainer.planets[rand].planet, rand))
+			options.append(PlanetPos.new(PlanetContainer.planets[currentPhase][rand].planet, rand))
 
 func _checkAvailablePlanets() -> int:
 	var avPlanets:int=0

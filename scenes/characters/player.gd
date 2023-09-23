@@ -4,6 +4,7 @@ extends CharacterBody2D
 signal life_changed(newLife)
 signal heat_changed(newHeat)
 signal cool_capsule_collected
+signal player_dead
 
 # Movement values
 var CORE_WALK_SPEED	:int	= 35
@@ -216,15 +217,19 @@ func damage(dp:int = 1, pos:Vector2 = Vector2()):
 	
 	# Reduce life
 	life -= dp
-	
-	# Update hud
-	life_changed.emit(life)
-	
-	# Push player
-	position += (global_position - pos).normalized() * HIT_KNOCKBACK
-	
-	# Prevent damage during a time
-	activateInvincibility(INVINCIBLE_TIME)
+	if life <= 0:
+		player_dead.emit()
+	else:
+		# Update hud
+		life_changed.emit(life)
+		
+		# Push player
+		var knockback := (global_position - pos).normalized() * HIT_KNOCKBACK
+		if not test_move(Transform2D(0, position), knockback):
+			position += knockback
+		
+		# Prevent damage during a time
+		activateInvincibility(INVINCIBLE_TIME)
 
 
 func _on_objects_detector_body_entered(body):

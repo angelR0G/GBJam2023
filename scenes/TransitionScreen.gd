@@ -17,6 +17,7 @@ var isLevelForward:bool = true
 var currentPalette:GradientTexture1D
 
 func resetTransition():
+	changeNumLevel()
 	levelNum = 1
 
 func setCurrentPalette(palette:GradientTexture1D):
