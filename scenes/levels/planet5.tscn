@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://btk6qx7icqunf"]
+
+[ext_resource type="Script" path="res://scripts/planet.gd" id="1_1ai76"]
+[ext_resource type="Texture2D" uid="uid://cmxtxpqv4dk3u" path="res://assets/planets/planeta5.png" id="2_ovtj3"]
+[ext_resource type="Texture2D" uid="uid://b234qx3841ins" path="res://resources/palette_p5.tres" id="3_qaemu"]
+
+[node name="planet5" type="Node"]
+script = ExtResource("1_1ai76")
+planet_name = "BSSONCERA    "
+planet_dangerLevel = 1
+planet_numLevels = 4
+planet_sprite = ExtResource("2_ovtj3")
+planet_palette = ExtResource("3_qaemu")

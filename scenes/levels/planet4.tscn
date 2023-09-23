@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://djtvfjafw2y2y"]
+
+[ext_resource type="Script" path="res://scripts/planet.gd" id="1_olctx"]
+[ext_resource type="Texture2D" uid="uid://nvdniiicfi4g" path="res://assets/planets/planeta4.png" id="2_dg8eu"]
+[ext_resource type="Texture2D" uid="uid://enmhrdlhpd2j" path="res://resources/palette_p4.tres" id="3_aov4t"]
+
+[node name="planet4" type="Node"]
+script = ExtResource("1_olctx")
+planet_name = "FHURRAY    "
+planet_dangerLevel = 1
+planet_numLevels = 3
+planet_sprite = ExtResource("2_dg8eu")
+planet_palette = ExtResource("3_aov4t")

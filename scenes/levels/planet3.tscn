@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://bv3urxhi1enj4"]
+
+[ext_resource type="Script" path="res://scripts/planet.gd" id="1_q5gxl"]
+[ext_resource type="Texture2D" uid="uid://cb5b20ssdsnrf" path="res://assets/planets/planeta3.png" id="2_nvn6c"]
+[ext_resource type="Texture2D" uid="uid://cy825hmgeaivo" path="res://resources/palette_p3.tres" id="3_p3a3t"]
+
+[node name="planet3" type="Node"]
+script = ExtResource("1_q5gxl")
+planet_name = "PEHTOHT    "
+planet_dangerLevel = 1
+planet_numLevels = 3
+planet_sprite = ExtResource("2_nvn6c")
+planet_palette = ExtResource("3_p3a3t")

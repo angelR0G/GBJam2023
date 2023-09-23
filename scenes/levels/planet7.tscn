@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://l4vkt2ip5opv"]
+
+[ext_resource type="Script" path="res://scripts/planet.gd" id="1_bmlsn"]
+[ext_resource type="Texture2D" uid="uid://dh5pr1bnw820i" path="res://assets/planets/planeta7.png" id="2_kbrj8"]
+[ext_resource type="Texture2D" uid="uid://6u0rtorj8gb1" path="res://resources/palette_p7.tres" id="3_gd1hx"]
+
+[node name="planet7" type="Node"]
+script = ExtResource("1_bmlsn")
+planet_name = "TAKQUA    "
+planet_dangerLevel = 1
+planet_numLevels = 5
+planet_sprite = ExtResource("2_kbrj8")
+planet_palette = ExtResource("3_gd1hx")

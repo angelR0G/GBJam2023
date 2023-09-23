@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0dqu8r801ipb"]
+
+[ext_resource type="Script" path="res://scripts/planet.gd" id="1_tww2l"]
+[ext_resource type="Texture2D" uid="uid://dioimw82n0d2h" path="res://assets/planets/planeta6.png" id="2_sl10q"]
+[ext_resource type="Texture2D" uid="uid://dem37oo3500pw" path="res://resources/palette_p6.tres" id="3_jn7fi"]
+
+[node name="planet6" type="Node"]
+script = ExtResource("1_tww2l")
+planet_name = "GYSCO    "
+planet_dangerLevel = 1
+planet_numLevels = 3
+planet_sprite = ExtResource("2_sl10q")
+planet_palette = ExtResource("3_jn7fi")

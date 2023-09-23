@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbciu5lru200l"]
+
+[ext_resource type="Script" path="res://scripts/planet.gd" id="1_asi3e"]
+[ext_resource type="Texture2D" uid="uid://b3aqhv8bukn20" path="res://assets/planets/planeta9.png" id="2_ntohl"]
+[ext_resource type="Texture2D" uid="uid://bwteunwaihfe0" path="res://resources/palette_p9.tres" id="3_uhyb5"]
+
+[node name="planet9" type="Node"]
+script = ExtResource("1_asi3e")
+planet_name = "ISPEEP    "
+planet_dangerLevel = 1
+planet_numLevels = 5
+planet_sprite = ExtResource("2_ntohl")
+planet_palette = ExtResource("3_uhyb5")

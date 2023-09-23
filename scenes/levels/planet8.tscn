@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmgl1aosflu1w"]
+
+[ext_resource type="Script" path="res://scripts/planet.gd" id="1_xei8j"]
+[ext_resource type="Texture2D" uid="uid://de6oqupchk7q7" path="res://assets/planets/planeta8.png" id="2_mssoe"]
+[ext_resource type="Texture2D" uid="uid://b5naj5g0x5pxs" path="res://resources/palette_p8.tres" id="3_2orxb"]
+
+[node name="planet8" type="Node"]
+script = ExtResource("1_xei8j")
+planet_name = "RETTHAL    "
+planet_dangerLevel = 1
+planet_numLevels = 4
+planet_sprite = ExtResource("2_mssoe")
+planet_palette = ExtResource("3_2orxb")
