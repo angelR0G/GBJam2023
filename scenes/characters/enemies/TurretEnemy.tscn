@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://bqtibd7ji36gq"]
+[gd_scene load_steps=19 format=3 uid="uid://bqtibd7ji36gq"]
 
 [ext_resource type="PackedScene" uid="uid://21c3cd4vt6wo" path="res://scenes/characters/enemies/BasicEnemy.tscn" id="1_yy0ju"]
 [ext_resource type="Script" path="res://scenes/characters/enemies/TurretEnemy.gd" id="2_dhh43"]
 [ext_resource type="Texture2D" uid="uid://de2lebr68p60x" path="res://assets/characters/Turret.png" id="3_3rm2q"]
+[ext_resource type="AudioStream" uid="uid://bappy10m4k8k5" path="res://assets/sounds/Shot_Enemy.mp3" id="4_vmnh5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p70a4"]
 atlas = ExtResource("3_3rm2q")
@@ -123,5 +124,10 @@ position = Vector2(0.5, -1)
 shape = SubResource("RectangleShape2D_q0svl")
 
 [node name="ShootTimer" type="Timer" parent="." index="2"]
+
+[node name="ShotSound" type="AudioStreamPlayer2D" parent="." index="5"]
+stream = ExtResource("4_vmnh5")
+max_distance = 120.0
+panning_strength = 2.0
 
 [connection signal="timeout" from="ShootTimer" to="." method="shoot"]

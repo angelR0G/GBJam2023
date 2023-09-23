@@ -1,11 +1,13 @@
-[gd_scene load_steps=23 format=3 uid="uid://dcni20q4two04"]
+[gd_scene load_steps=25 format=3 uid="uid://dcni20q4two04"]
 
 [ext_resource type="Script" path="res://scenes/menus/LevelSelection.gd" id="1_yyfw1"]
-[ext_resource type="Texture2D" uid="uid://d012e6neuwocw" path="res://assets/menu_ui/stars.png" id="2_ksaua"]
-[ext_resource type="Texture2D" uid="uid://dupwtsxi2vau" path="res://assets/menu_ui/LevelSelection.jpg" id="2_qu6kc"]
+[ext_resource type="Texture2D" uid="uid://cbfdhiwfsd8od" path="res://assets/menu_ui/stars.png" id="2_ksaua"]
+[ext_resource type="Texture2D" uid="uid://bpdge47gjvvxk" path="res://assets/menu_ui/LevelSelection.jpg" id="2_qu6kc"]
 [ext_resource type="Script" path="res://scenes/menus/backgroundStars.gd" id="3_1dffa"]
-[ext_resource type="FontFile" uid="uid://cginr66v42up3" path="res://assets/DigitalDisco.ttf" id="5_jmkkq"]
-[ext_resource type="Texture2D" uid="uid://bdw0qeiyu66cq" path="res://assets/menu_ui/LevelSelectionBorder.png" id="5_p12u0"]
+[ext_resource type="FontFile" uid="uid://brwymiuuq4cs6" path="res://assets/DigitalDisco.ttf" id="5_jmkkq"]
+[ext_resource type="Texture2D" uid="uid://cc7dah60px7ck" path="res://assets/menu_ui/LevelSelectionBorder.png" id="5_p12u0"]
+[ext_resource type="AudioStream" uid="uid://cwfxiq4t1jf6y" path="res://assets/sounds/Menu_Select.mp3" id="7_vrxik"]
+[ext_resource type="AudioStream" uid="uid://scvnw4cbyle" path="res://assets/sounds/Menu_Move.mp3" id="8_orjyd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2p3st"]
 atlas = ExtResource("2_ksaua")
@@ -225,5 +227,13 @@ vertical_alignment = 1
 [node name="SelectionFlash" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
+
+[node name="SelectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_vrxik")
+volume_db = -6.0
+
+[node name="MoveSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_orjyd")
+volume_db = -12.0
 
 [connection signal="timeout" from="SelectionFlash" to="." method="_on_selection_flash_timeout"]

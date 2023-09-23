@@ -33,6 +33,7 @@ var lvlForw:bool = true
 @onready var player 			= $Player
 @onready var transitionScreen 	= $TransitionScreen
 @onready var levelSelection 	= $LevelSelection
+@onready var gameOverSound		= $GameOverSound
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -155,9 +156,15 @@ func toGameMenu():
 
 func playerDead():
 	transitioning = true
+	
+	# Play sound
+	gameOverSound.play()
+	
+	# Play animation
 	var anim = gameOverAnimation.instantiate()
 	var animPlayer:AnimationPlayer = anim.get_node("AnimationPlayer")
 	add_child(anim)
+	
 	await animPlayer.animation_finished
 	exitMainMenu.emit()
 	

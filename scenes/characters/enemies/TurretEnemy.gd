@@ -8,6 +8,7 @@ var ENEMY_LIFE			= 25
 @onready var sprite		:= $AnimatedSprite2D
 @onready var collider 	:= $CollisionShape2D
 @onready var timer		:= $ShootTimer
+@onready var shotSound	:= $ShotSound
 
 func _ready():
 	getPlayer()
@@ -63,3 +64,6 @@ func shoot():
 	add_sibling(shot1)
 	add_sibling(shot2)
 	add_sibling(shot3)
+	
+	# Play sound
+	shotSound.play()

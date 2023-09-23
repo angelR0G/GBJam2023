@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bc2aa1rsawbsq"]
+[gd_scene load_steps=7 format=3 uid="uid://bc2aa1rsawbsq"]
 
 [ext_resource type="Material" uid="uid://ceoowb11r351b" path="res://resources/palette.tres" id="1_grhwq"]
 [ext_resource type="Script" path="res://scenes/PlanetManager.gd" id="4_gffbk"]
 [ext_resource type="PackedScene" uid="uid://dcni20q4two04" path="res://scenes/menus/LevelSelection.tscn" id="5_b4sqp"]
 [ext_resource type="PackedScene" uid="uid://maxsekrbatm2" path="res://scenes/characters/player.tscn" id="5_qb8yy"]
 [ext_resource type="PackedScene" uid="uid://goh4wv2xtju0" path="res://scenes/TransitionScreen.tscn" id="6_u5f8i"]
+[ext_resource type="AudioStream" uid="uid://bpr6yi73arp4s" path="res://assets/sounds/GameOver.mp3" id="6_xxyhd"]
 
 [node name="PlanetManager" type="Node2D"]
 process_mode = 1
@@ -21,6 +22,9 @@ visible = false
 
 [node name="LevelSelection" parent="." instance=ExtResource("5_b4sqp")]
 visible = false
+
+[node name="GameOverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_xxyhd")
 
 [connection signal="cool_capsule_collected" from="Player" to="." method="_on_player_cool_capsule_collected"]
 [connection signal="transitionEnded" from="TransitionScreen" to="." method="_on_transition_screen_transition_ended"]

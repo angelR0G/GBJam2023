@@ -1,11 +1,13 @@
-[gd_scene load_steps=38 format=3 uid="uid://cpp8he3okgu5"]
+[gd_scene load_steps=40 format=3 uid="uid://cpp8he3okgu5"]
 
 [ext_resource type="Script" path="res://scenes/menus/MainMenu.gd" id="1_pfdtp"]
-[ext_resource type="Texture2D" uid="uid://bw5olk7h2mum" path="res://assets/menu_ui/MainMenuBackground.jpg" id="2_hbttj"]
-[ext_resource type="Texture2D" uid="uid://d012e6neuwocw" path="res://assets/menu_ui/stars.png" id="3_67jdm"]
-[ext_resource type="Texture2D" uid="uid://b1n4few2jcbet" path="res://assets/menu_ui/GameName.png" id="4_0527y"]
-[ext_resource type="FontFile" uid="uid://cginr66v42up3" path="res://assets/DigitalDisco.ttf" id="5_fl62r"]
-[ext_resource type="Texture2D" uid="uid://bm7g5g6p5u1lw" path="res://assets/menu_ui/ui.png" id="6_q7yqb"]
+[ext_resource type="Texture2D" uid="uid://2voini2y805o" path="res://assets/menu_ui/MainMenuBackground.jpg" id="2_hbttj"]
+[ext_resource type="Texture2D" uid="uid://cbfdhiwfsd8od" path="res://assets/menu_ui/stars.png" id="3_67jdm"]
+[ext_resource type="Texture2D" uid="uid://fhbcoryjoplr" path="res://assets/menu_ui/GameName.png" id="4_0527y"]
+[ext_resource type="FontFile" uid="uid://brwymiuuq4cs6" path="res://assets/DigitalDisco.ttf" id="5_fl62r"]
+[ext_resource type="Texture2D" uid="uid://cfgtxvi3qcjr" path="res://assets/menu_ui/ui.png" id="6_q7yqb"]
+[ext_resource type="AudioStream" uid="uid://cwfxiq4t1jf6y" path="res://assets/sounds/Menu_Select.mp3" id="7_3bbje"]
+[ext_resource type="AudioStream" uid="uid://scvnw4cbyle" path="res://assets/sounds/Menu_Move.mp3" id="8_oq7oe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2p3st"]
 atlas = ExtResource("3_67jdm")
@@ -357,5 +359,13 @@ sprite_frames = SubResource("SpriteFrames_snk1n")
 animation = &"idle"
 frame = 2
 frame_progress = 0.338205
+
+[node name="SelectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_3bbje")
+volume_db = -6.0
+
+[node name="MoveSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_oq7oe")
+volume_db = -12.0
 
 [connection signal="timeout" from="LerpTimer" to="." method="_on_lerp_timer_timeout"]

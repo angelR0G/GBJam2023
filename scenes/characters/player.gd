@@ -37,6 +37,7 @@ var CAMERA_LIMIT_OFFSET	:int	= 6
 # Other
 var INITIAL_LIFE	:int	= 16
 var INVINCIBLE_TIME	:float	= 1.0
+var BLINK_TIME		:float	= 0.15
 
 # Scene nodes
 @onready var camera 		= $Camera2D
@@ -44,6 +45,9 @@ var INVINCIBLE_TIME	:float	= 1.0
 @onready var coolingTimer	= $CoolingTimer
 @onready var sprite			= $AnimatedSprite2D
 @onready var hud			= $hud
+@onready var shotSound		= $ShotSound
+@onready var capsuleSound	= $CapsuleSound
+@onready var hitSound		= $HitSound
 
 # Class variables
 var linear_velocity :float 	= 0.0
@@ -54,6 +58,7 @@ var lockMovement	:bool 	= false
 var life			:int	= INITIAL_LIFE
 var canReceiveDamage:bool	= true
 var enemiesBeingTouched:int	= 0
+var blinkingElapsed	:float	= 0
 
 func setLockMovement(lock:bool):
 	lockMovement = lock
@@ -69,6 +74,7 @@ func resetPlayer():
 	overheat 			= 0
 	canReceiveDamage 	= true
 	enemiesBeingTouched = 0
+	blinkingElapsed 	= 0
 	camera.limit_left 	= -CAMERA_LIMIT_OFFSET
 	camera.limit_top	= -CAMERA_LIMIT_OFFSET
 	shotTimer.start()
@@ -126,10 +132,17 @@ func _process(delta):
 	# Update player position
 	move_and_slide()
 	
+	# Blinking effect while invincible
+	if not canReceiveDamage:
+		blinkingElapsed += delta
+		if blinkingElapsed >= BLINK_TIME:
+			visible = not visible
+			blinkingElapsed -= BLINK_TIME
+		
 
 func _unhandled_input(event):
 	# Player shooting
-	if event.is_action_pressed("shot"):
+	if not lockMovement && event.is_action_pressed("shot"):
 		if shotTimer.is_stopped() && not gun_overheated:
 			# Create a shot
 			var shot = ShotContainer.create_shot()
@@ -151,6 +164,9 @@ func _unhandled_input(event):
 			
 			# Gun fire rate
 			shotTimer.start()
+			
+			# Play sound
+			shotSound.play()
 			
 			# Gun overheats
 			overheat += SHOT_HEAT
@@ -176,7 +192,8 @@ func gunCooling(coolPoints: int = 1):
 
 func activateInvincibility(time:float = 1.0):
 	# Prevent player from receiving damage
-	canReceiveDamage = false
+	canReceiveDamage 	= false
+	blinkingElapsed 	= 0
 	
 	# Prevent movement for a moment
 	if not lockMovement:
@@ -187,6 +204,8 @@ func activateInvincibility(time:float = 1.0):
 		
 	# Wait the specified time
 	await get_tree().create_timer(time).timeout
+	
+	visible = true
 	
 	# Activate damage again
 	canReceiveDamage = true
@@ -214,6 +233,9 @@ func damage(dp:int = 1, pos:Vector2 = Vector2()):
 	#Check if can receive damage
 	if not canReceiveDamage:
 		return
+	
+	# Play sound
+	hitSound.play()
 	
 	# Reduce life
 	life -= dp
@@ -254,3 +276,6 @@ func _on_objects_detector_area_entered(area):
 		gunCooling(MAX_HEAT)
 		area.get_parent().queue_free()
 		cool_capsule_collected.emit()
+		
+		# Play sound
+		capsuleSound.play()

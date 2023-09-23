@@ -1,8 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://maxsekrbatm2"]
+[gd_scene load_steps=22 format=3 uid="uid://maxsekrbatm2"]
 
 [ext_resource type="Script" path="res://scenes/characters/player.gd" id="1_4mgrp"]
 [ext_resource type="Texture2D" uid="uid://bp6e1qvnqb1k1" path="res://assets/characters/Astronauta.png" id="2_p7cuk"]
 [ext_resource type="PackedScene" uid="uid://da5h5g70t25xc" path="res://scenes/characters/hud.tscn" id="3_kmukc"]
+[ext_resource type="AudioStream" uid="uid://csti1vv38q7wp" path="res://assets/sounds/Capsule_Collected.mp3" id="4_rvcus"]
+[ext_resource type="AudioStream" uid="uid://cplhl4e7pyua6" path="res://assets/sounds/Player_Hit.mp3" id="4_vo3al"]
+[ext_resource type="AudioStream" uid="uid://sfpftr1n2px5" path="res://assets/sounds/Shot_Player.mp3" id="4_vufee"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4vo1a"]
 size = Vector2(9, 11)
@@ -152,6 +155,18 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
 [node name="hud" parent="." instance=ExtResource("3_kmukc")]
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_vo3al")
+
+[node name="CapsuleSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_rvcus")
+
+[node name="ShotSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_vufee")
 
 [connection signal="heat_changed" from="." to="hud" method="updateHeat"]
 [connection signal="life_changed" from="." to="hud" method="updateLife"]

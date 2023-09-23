@@ -15,6 +15,8 @@ var previousPosition:Vector2 = Vector2(-1, -1)
 @onready var planetName 	:= $PlanetName
 @onready var levelNumber	:= $LevelLabel/LevelNumber
 @onready var coreImage		:= $CoreImage
+@onready var selectSound	:= $SelectSound
+@onready var moveSound		:= $MoveSound
 
 func _ready():
 	resetMenu()
@@ -45,12 +47,14 @@ func _process(_delta):
 	else:
 		# Waitting for input
 		if Input.is_action_just_pressed("down"):
+			moveSound.play()
 			selected = (selected + 1) % 2
 			updateStyle()
-		if Input.is_action_just_pressed("up"):
+		elif Input.is_action_just_pressed("up"):
+			moveSound.play()
 			selected = (selected + 1) % 2
 			updateStyle()
-		if Input.is_action_just_pressed("shot"):
+		elif Input.is_action_just_pressed("shot"):
 			optionSelected()
 	
 func updateStyle():
@@ -78,6 +82,10 @@ func resetMenu():
 	
 
 func optionSelected():
+	# Play sound
+	selectSound.play()
+	await selectSound.finished
+	
 	if selected == 0:
 		get_tree().paused = false
 		resume_game.emit()

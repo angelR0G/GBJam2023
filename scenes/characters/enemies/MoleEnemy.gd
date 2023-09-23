@@ -13,10 +13,11 @@ var readyToShot		:bool	= true
 
 @onready var digTimer		= $DigTimer
 @onready var sprite			= $AnimatedSprite2D
+@onready var shotSound		= $ShotSound
 
 func _ready():	
 	digIn()
-	digTimer.start(DIG_TIME)
+	digTimer.start(DIG_TIME * randf())
 	getPlayer()
 
 func _process(delta):
@@ -112,3 +113,6 @@ func shoot():
 	
 	# Add it to the game
 	add_sibling(shot)
+	
+	# Play sound
+	shotSound.play()

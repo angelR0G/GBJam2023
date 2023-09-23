@@ -15,32 +15,43 @@ class PlanetPos:
 		index 	= i
 		
 var options:Array[PlanetPos]
+var levelSelected:bool = false
 
 #Nodes
 @onready var planets:Array[Sprite2D] 	= [$PlanetSprites/PlanetLeft, $PlanetSprites/PlanetRight]
 @onready var borders:Array[Sprite2D] 	= [$PlanetSprites/BorderLeft, $PlanetSprites/BorderRight]
 @onready var planetName 				= $Text/PlanetName
 @onready var selectionTimer				= $SelectionFlash
+@onready var selectSound				= $SelectSound
+@onready var moveSound					= $MoveSound
 
 
 func setLockControls(lock:bool):
 	lockControls = lock
 
 func _ready():
+	levelSelected = false
 	renderPlanets()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if !lockControls:
 		if Input.is_action_just_pressed("right"):
+			moveSound.play()
 			selectionTimer = 0
 			selected = (selected + 1) % options.size()
-		if Input.is_action_just_pressed("left"):
+		elif Input.is_action_just_pressed("left"):
+			moveSound.play()
 			selectionTimer = 0
 			selected = (selected - 1) % options.size()
 			if selected < 0:
 				selected += options.size()
-		if Input.is_action_just_pressed("shot"):
+		elif Input.is_action_just_pressed("shot") && not levelSelected:
+			levelSelected = true
+			
+			selectSound.play()
+			await selectSound.finished
+			
 			emit_signal("planetSelected", options[selected].index)
 			hide()
 				
@@ -49,6 +60,7 @@ func _process(_delta):
 func _resetValues():
 	options 	= []
 	selected	= 0
+	levelSelected = false
 	for p in planets:
 		p.texture = null
 
