@@ -6,7 +6,7 @@
 
 [node name="planet4" type="Node"]
 script = ExtResource("1_olctx")
-planet_name = "FHURRAY  "
+planet_name = "FHURRAY "
 planet_dangerLevel = 1
 planet_numLevels = 3
 planet_sprite = ExtResource("2_dg8eu")
