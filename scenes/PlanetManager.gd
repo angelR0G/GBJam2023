@@ -233,7 +233,7 @@ func renderLevel():
 
 func limitCamera(level):
 	var rect = level.get_node("TileMap").get_used_rect()
-	player.updateCameraLimit(rect.size)
+	player.updateCameraLimit(rect.size * 8)
 
 func _createLevel(lvl):
 	#Create new level
