@@ -20,6 +20,14 @@ Planet2="*res://scenes/planet2/planet2.tscn"
 [autoload]
 
 Planet1="*res://scenes/levels/planet1.tscn"
+Planet2="*res://scenes/levels/planet2.tscn"
+Planet3="*res://scenes/levels/planet3.tscn"
+Planet4="*res://scenes/levels/planet4.tscn"
+Planet5="*res://scenes/levels/planet5.tscn"
+Planet6="*res://scenes/levels/planet6.tscn"
+Planet7="*res://scenes/levels/planet7.tscn"
+Planet8="*res://scenes/levels/planet8.tscn"
+Planet9="*res://scenes/levels/planet9.tscn"
 PlanetContainer="*res://scripts/PlanetContainer.gd"
 ShotContainer="*res://scenes/shots/ShotContainer.gd"
 

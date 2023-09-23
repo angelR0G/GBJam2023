@@ -1,11 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://dyobqbjhofr2n"]
+[gd_scene load_steps=12 format=3 uid="uid://dyobqbjhofr2n"]
 
 [ext_resource type="Script" path="res://scripts/planet.gd" id="1_13744"]
+[ext_resource type="PackedScene" uid="uid://ps404qbmx168" path="res://scenes/levels/planet1/Level1_1.tscn" id="2_er2w6"]
 [ext_resource type="Texture2D" uid="uid://bm8l2f34rdge0" path="res://assets/planets/planeta1.png" id="2_v0jb4"]
+[ext_resource type="PackedScene" uid="uid://dcvrelp0nqwqv" path="res://scenes/levels/planet1/Level1_2.tscn" id="3_kjpt6"]
 [ext_resource type="Texture2D" uid="uid://cd2dl1qs50xyt" path="res://resources/palette_p1.tres" id="3_w42ao"]
+[ext_resource type="PackedScene" uid="uid://c8u85isfausc5" path="res://scenes/levels/planet1/Level1_3.tscn" id="4_8qsla"]
+[ext_resource type="PackedScene" uid="uid://dx1yygarcru5a" path="res://scenes/levels/planet1/Level1_4.tscn" id="5_j5xwb"]
+[ext_resource type="PackedScene" uid="uid://cv5gt4an8h0q5" path="res://scenes/levels/planet1/Level1_5.tscn" id="6_sxikn"]
+[ext_resource type="PackedScene" uid="uid://oxf5vto4sdxq" path="res://scenes/levels/planet1/Level1_6.tscn" id="7_80d2h"]
+[ext_resource type="PackedScene" uid="uid://bkbqeetpvoi5p" path="res://scenes/levels/planet1/Level1_7.tscn" id="8_64a06"]
+[ext_resource type="PackedScene" uid="uid://dhhpqv8oms0r4" path="res://scenes/levels/planet1/Level1_8.tscn" id="9_hnbt5"]
 
 [node name="planet1" type="Node"]
 script = ExtResource("1_13744")
+levelArray = Array[PackedScene]([ExtResource("2_er2w6"), ExtResource("3_kjpt6"), ExtResource("4_8qsla"), ExtResource("5_j5xwb"), ExtResource("6_sxikn"), ExtResource("7_80d2h"), ExtResource("8_64a06"), ExtResource("9_hnbt5")])
 planet_name = "NIRCOPSIO    "
 planet_dangerLevel = 1
 planet_numLevels = 5
