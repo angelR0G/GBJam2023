@@ -204,16 +204,6 @@ func _levelComplete():
 	
 	renderPlayer(false)
 
-
-func _createLastLevel():
-	var lvlLast = lastLevel.instantiate()
-	var marker:Marker2D = lvlLast.get_node("PlayerSpawn")
-	player.position = marker.position
-	add_child(lvlLast)
-	var core:Node2D = lvlLast.find_child("*Core*")
-	core.connect("core_collected", Callable(self, "_coreCollected"))
-	levelScript.loadedLevel = lvlLast
-
 func _coreCollected():
 	lvlForw = false
 	player.toggleCoreStats(!lvlForw)
@@ -234,11 +224,16 @@ func renderLevel():
 		_createLevel(lvl)
 	
 
+func limitCamera(level):
+	var rect = level.get_node("TileMap").get_used_rect()
+	player.updateCameraLimit(rect.size)
+
 func _createLevel(lvl):
 	#Create new level
 	var marker:Marker2D = lvl.get_node("PlayerSpawn")
 	player.position = marker.position
 	add_child(lvl)
+	limitCamera(lvl)
 	#await get_tree().create_timer(2).timeout
 	levelScript.loadedLevel = lvl
 	levelScript.getTotalEnemiesLevel()
@@ -246,6 +241,16 @@ func _createLevel(lvl):
 	_spawnCoolingCapsule()
 	if !lvlForw:
 		levelScript.getLadder().showLadder()
+
+func _createLastLevel():
+	var lvlLast = lastLevel.instantiate()
+	var marker:Marker2D = lvlLast.get_node("PlayerSpawn")
+	player.position = marker.position
+	add_child(lvlLast)
+	limitCamera(lvlLast)
+	var core:Node2D = lvlLast.find_child("*Core*")
+	core.connect("core_collected", Callable(self, "_coreCollected"))
+	levelScript.loadedLevel = lvlLast
 
 func _on_transition_screen_transition_ended():
 	transitioning = false
