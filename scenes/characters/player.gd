@@ -20,6 +20,8 @@ var SHOT_HEAT		:int	= 1
 var MAX_HEAT		:int	= 20
 var SHOT_SPEED		:int	= 200
 var SHOT_BASE_DAMAGE:int	= 5
+var SHOT_CORE_DAMGE	:int	= 8
+var SHOT_NORMAL_DAMAGE:int	= 5
 var COOL_LIMIT		:int	= 15
 var COOL_INITIAL_TIME		:float	= 2.0
 var COOL_INTERVAL_TIME		:float	= 0.8
@@ -75,6 +77,7 @@ func resetPlayer():
 	canReceiveDamage 	= true
 	enemiesBeingTouched = 0
 	blinkingElapsed 	= 0
+	SHOT_BASE_DAMAGE	= SHOT_NORMAL_DAMAGE
 	camera.limit_left 	= -CAMERA_LIMIT_OFFSET
 	camera.limit_top	= -CAMERA_LIMIT_OFFSET
 	shotTimer.start()
@@ -219,10 +222,13 @@ func toggleCoreStats(hasCore:bool):
 		MAX_WALK_SPEED 		= CORE_WALK_SPEED
 		COOL_INITIAL_TIME	= CORE_COOL_INITIAL
 		COOL_INTERVAL_TIME	= CORE_COOL_INTERVAL
+		SHOT_BASE_DAMAGE	= SHOT_CORE_DAMGE
 	else:
 		MAX_WALK_SPEED 		= NO_CORE_WALK_SPEED
 		COOL_INITIAL_TIME	= NO_CORE_COOL_INITIAL
 		COOL_INTERVAL_TIME 	= NO_CORE_COOL_INTERVAL
+		SHOT_BASE_DAMAGE	= SHOT_NORMAL_DAMAGE
+		
 	
 
 func updateCameraLimit(limits:Vector2):
