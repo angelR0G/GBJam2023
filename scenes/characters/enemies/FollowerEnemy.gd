@@ -18,6 +18,7 @@ func _ready():
 	exhausted 		= false
 	currentSpeed	= WALK_SPEED
 	currentAngular	= ANGULAR_SPEED
+	life			= 24
 	getPlayer()
 
 
