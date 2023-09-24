@@ -123,7 +123,7 @@ func _mapCompleted():
 	currentPhase+=1
 	levelSelection.currentPhase = currentPhase
 	
-	if(currentPhase >= 2):
+	if(currentPhase >= 4):
 		createEndAnimation()
 	
 	transitionScreen.resetTransition()

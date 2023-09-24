@@ -1,11 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbciu5lru200l"]
+[gd_scene load_steps=12 format=3 uid="uid://cbciu5lru200l"]
 
 [ext_resource type="Script" path="res://scripts/planet.gd" id="1_asi3e"]
-[ext_resource type="Texture2D" uid="uid://b3aqhv8bukn20" path="res://assets/planets/planeta9.png" id="2_ntohl"]
+[ext_resource type="PackedScene" uid="uid://dyimp1ww8nc78" path="res://scenes/levels/planet9/Level9_1.tscn" id="2_8no00"]
+[ext_resource type="Texture2D" uid="uid://dujpgvkaxttwf" path="res://assets/planets/planeta9.png" id="2_ntohl"]
+[ext_resource type="PackedScene" uid="uid://dvyf1l3np74nm" path="res://scenes/levels/planet9/Level9_2.tscn" id="3_rln4h"]
 [ext_resource type="Texture2D" uid="uid://bwteunwaihfe0" path="res://resources/palette_p9.tres" id="3_uhyb5"]
+[ext_resource type="PackedScene" uid="uid://klh76tb8s376" path="res://scenes/levels/planet9/Level9_3.tscn" id="4_0fuig"]
+[ext_resource type="PackedScene" uid="uid://bwsxqsxrtafvd" path="res://scenes/levels/planet9/Level9_4.tscn" id="5_8qx44"]
+[ext_resource type="PackedScene" uid="uid://7h0e5n5xxi7y" path="res://scenes/levels/planet9/Level9_5.tscn" id="6_nu5b7"]
+[ext_resource type="PackedScene" uid="uid://4to6suryu8om" path="res://scenes/levels/planet9/Level9_6.tscn" id="7_p4pno"]
+[ext_resource type="PackedScene" uid="uid://duqjoyocj6akd" path="res://scenes/levels/planet9/Level9_7.tscn" id="8_epxb0"]
+[ext_resource type="PackedScene" uid="uid://b6htdbm47o58j" path="res://scenes/levels/planet9/Level9_8.tscn" id="9_gjqda"]
 
 [node name="planet9" type="Node"]
 script = ExtResource("1_asi3e")
+levelArray = Array[PackedScene]([ExtResource("2_8no00"), ExtResource("3_rln4h"), ExtResource("4_0fuig"), ExtResource("5_8qx44"), ExtResource("6_nu5b7"), ExtResource("7_p4pno"), ExtResource("8_epxb0"), ExtResource("9_gjqda")])
 planet_name = "ISPEEP"
 planet_dangerLevel = 1
 planet_numLevels = 5

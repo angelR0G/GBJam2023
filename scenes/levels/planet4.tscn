@@ -1,11 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://djtvfjafw2y2y"]
+[gd_scene load_steps=10 format=3 uid="uid://djtvfjafw2y2y"]
 
 [ext_resource type="Script" path="res://scripts/planet.gd" id="1_olctx"]
-[ext_resource type="Texture2D" uid="uid://nvdniiicfi4g" path="res://assets/planets/planeta4.png" id="2_dg8eu"]
+[ext_resource type="Texture2D" uid="uid://cnvyaxaqy7oa" path="res://assets/planets/planeta4.png" id="2_dg8eu"]
+[ext_resource type="PackedScene" uid="uid://ck70kg3yo4xb" path="res://scenes/levels/planet4/Level4_1.tscn" id="2_icsni"]
+[ext_resource type="PackedScene" uid="uid://d28fmr7bgtv68" path="res://scenes/levels/planet4/Level4_2.tscn" id="3_67gto"]
 [ext_resource type="Texture2D" uid="uid://enmhrdlhpd2j" path="res://resources/palette_p4.tres" id="3_aov4t"]
+[ext_resource type="PackedScene" uid="uid://sfpkbxxk7xvv" path="res://scenes/levels/planet4/Level4_3.tscn" id="4_5e7xm"]
+[ext_resource type="PackedScene" uid="uid://bj6vrdgxeqxod" path="res://scenes/levels/planet4/Level4_4.tscn" id="5_jixhi"]
+[ext_resource type="PackedScene" uid="uid://ba272sy4i4s8p" path="res://scenes/levels/planet4/Level4_5.tscn" id="6_p2rk7"]
+[ext_resource type="PackedScene" uid="uid://cd1qpxxv5uh6a" path="res://scenes/levels/planet4/Level4_6.tscn" id="7_nds42"]
 
 [node name="planet4" type="Node"]
 script = ExtResource("1_olctx")
+levelArray = Array[PackedScene]([ExtResource("2_icsni"), ExtResource("3_67gto"), ExtResource("4_5e7xm"), ExtResource("5_jixhi"), ExtResource("6_p2rk7"), ExtResource("7_nds42")])
 planet_name = "FHURRAY "
 planet_dangerLevel = 1
 planet_numLevels = 3

@@ -1,11 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://btk6qx7icqunf"]
+[gd_scene load_steps=11 format=3 uid="uid://btk6qx7icqunf"]
 
 [ext_resource type="Script" path="res://scripts/planet.gd" id="1_1ai76"]
-[ext_resource type="Texture2D" uid="uid://cmxtxpqv4dk3u" path="res://assets/planets/planeta5.png" id="2_ovtj3"]
+[ext_resource type="PackedScene" uid="uid://bpih8oi3jiqjo" path="res://scenes/levels/planet5/Level5_1.tscn" id="2_odfjm"]
+[ext_resource type="Texture2D" uid="uid://cdpcadfw4uoq7" path="res://assets/planets/planeta5.png" id="2_ovtj3"]
+[ext_resource type="PackedScene" uid="uid://5np1ghnjqi8c" path="res://scenes/levels/planet5/Level5_2.tscn" id="3_l5l7c"]
 [ext_resource type="Texture2D" uid="uid://b234qx3841ins" path="res://resources/palette_p5.tres" id="3_qaemu"]
+[ext_resource type="PackedScene" uid="uid://cel76yqhmngf1" path="res://scenes/levels/planet5/Level5_3.tscn" id="4_iffjp"]
+[ext_resource type="PackedScene" uid="uid://dfbeu6vqb667k" path="res://scenes/levels/planet5/Level5_4.tscn" id="5_e03o3"]
+[ext_resource type="PackedScene" uid="uid://c3xk4w3fasmr4" path="res://scenes/levels/planet5/Level5_5.tscn" id="6_hp4wp"]
+[ext_resource type="PackedScene" uid="uid://c8levceupyutq" path="res://scenes/levels/planet5/Level5_6.tscn" id="7_5xkrc"]
+[ext_resource type="PackedScene" uid="uid://cf3gj70vbrx5m" path="res://scenes/levels/planet5/Level5_7.tscn" id="8_s6vpw"]
 
 [node name="planet5" type="Node"]
 script = ExtResource("1_1ai76")
+levelArray = Array[PackedScene]([ExtResource("2_odfjm"), ExtResource("3_l5l7c"), ExtResource("4_iffjp"), ExtResource("5_e03o3"), ExtResource("6_hp4wp"), ExtResource("7_5xkrc"), ExtResource("8_s6vpw")])
 planet_name = "BSONCERA"
 planet_dangerLevel = 1
 planet_numLevels = 4

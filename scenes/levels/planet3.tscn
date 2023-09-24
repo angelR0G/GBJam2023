@@ -1,11 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://bv3urxhi1enj4"]
+[gd_scene load_steps=10 format=3 uid="uid://bv3urxhi1enj4"]
 
 [ext_resource type="Script" path="res://scripts/planet.gd" id="1_q5gxl"]
-[ext_resource type="Texture2D" uid="uid://cb5b20ssdsnrf" path="res://assets/planets/planeta3.png" id="2_nvn6c"]
+[ext_resource type="Texture2D" uid="uid://42grg7661gr6" path="res://assets/planets/planeta3.png" id="2_nvn6c"]
+[ext_resource type="PackedScene" uid="uid://djdig2es431nc" path="res://scenes/levels/planet3/Level3_1.tscn" id="2_r1oe8"]
+[ext_resource type="PackedScene" uid="uid://bfd2ne28d8ybo" path="res://scenes/levels/planet3/Level3_2.tscn" id="3_m4fi7"]
 [ext_resource type="Texture2D" uid="uid://cy825hmgeaivo" path="res://resources/palette_p3.tres" id="3_p3a3t"]
+[ext_resource type="PackedScene" uid="uid://c180c6h4ccfqq" path="res://scenes/levels/planet3/Level3_3.tscn" id="4_lrd8i"]
+[ext_resource type="PackedScene" uid="uid://260774k42k6k" path="res://scenes/levels/planet3/Level3_4.tscn" id="5_qu4kv"]
+[ext_resource type="PackedScene" uid="uid://cke3e5i1x5vtb" path="res://scenes/levels/planet3/Level3_5.tscn" id="6_76en2"]
+[ext_resource type="PackedScene" uid="uid://ca45h0ln13rql" path="res://scenes/levels/planet3/Level3_6.tscn" id="7_2jooh"]
 
 [node name="planet3" type="Node"]
 script = ExtResource("1_q5gxl")
+levelArray = Array[PackedScene]([ExtResource("2_r1oe8"), ExtResource("3_m4fi7"), ExtResource("4_lrd8i"), ExtResource("5_qu4kv"), ExtResource("6_76en2"), ExtResource("7_2jooh")])
 planet_name = "PEHTOHT"
 planet_dangerLevel = 1
 planet_numLevels = 3

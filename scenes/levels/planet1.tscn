@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/planet.gd" id="1_13744"]
 [ext_resource type="PackedScene" uid="uid://ps404qbmx168" path="res://scenes/levels/planet1/Level1_1.tscn" id="2_er2w6"]
-[ext_resource type="Texture2D" uid="uid://bm8l2f34rdge0" path="res://assets/planets/planeta1.png" id="2_v0jb4"]
+[ext_resource type="Texture2D" uid="uid://dn6kdnwhai6g8" path="res://assets/planets/planeta1.png" id="2_v0jb4"]
 [ext_resource type="PackedScene" uid="uid://dcvrelp0nqwqv" path="res://scenes/levels/planet1/Level1_2.tscn" id="3_kjpt6"]
 [ext_resource type="Texture2D" uid="uid://cd2dl1qs50xyt" path="res://resources/palette_p1.tres" id="3_w42ao"]
 [ext_resource type="PackedScene" uid="uid://c8u85isfausc5" path="res://scenes/levels/planet1/Level1_3.tscn" id="4_8qsla"]

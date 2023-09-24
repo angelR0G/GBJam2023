@@ -1,11 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmgl1aosflu1w"]
+[gd_scene load_steps=11 format=3 uid="uid://dmgl1aosflu1w"]
 
 [ext_resource type="Script" path="res://scripts/planet.gd" id="1_xei8j"]
-[ext_resource type="Texture2D" uid="uid://de6oqupchk7q7" path="res://assets/planets/planeta8.png" id="2_mssoe"]
+[ext_resource type="PackedScene" uid="uid://crlvh6j7wfd7h" path="res://scenes/levels/planet8/Level8_1.tscn" id="2_lx0kb"]
+[ext_resource type="Texture2D" uid="uid://cdwlg6ru2h10b" path="res://assets/planets/planeta8.png" id="2_mssoe"]
 [ext_resource type="Texture2D" uid="uid://b5naj5g0x5pxs" path="res://resources/palette_p8.tres" id="3_2orxb"]
+[ext_resource type="PackedScene" uid="uid://1imi4me18aax" path="res://scenes/levels/planet8/Level8_2.tscn" id="3_lg4ug"]
+[ext_resource type="PackedScene" uid="uid://b7fl28pphjrh4" path="res://scenes/levels/planet8/Level8_3.tscn" id="4_b6dy4"]
+[ext_resource type="PackedScene" uid="uid://d0fjc528q6tgh" path="res://scenes/levels/planet8/Level8_4.tscn" id="5_711fg"]
+[ext_resource type="PackedScene" uid="uid://cwoaau7dub1ls" path="res://scenes/levels/planet8/Level8_5.tscn" id="6_xv1ck"]
+[ext_resource type="PackedScene" uid="uid://boksuh6ol5tat" path="res://scenes/levels/planet8/Level8_6.tscn" id="7_t30fi"]
+[ext_resource type="PackedScene" uid="uid://2mbfg511ac4l" path="res://scenes/levels/planet8/Level8_7.tscn" id="8_qpub1"]
 
 [node name="planet8" type="Node"]
 script = ExtResource("1_xei8j")
+levelArray = Array[PackedScene]([ExtResource("2_lx0kb"), ExtResource("3_lg4ug"), ExtResource("4_b6dy4"), ExtResource("5_711fg"), ExtResource("6_xv1ck"), ExtResource("7_t30fi"), ExtResource("8_qpub1")])
 planet_name = "RETTHAL"
 planet_dangerLevel = 1
 planet_numLevels = 4
