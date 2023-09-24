@@ -95,7 +95,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="MoleEnemy" instance=ExtResource("1_cypfh")]
+[node name="GhostEnemy" instance=ExtResource("1_cypfh")]
 use_parent_material = true
 collision_mask = 23
 script = ExtResource("2_82tff")

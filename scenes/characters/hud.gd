@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-const MAX_HEAT		:float 	= 20
+const MAX_HEAT		:float 	= 16
 const MAX_LIFE		:int	= 16
 const HEATBAR_X		:int	= 2
 
