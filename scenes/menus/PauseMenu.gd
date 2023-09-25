@@ -7,6 +7,8 @@ const ARROW_SPEED 	= 10
 var selected:int 	= 0
 var optionsPositions:Array[Vector2] = [Vector2(47, 103), Vector2(36, 123)]
 var previousPosition:Vector2 = Vector2(-1, -1)
+var changeOption:bool = true
+
 
 # Escene elements
 @onready var selectArrow	:= $SelectArrow
@@ -44,7 +46,7 @@ func _process(_delta):
 		# Key pressed, moving arrow to the selected option
 		selectArrow.position = previousPosition + (optionsPositions[selected] - previousPosition) * (1 - lerpTimer.time_left / lerpTimer.wait_time) 
 
-	else:
+	elif changeOption:
 		# Waitting for input
 		if Input.is_action_just_pressed("down"):
 			moveSound.play()
@@ -82,6 +84,7 @@ func resetMenu():
 	
 
 func optionSelected():
+	changeOption = false
 	# Play sound
 	selectSound.play()
 	await selectSound.finished
@@ -92,6 +95,8 @@ func optionSelected():
 	elif selected == 1:
 		get_tree().paused = false
 		return_to_main_menu.emit()
+	else:
+		changeOption = true
 
 func _on_lerp_timer_timeout():
 	previousPosition = Vector2(-1, -1)

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dcni20q4two04" path="res://scenes/menus/LevelSelection.tscn" id="5_b4sqp"]
 [ext_resource type="PackedScene" uid="uid://maxsekrbatm2" path="res://scenes/characters/player.tscn" id="5_qb8yy"]
 [ext_resource type="PackedScene" uid="uid://goh4wv2xtju0" path="res://scenes/TransitionScreen.tscn" id="6_u5f8i"]
-[ext_resource type="AudioStream" uid="uid://bpr6yi73arp4s" path="res://assets/sounds/GameOver.mp3" id="6_xxyhd"]
+[ext_resource type="AudioStream" uid="uid://i5cgs83ib7yb" path="res://assets/sounds/GameOver.mp3" id="6_xxyhd"]
 
 [node name="PlanetManager" type="Node2D"]
 process_mode = 1
