@@ -123,6 +123,7 @@ func _mapCompleted():
 	numLevelInPlanet = 1
 	currentPhase+=1
 	levelSelection.currentPhase = currentPhase
+	player.recoverHealth(4)
 	
 	if(currentPhase >= 4):
 		createEndAnimation()

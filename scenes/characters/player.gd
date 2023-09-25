@@ -237,6 +237,9 @@ func updateCameraLimit(limits:Vector2):
 	camera.limit_right 	= max(limits.x, 10) + CAMERA_LIMIT_OFFSET
 	camera.limit_bottom = max(limits.y, 10) + CAMERA_LIMIT_OFFSET
 
+func recoveHealth(h:int):
+	life = min(life+h, INITIAL_LIFE)
+
 func damage(dp:int = 1, pos:Vector2 = Vector2()):
 	#Check if can receive damage
 	if not canReceiveDamage:
@@ -251,6 +254,7 @@ func damage(dp:int = 1, pos:Vector2 = Vector2()):
 		if !diying:
 			player_dead.emit()
 			diying = true
+			setLockMovement(true)
 	else:
 		# Update hud
 		life_changed.emit(life)

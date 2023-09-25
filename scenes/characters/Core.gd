@@ -2,7 +2,7 @@ extends Node2D
 
 signal core_collected
 
-var life 		= 80
+var life 		= 60
 var coreExposed = false
 
 @onready var sprite 	:= $AnimatedSprite2D
@@ -10,7 +10,7 @@ var coreExposed = false
 @onready var coreSound	:= $CoreSound
 
 func _ready():
-	life 				= 80
+	life 				= 60
 	coreExposed 		= false
 	sprite.animation 	= "breaking"
 	
@@ -29,13 +29,13 @@ func damage(dp:int):
 			
 			# Disable barrier collision
 			barrier.queue_free()
-	elif life <= 10:
+	elif life <= 15:
 		sprite.frame = 4
 	elif life <= 30:
 		sprite.frame = 3
-	elif life <= 50:
+	elif life <= 40:
 		sprite.frame = 2
-	elif life <= 70:
+	elif life <= 50:
 		sprite.frame = 1
 
 
