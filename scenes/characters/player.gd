@@ -61,6 +61,7 @@ var life			:int	= INITIAL_LIFE
 var canReceiveDamage:bool	= true
 var enemiesBeingTouched:int	= 0
 var blinkingElapsed	:float	= 0
+var diying:bool				= false
 
 func setLockMovement(lock:bool):
 	lockMovement = lock
@@ -81,6 +82,7 @@ func resetPlayer():
 	camera.limit_left 	= -CAMERA_LIMIT_OFFSET
 	camera.limit_top	= -CAMERA_LIMIT_OFFSET
 	shotTimer.start()
+	diying = false
 
 func _process(delta):
 	var dir := Vector2()
@@ -246,7 +248,9 @@ func damage(dp:int = 1, pos:Vector2 = Vector2()):
 	# Reduce life
 	life -= dp
 	if life <= 0:
-		player_dead.emit()
+		if !diying:
+			player_dead.emit()
+			diying = true
 	else:
 		# Update hud
 		life_changed.emit(life)

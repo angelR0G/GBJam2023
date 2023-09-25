@@ -1,12 +1,12 @@
 [gd_scene load_steps=39 format=3 uid="uid://x2x0c326gkoa"]
 
 [ext_resource type="Script" path="res://scenes/menus/CreditsMenu.gd" id="1_2rcu2"]
-[ext_resource type="Texture2D" uid="uid://2voini2y805o" path="res://assets/menu_ui/MainMenuBackground.jpg" id="2_fn08s"]
-[ext_resource type="Texture2D" uid="uid://cbfdhiwfsd8od" path="res://assets/menu_ui/stars.png" id="3_gjpqk"]
+[ext_resource type="Texture2D" uid="uid://bw5olk7h2mum" path="res://assets/menu_ui/MainMenuBackground.jpg" id="2_fn08s"]
+[ext_resource type="Texture2D" uid="uid://d012e6neuwocw" path="res://assets/menu_ui/stars.png" id="3_gjpqk"]
 [ext_resource type="Script" path="res://scenes/menus/backgroundStars.gd" id="3_sbupy"]
-[ext_resource type="FontFile" uid="uid://brwymiuuq4cs6" path="res://assets/DigitalDisco.ttf" id="5_8s1k0"]
-[ext_resource type="Texture2D" uid="uid://cfgtxvi3qcjr" path="res://assets/menu_ui/ui.png" id="6_ktpxw"]
-[ext_resource type="AudioStream" uid="uid://cwfxiq4t1jf6y" path="res://assets/sounds/Menu_Select.mp3" id="7_r6n5d"]
+[ext_resource type="FontFile" uid="uid://cginr66v42up3" path="res://assets/DigitalDisco.ttf" id="5_8s1k0"]
+[ext_resource type="Texture2D" uid="uid://bm7g5g6p5u1lw" path="res://assets/menu_ui/ui.png" id="6_ktpxw"]
+[ext_resource type="AudioStream" uid="uid://dlxttdk1e4whl" path="res://assets/sounds/Menu_Select.mp3" id="7_r6n5d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2p3st"]
 atlas = ExtResource("3_gjpqk")

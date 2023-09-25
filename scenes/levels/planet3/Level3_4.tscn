@@ -23,6 +23,9 @@ position = Vector2(45, 78)
 [node name="ChargeEnemy" parent="Enemies" index="2" instance=ExtResource("3_3h05j")]
 position = Vector2(192, 84)
 
+[node name="Ladder" parent="." index="4"]
+position = Vector2(129, 53)
+
 [node name="Marker2D" type="Marker2D" parent="Coolant" index="0"]
 position = Vector2(55, 102)
 

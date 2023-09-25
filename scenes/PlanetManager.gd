@@ -39,7 +39,7 @@ var lvlForw:bool = true
 func _ready():
 	#disable player
 	renderPlayer(false)
-	
+	player.resetPlayer()
 	transitioning = true
 	levelSelection.hide()
 	levelSelection.setLockControls(true)
@@ -106,6 +106,7 @@ func _storePlanetSelection(cPlanet):
 	transitioning = true
 	
 func newMap():
+	player.toggleCoreStats(!lvlForw)
 	levelSelection.setLockControls(true)
 	levelMap = levelScript.generateMap(PlanetContainer.planets[currentPhase][currentPlanet].planet)
 	renderLevel()
@@ -208,6 +209,7 @@ func _levelComplete():
 	transitionScreen.isLevelForward = lvlForw
 	transitionScreen.transition()
 	transitioning = true
+	levelScript.resetCoolant()
 	
 	renderPlayer(false)
 
@@ -302,4 +304,3 @@ func _spawnCoolingCapsule():
 func _on_player_cool_capsule_collected():
 	await get_tree().create_timer(2).timeout
 	_spawnCoolingCapsule()
-	pass

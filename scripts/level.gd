@@ -24,9 +24,13 @@ func resetVariablesLevel():
 	lastLevelC = false
 	levelForward = true
 	enemyNum = 0
+	resetCoolant()
+	
+	
+func resetCoolant():
 	coolantSources.clear()
 	lastCoolantSource = -1
-	
+
 #Selects random levels from the planet level pool
 func generateMap(planet:Planet) -> Array[PackedScene]:
 	resetVariablesLevel()
